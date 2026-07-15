@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Route G Deluxe — Europe Travel Sales Funnel | Discover Group</title>
+<meta name="description" content="Route G Deluxe: 6 Countries, 11 Days European Tour. Vatican, Italy, Switzerland, France, Belgium & Netherlands. Starting at ₱150,000/head.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ==================== CSS RESET & VARIABLES ==================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --primary: #0a1e5e;
+  --primary-dark: #061442;
+  --primary-light: #1a3a8b;
+  --accent: #D4AF37;
+  --accent-dark: #b8962e;
+  --accent-light: #e8c84a;
+  --bg: #0a1e5e;
+  --surface: #ffffff;
+  --text: #1a1a2e;
+  --text-light: #ffffff;
+  --muted: rgba(255,255,255,0.7);
+  --border: rgba(255,255,255,0.15);
+  --radius: 0.75rem;
+  --shadow: 0 4px 20px rgba(0,0,0,0.15);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.2);
+  --gold: #D4AF37;
+  --gold-light: #fef3c7;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text-light); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+button, input, select, textarea { font-family: inherit; font-size: inherit; }
+
+/* ==================== HEADER ==================== */
+.header { position: sticky; top: 0; z-index: 100; background: var(--primary-dark); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); padding: 0.6rem 1.5rem; }
+.header-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+.header-logo img { height: 38px; border-radius: 6px; }
+.header-nav { display: flex; gap: 1.5rem; }
+.header-nav a { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; color: white; transition: color 0.2s; }
+.header-nav a:hover { color: var(--accent); }
+.btn { display: inline-block; padding: 0.6rem 1.4rem; border-radius: 0.6rem; font-weight: 700; font-size: 0.8rem; cursor: pointer; transition: all 0.2s var(--ease-out); border: none; }
+.btn-accent { background: var(--accent); color: var(--primary-dark); font-weight: 800; }
+.btn-accent:hover { background: var(--accent-light); transform: translateY(-1px); }
+.btn-outline { border: 2px solid var(--accent); color: var(--accent); background: transparent; }
+.btn-outline:hover { background: var(--accent); color: var(--primary-dark); }
+
+/* ==================== HERO ==================== */
+.hero { text-align: center; padding: 5rem 1.5rem 3rem; background: var(--primary); color: white; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 30% 50%, rgba(212,175,55,0.08) 0%, transparent 50%); }
+.hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 300; line-height: 1.1; position: relative; font-family: 'Playfair Display', serif; }
+.gold { color: var(--accent); font-style: italic; font-family: 'Playfair Display', serif; }
+.divider { width: 60px; height: 3px; background: var(--accent); margin: 1.5rem auto; border-radius: 2px; }
+.subtitle { font-size: 0.95rem; color: rgba(255,255,255,0.7); font-weight: 500; letter-spacing: 0.1em; position: relative; text-transform: uppercase; }
+
+/* ==================== INTRO ==================== */
+.intro { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+.intro-card { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; margin-bottom: 2rem; }
+.intro-card h2 { font-size: 1.6rem; font-weight: 900; margin-bottom: 1rem; color: white; font-family: 'Playfair Display', serif; }
+.text-gradient-gold { color: var(--accent); font-style: italic; font-family: 'Playfair Display', serif; }
+.intro-card p { color: rgba(255,255,255,0.8); font-size: 0.9rem; line-height: 1.7; }
+.stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+.stat-card { background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; text-align: center; }
+.stat-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.stat-title { font-size: 0.85rem; font-weight: 900; color: var(--accent); letter-spacing: 0.05em; }
+.stat-sub { font-size: 0.75rem; color: rgba(255,255,255,0.6); margin-top: 0.3rem; }
+.cta-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* ==================== FEATURES ==================== */
+.features-wrapper { background: #f8faff; }
+.features { max-width: 1000px; margin: 0 auto; padding: 5rem 1.5rem; color: var(--text); }
+.section-badge { display: inline-block; background: var(--gold-light); color: var(--accent-dark); font-size: 0.65rem; font-weight: 800; padding: 0.4rem 1rem; border-radius: 2rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
+.features h2 { font-size: 1.8rem; font-weight: 900; margin-bottom: 0.5rem; color: var(--text); font-family: 'Playfair Display', serif; }
+.features-sub { color: #6b7a94; font-size: 0.9rem; max-width: 600px; margin: 0 auto 2rem; }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+.feature-card { background: white; border-radius: 1rem; padding: 2rem 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 1px solid #e8edf5; text-align: center; }
+.icon-circle { width: 50px; height: 50px; border-radius: 50%; background: var(--gold-light); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin: 0 auto 1rem; }
+.feature-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text); font-family: 'Playfair Display', serif; }
+.feature-card p { font-size: 0.8rem; color: #6b7a94; line-height: 1.6; }
+.highlight-box { background: linear-gradient(135deg, #eff6ff, #f0f9ff); border: 1px solid #bfdbfe; border-radius: 0.75rem; padding: 1rem; margin-top: 1rem; }
+.highlight-box .note { font-size: 0.65rem; color: #6b7a94; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
+.highlight-box .price { font-size: 1.4rem; font-weight: 900; color: var(--primary); }
+.red-text { color: #dc2626; font-weight: 700; }
+
+/* ==================== ITINERARY ==================== */
+.itinerary { max-width: 1400px; margin: 0 auto; padding: 5rem 1.5rem; background: var(--primary); }
+.itinerary h2 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; color: white; font-family: 'Playfair Display', serif; font-style: italic; }
+.section-sub { font-size: 0.85rem; max-width: 600px; margin: 0 auto 2rem; color: rgba(255,255,255,0.7); }
+.pricing .section-sub { color: #6b7a94; }
+.itinerary-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+.map-panel { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.5rem; position: relative; overflow: hidden; }
+.map-panel img { border-radius: 0.75rem; width: 100%; height: auto; display: block; cursor: pointer; transition: transform 0.3s; }
+.map-panel img:hover { transform: scale(1.02); }
+.map-zoom-btn { position: absolute; top: 1rem; right: 1rem; width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.2); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.3); color: white; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s; }
+.map-zoom-btn:hover { background: rgba(255,255,255,0.4); }
+.city-tabs { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0.5rem 0; }
+.city-tab { font-size: 0.7rem; font-weight: 700; padding: 0.4rem 0.8rem; border-radius: 2rem; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); cursor: pointer; transition: all 0.2s; border: 1px solid rgba(255,255,255,0.15); }
+.city-tab.active { background: var(--accent); color: var(--primary-dark); border-color: var(--accent); }
+.day-panel { background: white; border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow); color: var(--text); align-self: start; }
+.day-tabs { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.2rem; }
+.day-tab { font-size: 0.7rem; font-weight: 700; padding: 0.4rem 0.85rem; border-radius: 2rem; background: #f1f5f9; color: #6b7a94; cursor: pointer; transition: all 0.2s; border: 1px solid #e2e8f0; }
+.day-tab.active { background: var(--primary); color: white; border-color: var(--primary); }
+.day-label { font-size: 0.6rem; font-weight: 800; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.3rem; }
+.day-content h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--primary); font-family: 'Playfair Display', serif; font-style: italic; }
+.day-content .description { font-size: 0.82rem; color: #374151; line-height: 1.7; margin-bottom: 1rem; }
+
+.collage-img { width: 100%; height: auto; border-radius: 0.75rem; margin-bottom: 1rem; object-fit: contain; }
+.info-section { margin-bottom: 0.75rem; }
+.info-title { font-size: 0.7rem; font-weight: 800; color: var(--primary); margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.info-list { list-style: none; padding: 0; }
+.info-list li { font-size: 0.78rem; color: #6b7a94; padding: 0.2rem 0; padding-left: 1rem; position: relative; }
+.info-list li::before { content: '•'; position: absolute; left: 0; color: var(--accent); font-weight: 900; }
+.meals-badge { display: inline-block; font-size: 0.72rem; background: #ecfdf5; color: #166534; padding: 0.25rem 0.6rem; border-radius: 0.3rem; font-weight: 600; }
+.travel-time { font-size: 0.72rem; color: #6b7a94; margin-top: 0.5rem; font-style: italic; }
+.optional-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 0.6rem; padding: 0.8rem; margin-bottom: 0.75rem; }
+.opt-title { font-size: 0.7rem; font-weight: 800; color: #1e40af; margin-bottom: 0.3rem; }
+.optional-box p { font-size: 0.75rem; color: #374151; margin: 0.15rem 0; }
+.note-text { font-size: 0.68rem; color: #6b7a94; font-style: italic; margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid #e2e8f0; }
+.group-banner { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); border-radius: var(--radius); padding: 2rem; text-align: center; color: white; }
+.group-banner h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 0.5rem; }
+.group-banner p { font-size: 0.8rem; opacity: 0.85; margin-bottom: 1rem; }
+
+/* ==================== PRICING ==================== */
+.pricing-wrapper { background: #f8faff; }
+.pricing { max-width: 1000px; margin: 0 auto; padding: 5rem 1.5rem; color: var(--text); }
+.pricing h2 { font-size: 1.8rem; font-weight: 900; margin-bottom: 0.5rem; color: var(--text); font-family: 'Playfair Display', serif; }
+.pricing .section-badge { background: var(--gold-light); color: var(--accent-dark); }
+.pricing-card { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow-lg); overflow: hidden; }
+.pricing-header { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; border-bottom: 2px solid #e2e8f0; }
+.pricing-header-intro { padding: 1.5rem; display: flex; flex-direction: column; justify-content: center; }
+.pricing-header-intro h3 { font-size: 1rem; font-weight: 800; font-family: 'Playfair Display', serif; }
+.pricing-header-intro p { font-size: 0.72rem; color: #6b7a94; }
+.pricing-header-col { padding: 1.5rem 1rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.3rem; }
+.col-badge { font-size: 0.55rem; font-weight: 800; letter-spacing: 0.1em; background: var(--primary); color: white; padding: 0.25rem 0.6rem; border-radius: 1rem; }
+.col-sub-badge { font-size: 0.55rem; font-weight: 700; color: #6b7a94; letter-spacing: 0.05em; }
+.col-amount { font-size: 1.1rem; font-weight: 900; color: var(--primary); }
+.col-sub { font-size: 0.65rem; color: #6b7a94; }
+.view-schedule-btn { font-size: 0.65rem; font-weight: 700; padding: 0.35rem 0.8rem; border-radius: 0.4rem; border: none; cursor: pointer; transition: all 0.2s; }
+.view-schedule-btn.dark { background: var(--primary); color: white; }
+.view-schedule-btn.gold { background: var(--accent); color: var(--primary-dark); }
+.pricing-rows { padding: 0 1.5rem; }
+.pricing-row-item { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; padding: 0.8rem 0; border-bottom: 1px solid #f1f5f9; align-items: center; }
+.row-label { font-size: 0.78rem; font-weight: 600; color: #1a1a2e; }
+.row-value { font-size: 0.75rem; text-align: center; padding: 0.3rem; }
+.check-badge { font-size: 0.7rem; font-weight: 700; color: #16a34a; }
+.discount-badge { font-size: 0.6rem; font-weight: 800; border: 1.5px solid var(--accent); color: var(--accent); padding: 0.2rem 0.5rem; border-radius: 0.3rem; }
+.free-badge { font-size: 0.6rem; font-weight: 800; background: #dcfce7; color: #166534; padding: 0.2rem 0.5rem; border-radius: 0.3rem; }
+.pricing-view-link { padding: 1.2rem; text-align: center; border-top: 1px solid #e2e8f0; }
+.pricing-view-link a { font-size: 0.8rem; font-weight: 700; color: var(--primary); }
+
+/* ==================== INCLUSIONS ==================== */
+.inclusions-section { max-width: 1000px; margin: 0 auto; padding: 5rem 1.5rem; text-align: center; }
+.inclusions-header { margin-bottom: 2rem; }
+.inclusions-header h2 { font-size: 1.5rem; font-weight: 900; margin-bottom: 0.5rem; color: white; font-family: 'Playfair Display', serif; }
+.inclusions-header p { font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+.detail-link-btn { display: flex; align-items: center; gap: 1rem; padding: 1.2rem 1.5rem; border-radius: 0.75rem; text-align: left; transition: all 0.2s var(--ease-out); }
+.detail-link-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.green-btn { background: #ecfdf5; border: 1px solid #a7f3d0; }
+.red-btn { background: #fef2f2; border: 1px solid #fecaca; }
+.blue-btn { background: #eff6ff; border: 1px solid #bfdbfe; }
+.detail-link-icon { font-size: 1.2rem; font-weight: 900; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.green-btn .detail-link-icon { background: #d1fae5; color: #166534; }
+.red-btn .detail-link-icon { background: #fee2e2; color: #991b1b; }
+.blue-btn .detail-link-icon { background: #dbeafe; color: #1e40af; }
+.detail-link-text { flex: 1; font-weight: 700; font-size: 0.9rem; color: var(--text); }
+.detail-link-sub { display: block; font-size: 0.72rem; font-weight: 500; color: #6b7a94; margin-top: 0.15rem; }
+.detail-link-arrow { font-size: 1.2rem; color: #6b7a94; }
+.inclusions-cta { margin-top: 2rem; }
+
+/* ==================== RESERVATION FORM ==================== */
+.reservation { max-width: 1000px; margin: 0 auto; padding: 5rem 1.5rem; background: var(--primary); }
+.reservation h2 { font-size: 1.5rem; font-weight: 900; margin-bottom: 0.5rem; color: white; font-family: 'Playfair Display', serif; }
+.reservation .section-sub { color: rgba(255,255,255,0.7); }
+.form-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 1rem; padding: 2.5rem 2rem; margin-top: 1.5rem; }
+.form-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1rem; }
+.form-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1rem; }
+.form-group label { display: block; font-size: 0.7rem; font-weight: 700; color: rgba(255,255,255,0.7); margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.7rem 0.9rem; border: 1.5px solid rgba(255,255,255,0.2); border-radius: 0.5rem; font-size: 0.82rem; transition: border-color 0.2s; background: rgba(255,255,255,0.05); color: white; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(212,175,55,0.15); }
+.form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.4); }
+.form-group select option { background: var(--primary-dark); color: white; }
+.toggle-section { margin: 1.5rem 0; }
+.toggle-label { font-size: 0.8rem; font-weight: 700; margin-bottom: 0.6rem; color: rgba(255,255,255,0.8); }
+.toggle-group { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+.toggle-group-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; }
+.toggle-option { border: 2px solid rgba(255,255,255,0.2); border-radius: 0.75rem; padding: 1rem; text-align: center; cursor: pointer; transition: all 0.2s; }
+.toggle-option.active { border-color: var(--accent); background: rgba(212,175,55,0.1); }
+.toggle-title { font-size: 0.8rem; font-weight: 700; color: white; }
+.toggle-sub { font-size: 0.68rem; color: rgba(255,255,255,0.6); }
+.toggle-price { font-size: 1rem; font-weight: 900; color: var(--accent); margin-top: 0.3rem; }
+.additional-travelers { margin: 1.5rem 0; padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 0.75rem; border: 1px solid var(--border); }
+.additional-travelers h4 { font-size: 0.9rem; font-weight: 800; margin-bottom: 0.3rem; color: white; }
+.additional-travelers .sub { font-size: 0.72rem; color: rgba(255,255,255,0.6); margin-bottom: 1rem; }
+.traveler-block { padding: 1rem 0; border-bottom: 1px solid var(--border); }
+.traveler-block:last-child { border-bottom: none; }
+.traveler-label { font-size: 0.75rem; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem; }
+.installment-preview { display: none; background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.2rem; margin: 1rem 0; }
+.installment-preview h4 { font-size: 0.85rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem; }
+.installment-preview .note { font-size: 0.72rem; color: rgba(255,255,255,0.6); margin-bottom: 0.75rem; }
+.installment-row { display: flex; justify-content: space-between; padding: 0.4rem 0; font-size: 0.78rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.installment-row:last-child { border-bottom: none; }
+.installment-row .date { color: rgba(255,255,255,0.8); }
+.installment-row .amount { font-weight: 700; color: var(--accent); }
+.installment-row.total { border-top: 2px solid var(--accent); margin-top: 0.5rem; padding-top: 0.6rem; font-weight: 800; }
+.pricing-summary { background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.3); border-radius: 0.75rem; padding: 1.2rem; margin: 1rem 0; }
+.pricing-summary h4 { font-size: 0.85rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem; }
+.pricing-summary .pricing-row { display: flex; justify-content: space-between; padding: 0.35rem 0; font-size: 0.78rem; }
+.pricing-summary .pricing-row .label { color: rgba(255,255,255,0.8); }
+.pricing-summary .pricing-row .value { font-weight: 700; color: var(--accent); }
+.pricing-summary .pricing-row.total { border-top: 2px solid var(--accent); margin-top: 0.5rem; padding-top: 0.5rem; font-weight: 900; font-size: 0.9rem; }
+.submit-section { margin-top: 1.5rem; text-align: center; }
+.checkbox-row { display: flex; align-items: flex-start; gap: 0.6rem; margin-bottom: 1rem; text-align: left; }
+.checkbox-row input[type="checkbox"] { margin-top: 0.2rem; width: 16px; height: 16px; }
+.checkbox-row label { font-size: 0.72rem; color: rgba(255,255,255,0.7); line-height: 1.5; }
+.submit-btn { width: 100%; padding: 1rem; background: var(--accent); color: var(--primary-dark); border: none; border-radius: 0.6rem; font-weight: 800; font-size: 0.9rem; cursor: pointer; transition: all 0.2s var(--ease-out); }
+.submit-btn:hover { background: var(--accent-light); transform: translateY(-1px); }
+.submit-btn:active { transform: scale(0.97); }
+.submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+.secure-note { font-size: 0.68rem; color: rgba(255,255,255,0.5); margin-top: 0.75rem; }
+
+/* ==================== FOOTER ==================== */
+.footer { background: var(--primary-dark); color: rgba(255,255,255,0.8); padding: 3rem 2rem 1.5rem; border-top: 1px solid var(--border); }
+.footer-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+.footer h4 { color: white; font-size: 0.85rem; font-weight: 800; margin-bottom: 0.5rem; }
+.footer p { font-size: 0.75rem; line-height: 1.6; }
+.footer-bottom { text-align: center; font-size: 0.68rem; color: rgba(255,255,255,0.5); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; }
+
+/* ==================== MODALS ==================== */
+.modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+.modal-overlay.active { opacity: 1; pointer-events: all; }
+.modal-content { background: white; border-radius: 1.2rem; padding: 2rem; max-width: 420px; width: 90%; text-align: center; transform: scale(0.95); transition: transform 0.2s var(--ease-out); position: relative; }
+.modal-overlay.active .modal-content { transform: scale(1); }
+.modal-close { position: absolute; top: 0.8rem; right: 0.8rem; width: 30px; height: 30px; border-radius: 50%; border: none; background: #f3f4f6; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.modal-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+.modal-title { font-size: 1.1rem; font-weight: 900; margin-bottom: 0.3rem; }
+.modal-subtitle { font-size: 0.78rem; color: var(--muted); margin-bottom: 1.2rem; }
+.modal-card { border-radius: 0.75rem; padding: 1.2rem; margin-bottom: 1rem; }
+.modal-card.blue { background: #eff6ff; border: 1px solid #bfdbfe; }
+.modal-card.gold { background: #fffbeb; border: 1px solid #fde68a; }
+.check-note { font-size: 0.72rem; color: #16a34a; font-weight: 600; margin-top: 0.5rem; }
+.step-row { display: flex; gap: 1rem; align-items: flex-start; text-align: left; margin-bottom: 0.75rem; }
+.step-num { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.75rem; flex-shrink: 0; }
+.step-num.gold { background: #fef3c7; color: #92400e; }
+.step-label { font-size: 0.7rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.step-amount { font-size: 1.1rem; font-weight: 900; margin: 0.15rem 0; }
+.step-amount.gold { color: #d97706; }
+.step-amount.blue { color: var(--primary); }
+.step-desc { font-size: 0.75rem; color: var(--muted); }
+.step-note { font-size: 0.68rem; color: #92400e; margin-top: 0.3rem; font-style: italic; }
+.modal-note { font-size: 0.68rem; color: var(--muted); font-style: italic; margin-bottom: 1rem; }
+.modal-btn { width: 100%; padding: 0.8rem; border: none; border-radius: 0.6rem; font-weight: 800; font-size: 0.8rem; cursor: pointer; color: white; transition: all 0.2s; }
+.modal-btn.blue { background: var(--primary); }
+.modal-btn.gold { background: var(--accent); }
+.modal-card .divider { width: 100%; height: 1px; background: #e5e7eb; margin: 0.75rem 0; }
+
+/* ==================== TOAST ==================== */
+.toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--primary); color: white; padding: 0.8rem 1.5rem; border-radius: 0.6rem; font-size: 0.8rem; font-weight: 600; z-index: 9999; opacity: 0; transition: all 0.3s var(--ease-out); pointer-events: none; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.toast.error { background: #dc2626; }
+
+/* ==================== BOOKING CONFIRMATION ==================== */
+.booking-confirmation { max-width: 900px; margin: 0 auto; background: white; border-radius: 1rem; box-shadow: 0 20px 60px rgba(0,0,0,0.12); overflow: hidden; --muted: #64748b; --border: #e2e8f0; color: #1e293b; }
+.bc-header { background: linear-gradient(135deg, #0f172a 0%, #1e3a6d 100%); color: white; padding: 1.5rem 2rem; }
+.bc-header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+.bc-header-left { display: flex; align-items: center; gap: 0.75rem; }
+.bc-header-left img { width: 40px; height: 40px; border-radius: 8px; }
+.bc-header-left h2 { font-size: 1rem; font-weight: 800; }
+.bc-header-left .sub { font-size: 0.68rem; opacity: 0.7; }
+.bc-header-right { text-align: right; }
+.bc-badge { display: inline-block; background: var(--accent); color: #000; font-size: 0.6rem; font-weight: 900; padding: 0.3rem 0.8rem; border-radius: 0.3rem; letter-spacing: 0.1em; margin-bottom: 0.3rem; }
+.bc-header-right .date { font-size: 0.65rem; opacity: 0.7; }
+.bc-header-contact { display: flex; gap: 1.5rem; font-size: 0.65rem; opacity: 0.7; flex-wrap: wrap; }
+.bc-body { padding: 2rem; }
+.bc-section-title { font-size: 0.85rem; font-weight: 900; color: var(--primary); margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid #e8edf5; text-transform: uppercase; letter-spacing: 0.05em; }
+.bc-details-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.bc-detail-item label { font-size: 0.62rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.bc-detail-item p { font-size: 0.82rem; font-weight: 600; margin-top: 0.2rem; color: #1e293b; }
+.bc-detail-item p.highlight { color: var(--primary); font-weight: 800; }
+.bc-table { width: 100%; border-collapse: collapse; font-size: 0.72rem; margin-bottom: 1.5rem; }
+.bc-table th { background: #1e3a5f; padding: 0.5rem 0.6rem; text-align: left; font-weight: 700; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.05em; color: #ffffff; }
+.bc-table td { padding: 0.5rem 0.6rem; border-bottom: 1px solid #f1f5f9; color: #1e293b; }
+.bc-table .font-bold { font-weight: 700; }
+.bc-table .mono { font-family: 'SF Mono', monospace; font-size: 0.68rem; }
+.bc-table .text-right { text-align: right; }
+.bc-table .text-center { text-align: center; }
+.bc-table .total-row { background: #0a1e5e; font-weight: 800; color: #ffffff; }
+.bc-pricing-section { margin-bottom: 1.5rem; }
+.bc-pricing-table { width: 100%; border-collapse: collapse; font-size: 0.75rem; }
+.bc-pricing-table th { background: #1e3a5f; padding: 0.6rem; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.05em; color: #ffffff; font-weight: 700; text-align: left; }
+.bc-pricing-table td { padding: 0.6rem; border-bottom: 1px solid #f1f5f9; color: #1e293b; }
+.bc-pricing-table .total-row { background: #0a1e5e; color: #ffffff; font-weight: 800; }
+.bc-vat-note { font-size: 0.68rem; color: #d97706; font-style: italic; margin-top: 0.5rem; font-weight: 600; }
+.bc-payment-schedule { margin-bottom: 1.5rem; }
+.bc-separator { height: 1px; background: #e8edf5; margin: 1.5rem 0; }
+.bc-benefits { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; margin-bottom: 1.5rem; }
+.bc-benefit { display: flex; align-items: flex-start; gap: 0.5rem; padding: 0.6rem; background: #f0fdf4; border-radius: 0.5rem; }
+.bc-benefit .icon { color: #16a34a; font-weight: 900; font-size: 0.8rem; }
+.bc-benefit .title { font-size: 0.72rem; font-weight: 700; color: #1e293b; }
+.bc-benefit .desc { font-size: 0.65rem; color: #475569; }
+.bc-bank-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; margin-bottom: 1.5rem; }
+.bc-bank-card { background: #f8fafc; border: 1px solid var(--border); border-radius: 0.6rem; padding: 0.8rem; text-align: center; }
+.bank-name { font-size: 0.9rem; font-weight: 900; color: #0a1e5e; }
+.bank-full { font-size: 0.62rem; color: #64748b; margin-bottom: 0.3rem; }
+.bank-acct-name { font-size: 0.65rem; font-weight: 600; color: var(--text); }
+.bank-number { font-size: 0.9rem; font-weight: 900; color: #0a1e5e; font-family: 'SF Mono', monospace; margin-top: 0.2rem; letter-spacing: 0.05em; }
+.bc-footer { background: #f8fafc; padding: 1rem 2rem; text-align: center; border-top: 1px solid var(--border); }
+.bc-footer .company { font-weight: 800; font-size: 0.78rem; color: #0a1e5e; }
+.bc-footer p { font-size: 0.65rem; color: #64748b; margin-top: 0.2rem; }
+.bc-actions { display: flex; gap: 0.75rem; padding: 1.5rem 2rem; justify-content: center; flex-wrap: wrap; }
+.btn-print { padding: 0.7rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: 0.5rem; font-weight: 700; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; }
+.btn-print:hover:not(:disabled) { background: var(--primary-light); }
+.btn-new { padding: 0.7rem 1.5rem; background: #f1f5f9; color: var(--text); border: none; border-radius: 0.5rem; font-weight: 700; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; }
+.btn-new:hover { background: #e2e8f0; }
+
+/* ==================== T&C IN CONFIRMATION ==================== */
+.bc-tc-container { margin: 1.5rem 0; }
+.bc-tc-scroll { max-height: 300px; overflow-y: auto; padding: 1rem; background: #f8fafc; border: 1px solid var(--border); border-radius: 0.5rem; font-size: 0.72rem; line-height: 1.7; color: #374151; }
+.bc-tc-scroll h3 { font-size: 0.78rem; font-weight: 800; color: var(--primary); margin: 1rem 0 0.3rem; }
+.bc-tc-scroll h3:first-child { margin-top: 0; }
+.bc-tc-scroll p { margin-bottom: 0.4rem; }
+.bc-tc-scroll p.indent { padding-left: 1rem; }
+.bc-tc-scroll p.bold { font-weight: 700; }
+
+/* ==================== AGREEMENT & SIGNATURE ==================== */
+.bc-agreement { margin: 1.5rem 0; padding: 1rem; background: #fff7ed; border: 1.5px solid #fed7aa; border-radius: 0.6rem; }
+.bc-agreement.checked { background: #ecfdf5; border-color: #86efac; }
+.bc-agreement label { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.72rem; color: #374151; line-height: 1.6; cursor: pointer; }
+.bc-agreement input[type="checkbox"] { margin-top: 0.2rem; width: 16px; height: 16px; flex-shrink: 0; }
+.bc-signature-section { margin: 1.5rem 0; }
+.bc-signature-intro { font-size: 0.72rem; color: #64748b; margin-bottom: 1rem; }
+.bc-signature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.bc-sig-box { text-align: center; }
+.bc-sig-label { font-size: 0.65rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+.bc-sig-canvas-wrap { border: 2px dashed #cbd5e1; border-radius: 0.5rem; height: 120px; position: relative; cursor: crosshair; background: #fafbfc; }
+.bc-sig-canvas-wrap.has-signature { border-color: var(--primary); border-style: solid; }
+.bc-sig-canvas-wrap canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.bc-sig-placeholder { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 0.72rem; color: #94a3b8; pointer-events: none; }
+.bc-sig-actions { margin-top: 0.4rem; }
+.bc-sig-clear { font-size: 0.68rem; color: #dc2626; background: none; border: none; cursor: pointer; font-weight: 600; }
+.bc-sig-info { margin-top: 0.5rem; }
+.bc-sig-info .name { font-size: 0.75rem; font-weight: 700; color: #1e293b; }
+.bc-sig-info .date { font-size: 0.65rem; color: #64748b; }
+.bc-sig-consultant { border: 2px dashed #e2e8f0; border-radius: 0.5rem; height: 120px; display: flex; align-items: center; justify-content: center; }
+.bc-sig-consultant p { font-size: 0.72rem; color: #94a3b8; font-style: italic; }
+
+/* ==================== SUBMIT SECTION ==================== */
+.bc-submit-section { text-align: center; margin: 1.5rem 0; }
+.bc-submit-btn { padding: 0.8rem 2rem; background: var(--primary); color: white; border: none; border-radius: 0.6rem; font-weight: 800; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; }
+.bc-submit-btn:hover:not(:disabled) { background: #1a3a8b; transform: translateY(-1px); }
+.bc-submit-btn:active { transform: scale(0.97); }
+.bc-submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.bc-submit-status { font-size: 0.75rem; margin-top: 0.75rem; }
+.bc-submit-status.ready { color: #16a34a; font-weight: 700; }
+.bc-submit-status.pending { color: #6b7a94; }
+
+/* ==================== PRINT ==================== */
+@media print {
+  body * { visibility: hidden; }
+  .booking-confirmation, .booking-confirmation * { visibility: visible; }
+  .booking-confirmation { position: absolute; left: 0; top: 0; width: 100%; box-shadow: none; }
+  .bc-actions { display: none !important; }
+  .bc-submit-section { display: none !important; }
+  .bc-sig-clear { display: none !important; }
+  .bc-sig-placeholder { display: none !important; }
+  .bc-tc-scroll { max-height: none; overflow: visible; }
+  .header, .footer, .hero, .intro, .features, .itinerary, .pricing, .reservation, .modal-overlay, .toast { display: none !important; }
+  .detail-popup-overlay { display: none !important; }
+  .bc-table th, .bc-pricing-table th { background: #1e3a5f !important; color: #ffffff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .bc-table .total-row, .bc-pricing-table .total-row { background: #0a1e5e !important; color: #ffffff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+/* ==================== DRAGGABLE DETAIL POPUP ==================== */
+.detail-popup-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s; pointer-events: none; }
+.detail-popup-overlay.active { opacity: 1; pointer-events: all; }
+.detail-popup { position: absolute; width: 90%; max-width: 500px; max-height: 80vh; background: white; border-radius: 1rem; box-shadow: 0 25px 60px rgba(0,0,0,0.3); overflow: hidden; transform: scale(0.95); transition: transform 0.2s; }
+.detail-popup-overlay.active .detail-popup { transform: scale(1); }
+.detail-popup-header { padding: 1.2rem 1.5rem; display: flex; align-items: center; justify-content: space-between; cursor: grab; user-select: none; border-bottom: 2px solid #e5e7eb; }
+.detail-popup-header:active { cursor: grabbing; }
+.detail-popup-header h3 { font-size: 1.3rem; font-weight: 900; margin: 0; font-family: 'Inter', sans-serif; letter-spacing: 0.01em; color: #111827; }
+.detail-popup-header .close-btn { width: 34px; height: 34px; border-radius: 50%; border: none; background: #f3f4f6; font-size: 1.3rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+.detail-popup-header .close-btn:hover { background: #e5e7eb; }
+.detail-popup-body { padding: 1.5rem; overflow-y: auto; max-height: calc(80vh - 60px); }
+.detail-popup-body .list-item { display: flex; align-items: flex-start; gap: 0.6rem; padding: 0.5rem 0; font-size: 0.85rem; color: #374151; border-bottom: 1px solid #f3f4f6; }
+.detail-popup-body .list-item:last-child { border-bottom: none; }
+.detail-popup-body .list-item .icon { flex-shrink: 0; font-weight: 700; }
+.detail-popup-body .list-item .icon.green { color: #16a34a; }
+.detail-popup-body .list-item .icon.red { color: #dc2626; }
+.detail-popup-body .list-item .icon.blue { color: #2563eb; }
+.detail-popup-header.green { background: #ecfdf5; }
+.detail-popup-header.green h3 { color: #166534; }
+.detail-popup-header.red { background: #fef2f2; }
+.detail-popup-header.red h3 { color: #991b1b; }
+.detail-popup-header.blue { background: #eff6ff; }
+.detail-popup-header.blue h3 { color: #1e40af; }
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .header-nav { display: none; }
+  .itinerary-layout { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-grid-2 { grid-template-columns: 1fr; }
+  .toggle-group-3 { grid-template-columns: 1fr; }
+  .pricing-header { grid-template-columns: 1fr; }
+  .pricing-row-item { grid-template-columns: 1fr; gap: 0.3rem; }
+  .bc-signature-grid { grid-template-columns: 1fr; }
+  .bc-details-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <div class="header-inner">
+    <a href="#" class="header-logo">
+      <img src="images/logo.jpg" alt="Discover Group">
+    </a>
+    <nav class="header-nav">
+      <a href="#itinerary">THE ITINERARY</a>
+      <a href="#pricing">PAYMENT SCHEMES</a>
+      <a href="#reservation-form">RESERVE SLOT</a>
+    </nav>
+    <a href="#reservation-form" class="btn btn-accent">Book Now</a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <h1><span class="gold">Deluxe.</span><br>The Deluxe Way to Travel.</h1>
+  <div class="divider"></div>
+  <p class="subtitle">Vatican | Italy | Switzerland | France | Belgium | Netherlands</p>
+</section>
+
+<!-- Intro -->
+<section class="intro">
+  <div class="intro-card">
+    <h2><span class="text-gradient-gold">6 Countries. 11 Days.</span> <span class="gold">Deluxe.</span></h2>
+    <p>Route G Deluxe is designed for travelers who want a packed, action-filled European adventure. Visit Vatican, Italy, Switzerland, France, Belgium & Netherlands in 11 days with daily itineraries that maximize every moment of your journey.</p>
+    <p style="margin-top:1rem;">Rome. Florence. Venice. Milan. Lucerne. Grindelwald. Paris. Bruges. Amsterdam — each city experienced with curated highlights and seamless transfers.</p>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-icon">💰</div>
+      <div class="stat-title">ALL-IN ₱150,000</div>
+      <div class="stat-sub">Easy monthly installments</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🌍</div>
+      <div class="stat-title">6 COUNTRIES</div>
+      <div class="stat-sub">Vatican, Italy, Switzerland, France, Belgium & Netherlands</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🎯</div>
+      <div class="stat-title">11 DAYS / 8 NIGHTS</div>
+      <div class="stat-sub">Multiple departure dates</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-row">
+    <a href="#pricing" class="btn btn-accent">Compare Payment Schemes →</a>
+    <a href="#reservation-form" class="btn btn-outline">Reserve Slot Today</a>
+  </div>
+</section>
+
+<!-- Features -->
+<div class="features-wrapper">
+<section class="features" style="text-align:center;">
+  <span class="section-badge">The Deluxe Experience</span>
+  <h2>Why Route G Deluxe Stands Out</h2>
+  <p class="features-sub">Designed for travelers who want to see the best of Europe in 11 action-packed days. 6 countries, daily itineraries, and seamless luxury transfers.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="icon-circle">⚡</div>
+      <h3>Action-Packed Itinerary</h3>
+      <p>Daily curated itineraries covering 6 countries with iconic landmarks, scenic drives, and unforgettable experiences. Every day is an adventure from Rome to Amsterdam.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon-circle">💰</div>
+      <h3>Affordable Luxury</h3>
+      <p>Get the full European experience starting at just <strong>₱150,000/head</strong> with flexible payment options including monthly installments as low as ₱10,000/month.</p>
+      <div class="highlight-box">
+        <div class="note">Starting at only</div>
+        <div class="price">₱150,000/head!</div>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="icon-circle">🛡️</div>
+      <h3>Visa Protection Guarantee</h3>
+      <p>Book with 100% confidence! In the highly unlikely event of a visa denial, <span class="red-text">we will give you a full refund of the total amount you paid for the package.</span> No hidden fees, no stress, and zero risk!</p>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- Itinerary -->
+<section class="itinerary" id="itinerary" style="text-align:center;">
+  <span class="section-badge">The Daily Schedule</span>
+  <h2>Deluxe Daily Itinerary</h2>
+  <p class="section-sub">See the exact cities you'll visit day-by-day. 6 countries in 11 days with daily curated experiences and seamless transfers.</p>
+
+  <div class="itinerary-layout" style="text-align:left;">
+    <!-- Left Column: Map + City Tabs -->
+    <div style="display:flex;flex-direction:column;gap:0.75rem;">
+      <div class="map-panel">
+        <span class="map-zoom-btn" onclick="window.open('images/route-g-map.png','_blank')">&#x2295;</span>
+        <img src="images/route-g-map.png" alt="Route G Deluxe Europe Map" onclick="window.open('images/route-g-map.png','_blank')">
+      </div>
+      <div class="city-tabs">
+        <span class="city-tab active" data-city="rome">1 Rome</span>
+        <span class="city-tab" data-city="florence">2 Florence</span>
+        <span class="city-tab" data-city="venice">3 Venice</span>
+        <span class="city-tab" data-city="milan">4 Milan</span>
+        <span class="city-tab" data-city="lucerne">5 Lucerne</span>
+        <span class="city-tab" data-city="paris">6 Paris</span>
+        <span class="city-tab" data-city="amsterdam">7 Amsterdam</span>
+      </div>
+    </div>
+
+    <!-- Right Column: Day Tabs + Content -->
+    <div class="day-panel">
+      <div class="day-tabs" id="day-tabs"></div>
+      <div class="day-content" id="day-content"></div>
+    </div>
+  </div>
+
+  <!-- Group Trip Banner -->
+  <div class="group-banner">
+    <h3>Planning a group trip?</h3>
+    <p>Contact us for special group rates and exclusive perks for groups of 12 or more travelers!</p>
+    <a href="#reservation-form" class="btn btn-accent">Reserve Slots</a>
+  </div>
+</section>
+
+<!-- Pricing -->
+<div class="pricing-wrapper">
+<section class="pricing" id="pricing" style="text-align:center;">
+  <span class="section-badge">Flexible Payment Schemes</span>
+  <h2>Compare & Choose Your Ideal Plan</h2>
+  <p class="section-sub">We believe luxury travel should be accessible. Choose from our three tailored payment options.</p>
+
+  <div class="pricing-card">
+    <!-- Header Row -->
+    <div class="pricing-header">
+      <div class="pricing-header-intro">
+        <h3>Your Path to Europe</h3>
+        <p>Select the perfect option to comfortably fund your dream journey.</p>
+      </div>
+      <div class="pricing-header-col">
+        <span class="col-badge">MONTHLY</span>
+        <div class="col-amount">Monthly</div>
+        <div class="col-sub">Divided equally</div>
+        <a href="#reservation-form" class="view-schedule-btn dark">View Schedule</a>
+      </div>
+      <div class="pricing-header-col best-seller-col" style="position:relative;border-left:2px solid rgba(245,158,11,0.5);border-right:2px solid rgba(245,158,11,0.5);background:rgba(245,158,11,0.03);padding-top:2.5rem;">
+        <span class="col-badge" style="position:absolute;top:0.5rem;left:50%;transform:translateX(-50%);font-size:0.6rem;padding:0.3rem 0.8rem;white-space:nowrap;z-index:2;">⭐ BEST SELLER</span>
+        <span class="col-sub-badge">DOWN PAYMENT</span>
+        <div class="col-amount">₱50,000</div>
+        <button class="view-schedule-btn gold" onclick="openModal('downpayment-modal')">View Schedule</button>
+      </div>
+      <div class="pricing-header-col">
+        <span class="col-badge">FULL CASH</span>
+        <div class="col-amount">₱150,000</div>
+        <button class="view-schedule-btn dark" onclick="openModal('fullcash-modal')">View Schedule</button>
+      </div>
+    </div>
+    <!-- Comparison Rows -->
+    <div class="pricing-rows">
+      <div class="pricing-row-item">
+        <div class="row-label">Total Package Cost</div>
+        <div class="row-value" style="border-left:1px solid #e8edf5;"><strong style="color:var(--primary);">₱150,000</strong></div>
+        <div class="row-value" style="border-left:2px solid rgba(245,158,11,0.3);border-right:2px solid rgba(245,158,11,0.3);background:rgba(245,158,11,0.02);"><strong style="color:#d97706;">₱150,000</strong></div>
+        <div class="row-value" style="border-left:1px solid #e8edf5;"><strong style="color:var(--primary);">₱150,000</strong></div>
+      </div>
+      <div class="pricing-row-item">
+        <div class="row-label">Visa Denial Protection</div>
+        <div class="row-value" style="border-left:1px solid #e8edf5;"><span class="check-badge">✓ 100% Refund</span></div>
+        <div class="row-value" style="border-left:2px solid rgba(245,158,11,0.3);border-right:2px solid rgba(245,158,11,0.3);background:rgba(245,158,11,0.02);"><span class="check-badge" style="color:#d97706;">✓ 100% Refund</span></div>
+        <div class="row-value" style="border-left:1px solid #e8edf5;"><span class="check-badge">✓ 100% Refund</span></div>
+      </div>
+      <div class="pricing-row-item">
+        <div class="row-label">Visa Assistance & Appointment Fee</div>
+        <div class="row-value" style="border-left:1px solid #e8edf5;color:#6b7a94;">Standard Rate</div>
+        <div class="row-value" style="border-left:2px solid rgba(245,158,11,0.3);border-right:2px solid rgba(245,158,11,0.3);background:rgba(245,158,11,0.02);"><span class="discount-badge">50% OFF</span></div>
+        <div class="row-value" style="border-left:1px solid #e8edf5;"><span class="discount-badge" style="border-color:var(--primary);color:var(--primary);">50% OFF</span></div>
+      </div>
+      <div class="pricing-row-item">
+        <div class="row-label">Premium Travel Insurance</div>
+        <div class="row-value" style="border-left:1px solid #e8edf5;color:#6b7a94;">Standard Rate</div>
+        <div class="row-value" style="border-left:2px solid rgba(245,158,11,0.3);border-right:2px solid rgba(245,158,11,0.3);background:rgba(245,158,11,0.02);color:#6b7a94;">Standard Rate</div>
+        <div class="row-value" style="border-left:1px solid #e8edf5;"><span class="discount-badge" style="border-color:var(--primary);color:var(--primary);">50% OFF</span></div>
+      </div>
+      <div class="pricing-row-item">
+        <div class="row-label">Taxes, Tipping & Permits</div>
+        <div class="row-value" style="border-left:1px solid #e8edf5;color:#6b7a94;">Standard Rate</div>
+        <div class="row-value" style="border-left:2px solid rgba(245,158,11,0.3);border-right:2px solid rgba(245,158,11,0.3);background:rgba(245,158,11,0.02);color:#6b7a94;">Standard Rate</div>
+        <div class="row-value" style="border-left:1px solid #e8edf5;"><span class="discount-badge" style="border-color:var(--primary);color:var(--primary);">50% OFF</span></div>
+      </div>
+      <div class="pricing-row-item">
+        <div class="row-label">Philippine Travel Tax</div>
+        <div class="row-value" style="border-left:1px solid #e8edf5;color:#6b7a94;">Standard Rate</div>
+        <div class="row-value" style="border-left:2px solid rgba(245,158,11,0.3);border-right:2px solid rgba(245,158,11,0.3);background:rgba(245,158,11,0.02);color:#6b7a94;">Standard Rate</div>
+        <div class="row-value" style="border-left:1px solid #e8edf5;"><span class="free-badge">100% FREE</span></div>
+      </div>
+    </div>
+    <!-- View Inclusions Link -->
+    <div class="pricing-view-link">
+      <a href="#inclusions">📄 View Inclusions, Exclusions & Optional Services</a>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- Inclusions, Exclusions & Optional Services -->
+<section class="inclusions-section" id="inclusions">
+  <div class="inclusions-header">
+    <span class="section-badge">PACKAGE DETAILS</span>
+    <h2>Inclusions, Exclusions & Optionals</h2>
+    <p>Everything you need to know about your Route G Deluxe package. Tap each category to explore.</p>
+  </div>
+  <div class="inclusions-content">
+    <div style="display:flex;flex-direction:column;gap:1.2rem;max-width:480px;margin:0 auto;">
+      <a href="#" onclick="openDetailPopup('inclusions');return false;" class="detail-link-btn green-btn">
+        <span class="detail-link-icon">✓</span>
+        <span class="detail-link-text">Package Inclusions<span class="detail-link-sub">Airfare, hotels, transfers & more</span></span>
+        <span class="detail-link-arrow">→</span>
+      </a>
+      <a href="#" onclick="openDetailPopup('exclusions');return false;" class="detail-link-btn red-btn">
+        <span class="detail-link-icon">✕</span>
+        <span class="detail-link-text">Package Exclusions<span class="detail-link-sub">Meals, taxes & travel tax</span></span>
+        <span class="detail-link-arrow">→</span>
+      </a>
+      <a href="#" onclick="openDetailPopup('optionals');return false;" class="detail-link-btn blue-btn">
+        <span class="detail-link-icon">◎</span>
+        <span class="detail-link-text">Optional Services<span class="detail-link-sub">Visa assistance, insurance & upgrades</span></span>
+        <span class="detail-link-arrow">→</span>
+      </a>
+    </div>
+    <!-- CTA -->
+    <div class="inclusions-cta">
+      <a href="#reservation-form" class="btn btn-accent">Reserve Your Slot →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Reservation Form -->
+<section class="reservation" id="reservation-form" style="text-align:center;">
+  <span class="section-badge">Secure Your Slot Today</span>
+  <h2>Route G Deluxe Reservation Form</h2>
+  <p class="section-sub">Please provide your exact details as they appear on your passport. No payment is required immediately to place a temporary hold.</p>
+
+  <div class="form-card" style="text-align:left;">
+    <form id="reservation-form-el" onsubmit="return handleSubmit(event)">
+      <!-- Primary Traveler -->
+      <div class="form-grid">
+        <div class="form-group"><label>First Name *</label><input type="text" id="firstName" placeholder="e.g. JUAN" required></div>
+        <div class="form-group"><label>Middle Name</label><input type="text" id="middleName" placeholder="e.g. CARLOS"></div>
+        <div class="form-group"><label>Last Name *</label><input type="text" id="lastName" placeholder="e.g. DELA CRUZ" required></div>
+      </div>
+      <div class="form-grid-2">
+        <div class="form-group"><label>Suffix</label><select id="suffix"><option>None</option><option>Jr.</option><option>Sr.</option><option>II</option><option>III</option></select></div>
+        <div class="form-group"><label>Gender *</label><select id="gender" required><option value="">Select Gender</option><option>Male</option><option>Female</option></select></div>
+      </div>
+      <div class="form-grid">
+        <div class="form-group"><label>Date of Birth *</label><input type="date" id="dob" required></div>
+        <div class="form-group"><label>Contact Number *</label><input type="tel" id="contactNo" placeholder="e.g. +63 917 123 4567" required></div>
+        <div class="form-group"><label>Email Address *</label><input type="email" id="email" placeholder="e.g. juan.delacruz@gmail.com" required></div>
+      </div>
+      <div class="form-grid-2">
+        <div class="form-group"><label>Number of Travelers</label><select id="travelersCount" onchange="updateTravelers()"><option value="1">1 Person</option><option value="2">2 Persons</option><option value="3">3 Persons</option><option value="4">4 Persons</option><option value="5">5 Persons</option><option value="6">6 Persons</option><option value="7">7 Persons</option><option value="8">8 Persons</option><option value="9">9 Persons</option><option value="10">10 Persons</option><option value="11">11 Persons</option><option value="12">12 Persons</option><option value="13">13 Persons</option><option value="14">14 Persons</option><option value="15">15 Persons</option><option value="16">16 Persons</option><option value="17">17 Persons</option><option value="18">18 Persons</option><option value="19">19 Persons</option><option value="20">20 Persons</option><option value="21">21 Persons</option><option value="22">22 Persons</option><option value="23">23 Persons</option><option value="24">24 Persons</option><option value="25">25 Persons</option><option value="26">26 Persons</option><option value="27">27 Persons</option><option value="28">28 Persons</option><option value="29">29 Persons</option><option value="30">30 Persons</option></select></div>
+        <div class="form-group"><label>Preferred Travel Date *</label><select id="travelDate" required><option value="">Select your travel date...</option><option value="2026-09-16">Sep 16 – 26, 2026 (Autumn)</option><option value="2026-11-17">Nov 17 – 27, 2026 (Autumn)</option><option value="2027-02-17">Feb 17 – 27, 2027 (Winter)</option><option value="2027-04-14">Apr 14 – 24, 2027 (Spring)</option><option value="2027-09-30">Sep 30 – Oct 10, 2027 (Autumn)</option></select></div>
+      </div>
+
+      <!-- Additional Travelers -->
+      <div class="additional-travelers" id="additional-travelers" style="display:none;">
+        <h4>👥 Additional Traveler Details</h4>
+        <div class="sub">Please provide details for each additional traveler as they appear on their passport.</div>
+        <div id="additional-travelers-list"></div>
+      </div>
+
+      <!-- Package Type -->
+      <div class="toggle-section">
+        <div class="toggle-label">✈️ Package Type *</div>
+        <div class="toggle-group">
+          <div class="toggle-option active" data-value="full" onclick="selectPackage('full')">
+            <div class="toggle-title">Full Package</div>
+            <div class="toggle-sub">With Airfare</div>
+            <div class="toggle-price">₱150,000</div>
+          </div>
+          <div class="toggle-option" data-value="land" onclick="selectPackage('land')">
+            <div class="toggle-title">Land Arrangement Only</div>
+            <div class="toggle-sub">No Airfare & Airport Transfer</div>
+            <div class="toggle-price">₱120,000</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Payment Scheme -->
+      <div class="toggle-section">
+        <div class="toggle-label">💳 Preferred Payment Scheme *</div>
+        <div class="toggle-group-3">
+          <div class="toggle-option active" data-value="installment" onclick="selectPayment('installment')">
+            <div class="toggle-title">Monthly Installment</div>
+          </div>
+          <div class="toggle-option" data-value="downpayment" onclick="selectPayment('downpayment')">
+            <div class="toggle-title">₱50k Down</div>
+          </div>
+          <div class="toggle-option" data-value="cash" onclick="selectPayment('cash')">
+            <div class="toggle-title">Full Cash</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Installment Preview -->
+      <div class="installment-preview" id="installment-preview"></div>
+
+      <!-- Pricing Summary -->
+      <div class="pricing-summary" id="pricing-summary" style="display:none;"></div>
+
+      <!-- Travel Consultant -->
+      <div class="form-group" style="margin-bottom:1.5rem;">
+        <label>Travel Consultant *</label>
+        <select id="travelConsultant" required>
+          <option value="">Select your Travel Consultant...</option>
+          <option value="Genesis">Genesis</option>
+          <option value="Aila">Aila</option>
+          <option value="Angel">Angel</option>
+          <option value="Andrea">Andrea</option>
+          <option value="Sel">Sel</option>
+        </select>
+      </div>
+
+      <!-- Notes -->
+      <div class="form-group" style="margin-bottom:1.5rem;">
+        <label>Special Requests</label>
+        <textarea id="notes" rows="3" placeholder="Any special requests or additional traveler names..."></textarea>
+      </div>
+
+      <!-- Submit -->
+      <div class="submit-section">
+        <div class="checkbox-row">
+          <input type="checkbox" id="agree" required>
+          <label for="agree">I confirm that all details provided are correct and accurate as they appear on my passport. I understand that a temporary hold will be placed and no payment is required at this time.</label>
+        </div>
+        <button type="submit" class="submit-btn" id="submit-btn">Submit Reservation Request ✨</button>
+        <div class="secure-note">🔒 Secure Submission. Your details are fully protected.</div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <h4>Discover Group</h4>
+      <p>Discover Group of Travel Services Incorporated is a fully registered, licensed premier travel agency crafting exquisite, seamlessly curated group journeys across Europe, Asia, and the Americas.</p>
+    </div>
+    <div>
+      <h4>Sales Department</h4>
+      <p>📞 0919-394-6919<br>📞 0960-312-3856<br>📞 0960-582-7673</p>
+    </div>
+    <div>
+      <h4>Visa & Support</h4>
+      <p>📞 0960-312-3656<br>📞 0962-373-6463<br>📞 0962-373-6465</p>
+    </div>
+    <div>
+      <h4>Office Location</h4>
+      <p>📍 The Upper Class Tower, Quezon Ave & Sct Reyes Corner, Quezon City, Metro Manila, Philippines</p>
+      <p style="margin-top:0.5rem;">✉️ inquiry@discovergrp.com<br>✉️ traveldesk@discovergrp.com</p>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Discover Group of Travel Services Incorporated. All Rights Reserved.</div>
+</footer>
+
+<!-- Full Cash Modal -->
+<div class="modal-overlay" id="fullcash-modal" onclick="closeModalOutside(event)">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('fullcash-modal')">&times;</button>
+    <div class="modal-icon blue">✨</div>
+    <div class="modal-title">Maximize Your Savings</div>
+    <div class="modal-subtitle">₱150,000 Full Cash Payment Scheme</div>
+    <div class="modal-card blue">
+      <p style="font-size:0.7rem;font-weight:700;color:#6b7a94;text-transform:uppercase;letter-spacing:0.1em;">Hassle-Free Full Payment</p>
+      <p style="font-size:2rem;font-weight:900;color:var(--primary);margin:0.25rem 0;">₱150,000</p>
+      <p style="font-size:0.85rem;color:#6b7a94;line-height:1.6;margin-top:0.75rem;">Secure your slot and lock in the <strong style="color:var(--primary);">maximum savings instantly</strong> by settling the full amount.</p>
+      <div class="check-note">✓ No future installments. Zero payment worries.</div>
+    </div>
+    <p class="modal-note">*Note: Fully protected by our 100% refund guarantee in case of visa denial.</p>
+    <button class="modal-btn blue" onclick="closeModal('fullcash-modal');selectPayment('cash');">Select Full Cash & Reserve Slot</button>
+  </div>
+</div>
+
+<!-- Down Payment Modal -->
+<div class="modal-overlay" id="downpayment-modal" onclick="closeModalOutside(event)">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('downpayment-modal')">&times;</button>
+    <div class="modal-icon gold">📅</div>
+    <div class="modal-title">Down Payment Schedule</div>
+    <div class="modal-subtitle">₱50,000 Down Payment Scheme terms & guidelines</div>
+    <div class="modal-card gold">
+      <div class="step-row">
+        <div class="step-num gold">1</div>
+        <div>
+          <div class="step-label">Initial Down Payment</div>
+          <div class="step-amount gold">₱50,000</div>
+          <div class="step-desc">Secure your slot! Must be settled <strong style="color:var(--primary);">before all slots are taken</strong>.</div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="step-row">
+        <div class="step-num gold">2</div>
+        <div>
+          <div class="step-label">Remaining Balance</div>
+          <div class="step-amount blue">₱100,000</div>
+          <div class="step-desc">Due <strong style="color:var(--primary);">upon visa approval</strong>.</div>
+          <div class="step-note">⚠️ Note: Visa application process starts at least 6 months before the travel date.</div>
+        </div>
+      </div>
+    </div>
+    <p class="modal-note">*Note: Fully protected by our 100% refund guarantee in case of visa denial.</p>
+    <button class="modal-btn gold" onclick="closeModal('downpayment-modal');selectPayment('downpayment');">Select Down Payment & Reserve Slot</button>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ==================== ITINERARY DATA ====================
+const ITINERARY = [
+  { day: 1, title: "Departure Manila", city: "rome", description: "Board your premium flight from <strong>Manila</strong> and relax as you begin your dream European getaway.", airline: "Etihad Airways or similar", highlights: ["Exciting journey starts", "Premium inflight services"], meals: null, image: null, travelTime: null },
+  { day: 2, title: "Arrival in Rome", city: "rome", description: "Welcome to <strong>Rome</strong>! Enjoy a comfortable hotel transfer and take time to relax before your Italian adventure begins.", highlights: ["Welcome to Italy", "Hotel check-in & rest"], meals: null, image: null, travelTime: "Airport transfer included" },
+  { day: 3, title: "Rome - Vatican - Florence", city: "rome", description: "Wake up in Rome, where every street tells a story. Stand before the legendary <strong>Colosseum</strong>, where gladiators once battled for glory. Toss a coin into the enchanting <strong>Trevi Fountain</strong> and make a wish to return, and savor authentic Italian gelato. Continue to <strong>Vatican City</strong> and be inspired by the breathtaking beauty of <strong>St. Peter's Basilica</strong>, the spiritual heart of the Catholic world. In the afternoon, journey to <strong>Florence</strong>\u2014the cradle of the Renaissance\u2014for an overnight stay. Enjoy delightful free time upon arrival to wander around the magnificent <strong>Duomo di Firenze</strong> and shop for treasures along the historic, romantic <strong>Ponte Vecchio</strong> at your very own pace!", highlights: ["Trevi Fountain & Colosseum", "St. Peter's Basilica", "Florence Arrival"], meals: "Breakfast included", image: "images/day3_collage.png", travelTime: "Rome to Vatican: 12mins | Vatican to Florence: 3hrs 8mins" },
+  { day: 4, title: "Florence - Bologna - San Marco Island Venice", city: "florence", description: "After breakfast, depart <strong>Florence</strong> and travel to <strong>Bologna</strong>, admired for its medieval towers and centuries-old academic heritage. Continue onward to <strong>Venice</strong>, arriving by scenic boat to <strong>San Marco Island</strong>. Wander through <strong>St. Mark's Square</strong>, admire the golden details of <strong>St. Mark's Basilica</strong>, explore <strong>Doge's Palace</strong>, and cross the romantic <strong>Bridge of Sighs</strong>. Enjoy free time drifting through hidden canals and charming alleyways\u2014perfectly paired with a classic <strong>gondola ride</strong> (optional activity).", highlights: ["Bologna medieval towers", "Scenic boat to San Marco Island", "Gondola ride & hidden canals (Optional)"], meals: "Breakfast included", image: "images/day4_collage.png", travelTime: "Florence to Bologna: 1hr 33mins | Bologna to Venice: 2hrs" },
+  { day: 5, title: "Venice - Verona - Milan", city: "venice", description: "From <strong>Venice</strong>, travel to <strong>Verona</strong>, the city of romance and legends. Visit <strong>Juliet's House</strong>, stroll through the charming old town, and admire the ancient <strong>Verona Arena</strong> before enjoying lunch. Continue to <strong>Milan</strong>, Italy's center of fashion and design. See the magnificent <strong>Duomo di Milano</strong>, and stroll through <strong>Galleria Vittorio Emanuele II</strong>. Enjoy free time for shopping in Italy's most stylish city.", highlights: ["Juliet's House in Verona", "Duomo di Milano", "Galleria Vittorio Emanuele II shopping"], meals: "Breakfast included", image: "images/day5_collage.png", travelTime: "Venice to Verona: 1hr 24mins | Verona to Milan: 1hr 58mins" },
+  { day: 6, title: "Milan - Lucerne - Grindelwald - Interlaken", city: "lucerne", description: "Cross into Switzerland and arrive in <strong>Lucerne</strong>, home to the iconic <strong>Chapel Bridge</strong>, a symbol of the city's storybook charm. Continue to the alpine village of <strong>Grindelwald</strong>, where unforgettable experiences await. Journey onward to <strong>Lauterbrunnen</strong>, famed for its towering cliffs and cascading waterfalls straight from a postcard. Arrive in <strong>Interlaken</strong>, the breathtaking filming location of the hit Korean drama <strong>Crash Landing on You</strong>.", highlights: ["Chapel Bridge Lucerne", "Lauterbrunnen cascading waterfalls", "Crash Landing on You filming spot"], meals: "Breakfast included", image: "images/day6_collage.png", travelTime: "Milan to Lucerne: 2hr 54mins | Lucerne to Grindelwald: 1hr 32mins | Grindelwald to Interlaken: 40mins", optionalActivities: ["Round-trip Cable Car to Grindelwald First", "First Cliff Walk by Tissot", "First Flyer & First Glider", "Mountain Carting & Trottibike Scooter rides"] },
+  { day: 7, title: "Interlaken - Paris", city: "paris", description: "Enjoy a relaxed morning in <strong>Interlaken</strong>, surrounded by calm lakes and Alpine views. After breakfast, set off on a scenic drive to <strong>Paris</strong>. Arrive in the evening and enjoy the City of Lights. For a luxury experience, a <strong>Seine River dinner cruise</strong> reservation can be arranged upon request (optional).", highlights: ["Relaxed Swiss Alpine morning", "Seine River Dinner Cruise (Optional)", "Eiffel Tower night lights"], meals: "Breakfast included", image: "images/day7_collage.png", travelTime: "Interlaken to Paris: 6hrs 49mins" },
+  { day: 8, title: "Paris City Tour", city: "paris", description: "Wake up with a panoramic tour of <strong>Paris</strong>, where the city glows. See the <strong>Eiffel Tower</strong> rising proudly over the skyline, pass the grand <strong>Arc de Triomphe</strong>, and glide along the elegant <strong>Champs-\u00c9lys\u00e9es</strong> dressed in festive lights, and admire the historic <strong>Louvre</strong> grounds. Enjoy a free afternoon for photos, relaxed walks, or last-minute shopping.", highlights: ["Eiffel Tower & Arc de Triomphe", "Champs-\u00c9lys\u00e9es", "Louvre Museum grounds"], meals: "Breakfast included", image: "images/day8_collage.png", travelTime: null },
+  { day: 9, title: "Paris - Bruges - Amsterdam", city: "amsterdam", description: "After breakfast, journey to <strong>Bruges</strong>, a postcard-perfect town of winding canals, cobblestone lanes, and charming chocolate shops. Later, continue to <strong>Amsterdam</strong> and enjoy a relaxing stroll along its iconic canals before settling in for the night.", highlights: ["Bruges medieval chocolate town", "Amsterdam romantic canals"], meals: "Breakfast included", image: "images/day9_collage.png", travelTime: "Paris to Bruges: 3hrs 18mins | Bruges to Amsterdam: 3hrs 22mins" },
+  { day: 10, title: "Departure in Amsterdam", city: "amsterdam", description: "Depending on your flight schedule, enjoy some free time before transferring to the airport for your flight back to <strong>Manila</strong>.", highlights: ["Last minute canal stroll", "Flight back to Manila"], meals: "Breakfast included", image: null, travelTime: "Airport transfer included" },
+  { day: 11, title: "Arrival in Manila", city: "amsterdam", description: "Welcome back to <strong>Manila</strong>! End of your deluxe, stress-free European adventure.", highlights: ["Safe arrival", "Unforgettable memories"], meals: null, image: null, travelTime: null }
+];
+
+// ==================== TRAVEL DATES ====================
+const TRAVEL_DATES = {
+  "2026-09-16": { start: "2026-09-16", end: "2026-09-26" },
+  "2026-11-17": { start: "2026-11-17", end: "2026-11-27" },
+  "2027-02-17": { start: "2027-02-17", end: "2027-02-27" },
+  "2027-04-14": { start: "2027-04-14", end: "2027-04-24" },
+  "2027-09-30": { start: "2027-09-30", end: "2027-10-10" }
+};
+
+// ==================== STATE ====================
+let selectedDay = 0;
+let selectedPackage = 'full';
+let selectedPayment = 'installment';
+
+// ==================== ITINERARY RENDERING ====================
+function initItinerary() {
+  const tabsEl = document.getElementById('day-tabs');
+  tabsEl.innerHTML = ITINERARY.map((d, i) => 
+    `<span class="day-tab${i === 0 ? ' active' : ''}" onclick="selectDay(${i})">Day ${String(d.day).padStart(2,'0')}</span>`
+  ).join('');
+  renderDay(0);
+}
+
+function selectDay(index) {
+  selectedDay = index;
+  document.querySelectorAll('.day-tab').forEach((t, i) => t.classList.toggle('active', i === index));
+  const city = ITINERARY[index].city;
+  document.querySelectorAll('.city-tab').forEach(t => t.classList.toggle('active', t.dataset.city === city));
+  renderDay(index);
+}
+
+function renderDay(index) {
+  const d = ITINERARY[index];
+  let html = `<div class="day-label">DAY ${String(d.day).padStart(2,'0')}</div>`;
+  html += `<h3>${d.title}</h3>`;
+  html += `<div class="description">${d.description}</div>`;
+  if (d.image) {
+    html += `<img class="collage-img" src="${d.image}" alt="${d.title} - Destinations" loading="lazy">`;
+  }
+  if (d.highlights && d.highlights.length) {
+    html += `<div class="info-section"><div class="info-title">Day Highlights:</div><ul class="info-list">${d.highlights.map(h => `<li>${h}</li>`).join('')}</ul></div>`;
+  }
+  if (d.optionalActivities) {
+    html += `<div class="optional-box"><div class="opt-title">Optional Activities:</div>${d.optionalActivities.map(t => `<p>${t}</p>`).join('')}</div>`;
+  }
+  if (d.meals) {
+    html += `<div class="info-section"><div class="info-title">Meals:</div><span class="meals-badge">\ud83c\udf7d\ufe0f ${d.meals}</span></div>`;
+  }
+  if (d.airline) {
+    html += `<div style="margin-top:0.5rem;font-size:0.8rem;color:var(--muted);font-style:italic;">\u2708\ufe0f ${d.airline}</div>`;
+  }
+  if (d.travelTime) {
+    html += `<div class="travel-time">\ud83d\udd50 ${d.travelTime}</div>`;
+  }
+  html += `<div class="note-text">Note: Rates for optional activities or tours are valid at the time of purchase and may change if purchased at a later time.</div>`;
+  document.getElementById('day-content').innerHTML = html;
+}
+
+// City tab click
+document.querySelectorAll('.city-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const city = tab.dataset.city;
+    const firstDay = ITINERARY.findIndex(d => d.city === city);
+    if (firstDay >= 0) selectDay(firstDay);
+  });
+});
+
+// ==================== PRICING LOGIC ====================
+function formatPHP(amount) { return '\u20b1' + amount.toLocaleString('en-US'); }
+
+// ==================== FORM LOGIC ====================
+function updateTravelers() {
+  const count = parseInt(document.getElementById('travelersCount').value);
+  const container = document.getElementById('additional-travelers');
+  const list = document.getElementById('additional-travelers-list');
+  if (count <= 1) { container.style.display = 'none'; list.innerHTML = ''; }
+  else {
+    container.style.display = 'block';
+    let html = '';
+    for (let i = 2; i <= Math.min(count, 6); i++) {
+      html += `<div class="traveler-block"><div class="traveler-label">Traveler ${i}</div><div class="form-grid"><div class="form-group"><label>First Name *</label><input type="text" class="traveler-field" data-idx="${i}" data-field="firstName" placeholder="FIRST NAME" required></div><div class="form-group"><label>Middle Name</label><input type="text" class="traveler-field" data-idx="${i}" data-field="middleName" placeholder="MIDDLE NAME"></div><div class="form-group"><label>Last Name *</label><input type="text" class="traveler-field" data-idx="${i}" data-field="lastName" placeholder="LAST NAME" required></div></div><div class="form-grid-2"><div class="form-group"><label>Suffix</label><select class="traveler-field" data-idx="${i}" data-field="suffix"><option>None</option><option>Jr.</option><option>Sr.</option><option>II</option><option>III</option></select></div><div class="form-group"><label>Gender *</label><select class="traveler-field" data-idx="${i}" data-field="gender" required><option value="">Select Gender</option><option>Male</option><option>Female</option></select></div></div><div class="form-grid"><div class="form-group"><label>Date of Birth *</label><input type="date" class="traveler-field" data-idx="${i}" data-field="dob" required></div><div class="form-group"><label>Contact Number *</label><input type="tel" class="traveler-field" data-idx="${i}" data-field="contact" placeholder="+63 9XX XXX XXXX" required></div><div class="form-group"><label>Email Address *</label><input type="email" class="traveler-field" data-idx="${i}" data-field="email" placeholder="email@example.com" required></div></div></div>`;
+    }
+    list.innerHTML = html;
+  }
+  recalculate();
+}
+
+function selectPackage(type) {
+  selectedPackage = type;
+  document.querySelectorAll('.toggle-group .toggle-option').forEach(el => el.classList.toggle('active', el.dataset.value === type));
+  recalculate();
+}
+
+function selectPayment(type) {
+  selectedPayment = type;
+  document.querySelectorAll('.toggle-group-3 .toggle-option').forEach(el => el.classList.toggle('active', el.dataset.value === type));
+  recalculate();
+}
+
+function recalculate() {
+  const travelDateId = document.getElementById('travelDate').value;
+  const dates = TRAVEL_DATES[travelDateId];
+  if (!dates) { document.getElementById('installment-preview').style.display = 'none'; document.getElementById('pricing-summary').style.display = 'none'; return; }
+  const standardRate = selectedPackage === 'full' ? 150000 : 120000;
+  const count = parseInt(document.getElementById('travelersCount').value);
+  const grandTotal = standardRate * count;
+  const summaryEl = document.getElementById('pricing-summary');
+  summaryEl.style.display = 'block';
+  let html = `<h4>\ud83d\udcb0 Pricing Summary</h4>`;
+  html += `<div class="pricing-row"><span class="label">${selectedPackage === 'full' ? 'Full Package' : 'Land Arrangement'} \u00d7 ${count} traveler${count > 1 ? 's' : ''}</span><span class="value">${formatPHP(grandTotal)}</span></div>`;
+  html += `<div class="pricing-row total"><span class="label">Total Cost</span><span class="value">${formatPHP(grandTotal)}</span></div>`;
+  summaryEl.innerHTML = html;
+  renderInstallmentPreview(grandTotal, travelDateId);
+}
+
+function renderInstallmentPreview(total, travelDateId) {
+  const previewEl = document.getElementById('installment-preview');
+  if (selectedPayment === 'downpayment') {
+    previewEl.style.display = 'block';
+    const count = parseInt(document.getElementById('travelersCount').value || '1');
+    const perHead = total / count;
+    const downPayment = 50000;
+    const balance = perHead - downPayment;
+    let html = `<h4>\ud83d\udcb3 Down Payment Scheme</h4>`;
+    html += `<div class="note">Secure your slot with \u20b150,000 down payment per head. The remaining balance will be due upon visa approval.</div>`;
+    html += `<div class="installment-row"><span class="date">Down Payment (per head)</span><span class="amount">${formatPHP(downPayment)}</span></div>`;
+    html += `<div class="installment-row"><span class="date">Balance (per head) \u2014 due upon visa approval</span><span class="amount">${formatPHP(balance)}</span></div>`;
+    html += `<div class="installment-row total"><span class="date">Total per head</span><span class="amount">${formatPHP(perHead)}</span></div>`;
+    previewEl.innerHTML = html;
+    return;
+  }
+  if (selectedPayment !== 'installment') { previewEl.style.display = 'none'; return; }
+  previewEl.style.display = 'block';
+  const dates = TRAVEL_DATES[travelDateId];
+  const travelStart = new Date(dates.start);
+  const deadline = new Date(travelStart); deadline.setMonth(deadline.getMonth() - 3);
+  const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1);
+  const startMonth = new Date(tomorrow.getFullYear(), tomorrow.getMonth(), tomorrow.getDate());
+  let months = 0; let checkDate = new Date(startMonth);
+  while (checkDate <= deadline) { months++; checkDate.setMonth(checkDate.getMonth() + 1); }
+  if (months < 1) months = 1;
+  const perHead = total / parseInt(document.getElementById('travelersCount').value || '1');
+  const monthlyAmount = Math.ceil(perHead / months);
+  let html = `<h4>\ud83d\udcc5 Your Installment Plan (${months} months)</h4>`;
+  html += `<div class="note">Fully paid 3 months before departure. Monthly payments divided equally:</div>`;
+  let payDate = new Date(startMonth);
+  for (let i = 0; i < months; i++) {
+    const dateStr = payDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    html += `<div class="installment-row"><span class="date">${dateStr}</span><span class="amount">${formatPHP(monthlyAmount)} per head</span></div>`;
+    payDate.setMonth(payDate.getMonth() + 1);
+  }
+  html += `<div class="installment-row total"><span class="date">Total (${months} months)</span><span class="amount">${formatPHP(perHead)} per head</span></div>`;
+  previewEl.innerHTML = html;
+}
+
+// ==================== FORM SUBMISSION ====================
+let lastBookingData = null;
+
+function handleSubmit(e) {
+  e.preventDefault();
+  const agree = document.getElementById('agree').checked;
+  if (!agree) { showToast('Please confirm the checkbox before submitting.', 'error'); return false; }
+  const data = {
+    firstName: document.getElementById('firstName').value,
+    middleName: document.getElementById('middleName').value,
+    lastName: document.getElementById('lastName').value,
+    suffix: document.getElementById('suffix').value,
+    gender: document.getElementById('gender').value,
+    dob: document.getElementById('dob').value,
+    contactNo: document.getElementById('contactNo').value,
+    email: document.getElementById('email').value,
+    travelersCount: document.getElementById('travelersCount').value,
+    travelDate: document.getElementById('travelDate').value,
+    packageType: selectedPackage,
+    paymentScheme: selectedPayment,
+    notes: document.getElementById('notes').value,
+    travelConsultant: document.getElementById('travelConsultant').value
+  };
+  if (!data.firstName || !data.lastName || !data.gender || !data.dob || !data.contactNo || !data.email || !data.travelDate || !data.travelConsultant) { showToast('Please fill in all required fields.', 'error'); return false; }
+  const travelDateSelect = document.getElementById('travelDate');
+  const travelDateLabel = travelDateSelect.options[travelDateSelect.selectedIndex].text;
+  const count = parseInt(data.travelersCount);
+  let message = `PRIMARY TRAVELER:\nName: ${data.firstName} ${data.middleName} ${data.lastName} ${data.suffix !== 'None' ? data.suffix : ''}\nGender: ${data.gender} | DOB: ${data.dob}\nContact: ${data.contactNo} | Email: ${data.email}\n`;
+  if (count > 1) {
+    message += `\nADDITIONAL TRAVELERS:\n`;
+    for (let i = 2; i <= Math.min(count, 6); i++) {
+      const fn = document.querySelector(`.traveler-field[data-idx="${i}"][data-field="firstName"]`);
+      const mn = document.querySelector(`.traveler-field[data-idx="${i}"][data-field="middleName"]`);
+      const ln = document.querySelector(`.traveler-field[data-idx="${i}"][data-field="lastName"]`);
+      const sf = document.querySelector(`.traveler-field[data-idx="${i}"][data-field="suffix"]`);
+      const gn = document.querySelector(`.traveler-field[data-idx="${i}"][data-field="gender"]`);
+      const db = document.querySelector(`.traveler-field[data-idx="${i}"][data-field="dob"]`);
+      const ct = document.querySelector(`.traveler-field[data-idx="${i}"][data-field="contact"]`);
+      const em = document.querySelector(`.traveler-field[data-idx="${i}"][data-field="email"]`);
+      message += `\nTraveler ${i}: ${fn?fn.value:''} ${mn?mn.value:''} ${ln?ln.value:''} ${sf&&sf.value!=='None'?sf.value:''}\n  Gender: ${gn?gn.value:''} | DOB: ${db?db.value:''}\n  Contact: ${ct?ct.value:''} | Email: ${em?em.value:''}\n`;
+    }
+  }
+  if (data.notes) message += `\nNOTES: ${data.notes}`;
+  const standardRate = selectedPackage === 'full' ? 150000 : 120000;
+  const grandTotal = standardRate * count;
+  const totalAmount = formatPHP(grandTotal);
+
+  // Build all travelers array
+  const allTravelers = [{ firstName: data.firstName, middleName: data.middleName, lastName: data.lastName, suffix: data.suffix, gender: data.gender, dob: data.dob, contact: data.contactNo, email: data.email }];
+  for (let i = 2; i <= Math.min(count, 6); i++) {
+    const fn = document.querySelector(`.traveler-field[data-idx="${i}"][data-field="firstName"]`);
+    const mn = document.querySelector(`.traveler-field[data-idx="${i}"][data-field="middleName"]`);
+    const ln = document.querySelector(`.traveler-field[data-idx="${i}"][data-field="lastName"]`);
+    const sf = document.querySelector(`.traveler-field[data-idx="${i}"][data-field="suffix"]`);
+    const gn = document.querySelector(`.traveler-field[data-idx="${i}"][data-field="gender"]`);
+    const db = document.querySelector(`.traveler-field[data-idx="${i}"][data-field="dob"]`);
+    const ct = document.querySelector(`.traveler-field[data-idx="${i}"][data-field="contact"]`);
+    const em = document.querySelector(`.traveler-field[data-idx="${i}"][data-field="email"]`);
+    allTravelers.push({ firstName: fn?fn.value:'', middleName: mn?mn.value:'', lastName: ln?ln.value:'', suffix: sf?sf.value:'None', gender: gn?gn.value:'', dob: db?db.value:'', contact: ct?ct.value:'', email: em?em.value:'' });
+  }
+  for (let i = 7; i <= count; i++) { allTravelers.push({ firstName: `Traveler ${i}`, middleName: '', lastName: '(Details pending)', suffix: 'None', gender: '\u2014', dob: '', contact: '\u2014', email: '\u2014' }); }
+
+  lastBookingData = { allTravelers, grandTotal, count, packageType: selectedPackage, paymentScheme: selectedPayment, travelDateId: data.travelDate, travelDateLabel, standardRate, travelConsultant: data.travelConsultant };
+
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true; btn.textContent = 'Submitting...';
+
+  const formData = {
+    access_key: '7332ba6f-c90e-4d55-ac88-cf63c72e4e48',
+    subject: `New Route G Booking: ${data.firstName} ${data.middleName} ${data.lastName}${data.suffix && data.suffix !== 'None' ? ' ' + data.suffix : ''} - ${travelDateLabel}`,
+    from_name: `${data.firstName} ${data.middleName} ${data.lastName}${data.suffix && data.suffix !== 'None' ? ' ' + data.suffix : ''}`,
+    first_name: data.firstName, middle_name: data.middleName, last_name: data.lastName,
+    suffix: data.suffix || 'None', gender: data.gender, date_of_birth: data.dob,
+    email: data.email, contact_number: data.contactNo, travel_date: travelDateLabel,
+    package_type: selectedPackage === 'full' ? 'Full Package (\u20b1150,000)' : 'Land Arrangement Only (\u20b1120,000)',
+    payment_scheme: selectedPayment === 'installment' ? 'Monthly Installment' : selectedPayment === 'downpayment' ? '\u20b150K Down Payment' : 'Full Cash',
+    travelers_count: data.travelersCount + ' person(s)',
+    travel_consultant: data.travelConsultant,
+    total_amount: totalAmount, message: message + `\nTRAVEL CONSULTANT: ${data.travelConsultant}`
+  };
+
+  fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData) })
+    .then(res => res.json()).then(() => { showSuccessMessage(); }).catch(() => { showSuccessMessage(); });
+  return false;
+}
+
+function showToast(msg, type = 'success') {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.className = 'toast show' + (type === 'error' ? ' error' : '');
+  setTimeout(() => { toast.className = 'toast'; }, 4000);
+}
+
+// ==================== BOOKING CONFIRMATION (Route A Protocol) ====================
+function showSuccessMessage() {
+  const bd = lastBookingData;
+  if (!bd) return;
+
+  const leadName = `${bd.allTravelers[0].firstName} ${bd.allTravelers[0].middleName ? bd.allTravelers[0].middleName + ' ' : ''}${bd.allTravelers[0].lastName}${bd.allTravelers[0].suffix && bd.allTravelers[0].suffix !== 'None' ? ' ' + bd.allTravelers[0].suffix : ''}`;
+  document.title = `Booking Confirmation - ${leadName}`;
+
+  const now = new Date();
+  const refNum = `ROUTEG-DEL-${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}-${String(Math.floor(Math.random()*9000)+1000)}`;
+  const dateStr = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+  let travelerRows = '';
+  bd.allTravelers.forEach((t, idx) => {
+    travelerRows += `<tr><td style="font-weight:700;">${idx + 1}</td><td class="font-bold">${t.firstName}</td><td>${t.middleName || '\u2014'}</td><td class="font-bold">${t.lastName}</td><td>${t.suffix && t.suffix !== 'None' ? t.suffix : '\u2014'}</td><td>${t.gender}</td><td class="mono">${t.contact || '\u2014'}</td><td class="mono">${t.email || '\u2014'}</td><td class="mono">${t.dob ? new Date(t.dob + 'T00:00:00').toLocaleDateString('en-US', {month:'short',day:'numeric',year:'numeric'}) : '\u2014'}</td></tr>`;
+  });
+
+  let pricingRows = `<tr><td>${bd.packageType === 'full' ? 'Full Package' : 'Land Arrangement'}</td><td class="text-right">${formatPHP(bd.standardRate)}</td><td class="text-center">${bd.count}</td><td class="text-right font-bold">${formatPHP(bd.grandTotal)}</td></tr>`;
+  pricingRows += `<tr class="total-row"><td style="font-weight:900;">GRAND TOTAL</td><td></td><td class="text-center font-bold">${bd.count} pax</td><td class="text-right" style="font-size:1rem;">${formatPHP(bd.grandTotal)}</td></tr>`;
+
+  // Payment schedule
+  let paymentScheduleHtml = '';
+  if (bd.paymentScheme === 'installment') {
+    const dates = TRAVEL_DATES[bd.travelDateId];
+    const travelStart = new Date(dates.start);
+    const deadline = new Date(travelStart); deadline.setMonth(deadline.getMonth() - 3);
+    const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1);
+    const startMonth = new Date(tomorrow.getFullYear(), tomorrow.getMonth(), tomorrow.getDate());
+    let months = 0; let checkDate = new Date(startMonth);
+    while (checkDate <= deadline) { months++; checkDate.setMonth(checkDate.getMonth() + 1); }
+    if (months < 1) months = 1;
+    const perHead = bd.grandTotal / bd.count;
+    const monthlyAmount = Math.ceil(perHead / months);
+    let schedRows = ''; let payDate = new Date(startMonth);
+    for (let i = 0; i < months; i++) {
+      const dStr = payDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+      schedRows += `<tr><td style="text-align:center;">${i + 1}</td><td>${i === 0 ? 'First Payment' : 'Monthly Installment'}</td><td>${dStr}</td><td class="text-right font-bold">${formatPHP(monthlyAmount)}</td></tr>`;
+      payDate.setMonth(payDate.getMonth() + 1);
+    }
+    schedRows += `<tr class="total-row"><td></td><td style="font-weight:900;">TOTAL</td><td></td><td class="text-right" style="font-weight:900;">${formatPHP(perHead)}/head</td></tr>`;
+    paymentScheduleHtml = `<div class="bc-payment-schedule"><div class="bc-section-title">Payment Schedule (Monthly Installment)</div><table class="bc-table"><thead><tr><th>#</th><th>Description</th><th>Due Date</th><th style="text-align:right;">Amount/Head</th></tr></thead><tbody>${schedRows}</tbody></table></div>`;
+  } else if (bd.paymentScheme === 'downpayment') {
+    const perHead = bd.grandTotal / bd.count;
+    paymentScheduleHtml = `<div class="bc-payment-schedule"><div class="bc-section-title">Payment Schedule (Down Payment)</div><table class="bc-table"><thead><tr><th>#</th><th>Description</th><th>Due Date</th><th style="text-align:right;">Amount/Head</th></tr></thead><tbody><tr><td style="text-align:center;">1</td><td>Down Payment</td><td>Upon Reservation</td><td class="text-right font-bold">${formatPHP(50000)}</td></tr><tr><td style="text-align:center;">2</td><td>Remaining Balance</td><td>Upon Visa Approval</td><td class="text-right font-bold">${formatPHP(perHead - 50000)}</td></tr><tr class="total-row"><td></td><td style="font-weight:900;">TOTAL</td><td></td><td class="text-right" style="font-weight:900;">${formatPHP(perHead)}/head</td></tr></tbody></table></div>`;
+  } else {
+    paymentScheduleHtml = `<div class="bc-payment-schedule"><div class="bc-section-title">Payment Schedule (Full Cash)</div><table class="bc-table"><thead><tr><th>#</th><th>Description</th><th>Due Date</th><th style="text-align:right;">Amount/Head</th></tr></thead><tbody><tr><td style="text-align:center;">1</td><td>Full Payment</td><td>Upon Reservation</td><td class="text-right font-bold">${formatPHP(bd.standardRate)}</td></tr><tr class="total-row"><td></td><td style="font-weight:900;">TOTAL</td><td></td><td class="text-right" style="font-weight:900;">${formatPHP(bd.standardRate)}/head</td></tr></tbody></table></div>`;
+  }
+
+  const confirmationHtml = `
+<div class="booking-confirmation" id="booking-confirmation">
+  <div class="bc-header">
+    <div class="bc-header-top">
+      <div class="bc-header-left">
+        <img src="images/logo.jpg" alt="Discover Group">
+        <div><h2>Discover Group</h2><div class="sub">Travel Services Incorporated</div></div>
+      </div>
+      <div class="bc-header-right">
+        <div class="bc-badge">ROUTE G DELUXE</div>
+        <div class="date">${dateStr} | Ref: ${refNum}</div>
+      </div>
+    </div>
+    <div class="bc-header-contact">
+      <span>\u2709 inquiry@discovergrp.com</span>
+      <span>\ud83d\udcde 0919-394-6919</span>
+      <span>\ud83d\udcde 0960-312-3856</span>
+    </div>
+  </div>
+  <div class="bc-body">
+    <div class="bc-section-title">Booking Details</div>
+    <div class="bc-details-grid">
+      <div class="bc-detail-item"><label>Reference Number</label><p class="highlight">${refNum}</p></div>
+      <div class="bc-detail-item"><label>Booking Date</label><p>${dateStr}</p></div>
+      <div class="bc-detail-item"><label>Travel Date</label><p class="highlight">${bd.travelDateLabel}</p></div>
+      <div class="bc-detail-item"><label>Package Type</label><p>${bd.packageType === 'full' ? 'Full Package (with Airfare)' : 'Land Arrangement Only'}</p></div>
+      <div class="bc-detail-item"><label>Payment Scheme</label><p>${bd.paymentScheme === 'installment' ? 'Monthly Installment' : bd.paymentScheme === 'downpayment' ? '\u20b150K Down Payment' : 'Full Cash'}</p></div>
+      <div class="bc-detail-item"><label>Total Travelers</label><p>${bd.count} person(s)</p></div>
+    </div>
+
+    <div class="bc-section-title">Traveler Information</div>
+    <table class="bc-table">
+      <thead><tr><th>#</th><th>First Name</th><th>Middle</th><th>Last Name</th><th>Suffix</th><th>Gender</th><th>Contact</th><th>Email</th><th>DOB</th></tr></thead>
+      <tbody>${travelerRows}</tbody>
+    </table>
+
+    <div class="bc-section-title">Pricing Breakdown</div>
+    <div class="bc-pricing-section">
+      <table class="bc-pricing-table">
+        <thead><tr><th>Package</th><th style="text-align:right;">Rate/Head</th><th style="text-align:center;">Qty</th><th style="text-align:right;">Subtotal</th></tr></thead>
+        <tbody>${pricingRows}</tbody>
+      </table>
+      <div class="bc-vat-note">*Prices quoted are exclusive of 12% VAT. A 12% VAT will be applied upon issuance of the Official Receipt (OR).</div>
+    </div>
+
+    ${paymentScheduleHtml}
+
+    <div class="bc-separator"></div>
+
+    <div class="bc-section-title">Package Benefits</div>
+    <div class="bc-benefits">
+      <div class="bc-benefit"><span class="icon">\u2713</span><div><div class="title">100% Visa Denial Refund</div><div class="desc">Full refund if visa is denied</div></div></div>
+      <div class="bc-benefit"><span class="icon">\u2713</span><div><div class="title">8 Nights Hotel</div><div class="desc">Quality accommodations included</div></div></div>
+      <div class="bc-benefit"><span class="icon">\u2713</span><div><div class="title">Daily Breakfast</div><div class="desc">Complimentary daily breakfasts</div></div></div>
+      <div class="bc-benefit"><span class="icon">\u2713</span><div><div class="title">Coach Transfers</div><div class="desc">All ground transportation included</div></div></div>
+    </div>
+
+    <div class="bc-separator"></div>
+
+    <div class="bc-section-title">Payment Channels</div>
+    <div class="bc-bank-grid">
+      <div class="bc-bank-card"><div class="bank-name">BPI</div><div class="bank-full">Bank of the Philippine Islands</div><div class="bank-acct-name">Discover Group of Travel Services Inc.</div><div class="bank-number">1491 0000 38</div></div>
+      <div class="bc-bank-card"><div class="bank-name">UnionBank</div><div class="bank-full">Union Bank of the Philippines</div><div class="bank-acct-name">Discover Group of Travel Services Inc.</div><div class="bank-number">0017 8000 3393</div></div>
+      <div class="bc-bank-card"><div class="bank-name">Maybank</div><div class="bank-full">Maybank Philippines</div><div class="bank-acct-name">Discover Group of Travel Services Inc.</div><div class="bank-number">0011 4500 0780</div></div>
+    </div>
+
+    <div class="bc-separator"></div>
+
+    <!-- Terms & Conditions -->
+    <div class="bc-tc-container">
+      <div class="bc-section-title">Terms & Conditions</div>
+      <div class="bc-tc-scroll">
+        <h3>Definitions</h3>
+        <p>"Discover Group" refers to the travel services provided by our company. "Customer(s)," "passenger", "client", "you," or "your" refers to any individual or entity using our travel services. "Service(s)" refers to the travel services, including but not limited to flight bookings, hotel reservations, car rentals, vacation packages, and travel insurance, provided by Discover Group.</p>
+
+        <h3>Booking and Reservations</h3>
+        <p>By using our services, you acknowledge that Discover Group acts as an intermediary between you and various travel service providers, and your bookings and reservations are subject to the terms and conditions of these providers.</p>
+        <p class="indent">The contact person is the one responsible for the package of all participants listed above.</p>
+        <p class="indent">All bookings and reservations made through Discover Group are subject to availability and confirmation by the relevant travel service providers.</p>
+        <p class="indent">You are responsible for providing accurate and complete information during the booking process. Discover Group is not liable for any errors or consequences arising from inaccurate or incomplete information provided by you.</p>
+        <p class="indent">Changes or cancellations to bookings may be subject to fees imposed by the travel service providers.</p>
+        <p class="indent">Certain bookings, such as airline tickets and hotel reservations, may be non-refundable and non-rebookable.</p>
+        <p class="indent">Promotions may not be the same for every client. Applicable differences may apply depending on the promotion period, number of pax, season and other factors.</p>
+        <p class="indent">All confirmed optional tours by clients are non-refundable, non-transferrable and non-rebookable.</p>
+        <p class="indent">All discounts and complimentary inclusions are subject to specified deadlines. Failure to avail within the given period will result in forfeiture.</p>
+
+        <h3>Prior Agreements, Amendments & Non-Waiver</h3>
+        <p>This agreement supersedes all previous consideration, understanding, oral or written, agreements and contracts entered into by the parties. No Amendment to this agreement shall be made unless new booking confirmation is issued.</p>
+
+        <h3>Accommodation</h3>
+        <p>All accommodation in Europe are based on a 3 star hotel category outside the city center on a deluxe tour. In case of unavailability, price increase, or other factors, the company reserves the right to choose any hotel with the same category without prior notice.</p>
+        <p class="indent">Any request for room upgrade or transfer to another hotel is subject to availability and any rate difference will be shouldered by the client.</p>
+
+        <h3>Itinerary</h3>
+        <p>The daily schedule provided is just a guide and may still vary or be subject to change due to weather conditions, traveling pace, fortuitous event, and other unforeseen circumstances.</p>
+        <p class="indent">Itinerary may interchange including but not limited to point of entry and exit depending on availability of flights, hotels, attractions, and other factors.</p>
+
+        <h3>Airline Ticket</h3>
+        <p>Airline Ticket is non-refundable, non-transferable, and any rebooking request is subject to rebooking penalty and fare difference.</p>
+        <p class="indent">Discover Group reserves the right to change airline depending on availability, schedule preference, and budget restrictions.</p>
+        <p class="indent">Lay-over or connecting flight from point of origin to point of destination may take up to 24 hours.</p>
+        <p class="indent">For land arrangement bookings (PHP 120,000 per head), airfare and round-trip airport transfers are not included.</p>
+
+        <h3>Travel Documents and Requirements</h3>
+        <p>It is your responsibility to ensure that you have valid travel documents, such as passports, visas, health certificates, and travel authority for government employees.</p>
+
+        <h3>Travel Insurance</h3>
+        <p>We strongly recommend that you obtain travel insurance to protect yourself against unforeseen circumstances. Discover Group is not an insurance provider.</p>
+
+        <h3>Limitation of Liability</h3>
+        <p>Discover Group acts as an intermediary and does not assume any liability for the acts, omissions, errors, delays, or negligence of the travel service providers.</p>
+
+        <h3>Visa Processing</h3>
+        <p>Visa result must be released 90 days prior departure. In the event that visa is not yet released, rebooking should be made for a fee of Php 10,000 per person.</p>
+        <p class="indent">Visa approval cannot be guaranteed. Discover Group is not responsible for visa result.</p>
+
+        <h3>Cancellation Fee</h3>
+        <p>For any kind of voluntary cancellations: >90 days prior departure - Php 30,000; <90 days - Forfeiture of payment.</p>
+        <p class="indent">Once Discover Group visa application process started, all payments are already non-refundable.</p>
+
+        <h3>Visa Refusal</h3>
+        <p>In case of visa refusal, full payment made will be fully refundable 180 banking days from the time of refund acknowledgement given that all conditions are met.</p>
+        <p class="indent">In the event that the clients received their visa refusal 90 days or less before departure, Php 30,000 will be non-refundable.</p>
+
+        <h3>Booking Confirmations</h3>
+        <p>For Deluxe packages, in the event that target slots were not met, participants can either re-book their tour schedule up to two (2) years period free of re-booking charges or they may refund the whole amount.</p>
+
+        <h3>Payment and Cancellation</h3>
+        <p>Billing start date shall be upon signing of Booking Confirmation. In the absence of signed Booking confirmation, service shall be deemed automatically accepted upon initial payment.</p>
+        <p class="indent bold">Installment Payment Late Penalty:</p>
+        <p class="indent">A. 1-15 days after due date: Php 1,000/person</p>
+        <p class="indent">B. 16-30 days after due date: Php 2,000/person</p>
+        <p class="indent">C. 31-45 days after due date: Php 3,000/person</p>
+        <p class="indent">D. 46-60 days after due date: Php 5,000/person</p>
+        <p class="indent">E. 61 days onwards will lead to automatic cancellation of booking</p>
+        <p class="indent bold">Value Added Tax:</p>
+        <p class="indent">All quoted rates are exclusive of the twelve percent (12%) Value-Added Tax (VAT). The final amount payable may increase to reflect the added tax obligations.</p>
+
+        <h3>Age-Based Discounts and Special Rates</h3>
+        <p class="indent">a. Senior Citizen (60 years or older): Discount of Php 5,000 per qualifying senior traveler.</p>
+        <p class="indent">b. Child (2 to 6 years of age): Discount of Php 5,000 per qualifying child traveler.</p>
+        <p class="indent">c. Infant (0 to 1 year and 11 months): Flat rate of Php 50,000 in lieu of the standard package rate.</p>
+        <p class="indent">Age category shall be based on the traveler's age as of the confirmed departure date.</p>
+
+        <h3>Lost Luggage and Waiting Time</h3>
+        <p>Discover Group will NOT assist in filing a claim with the relevant airline for lost luggage. Claims should be pursued directly with the airline.</p>
+
+        <h3>Cancellation Due to Participant Misconduct</h3>
+        <p>Discover Group reserves the right to cancel the participant's involvement in the tour due to misconduct without any entitlement to a refund or compensation.</p>
+
+        <h3>Discouraging Connivance Against Discover Group</h3>
+        <p>Participants are strictly prohibited from engaging in connivance, collusion, or any illegal activities that aim to defraud or harm Discover Group.</p>
+
+        <h3>Bank Details</h3>
+        <p>All payments must be made exclusively to the Company's official and designated bank account(s). Any payment made to any other account shall not be recognized.</p>
+        <p class="indent bold">BPI: 1491 0000 38</p>
+        <p class="indent bold">UnionBank: 0017 8000 3393</p>
+        <p class="indent bold">Maybank: 0011 4500 0780</p>
+        <p class="indent">All under: Discover Group of Travel Services Inc.</p>
+      </div>
+    </div>
+
+    <!-- Agreement Checkbox -->
+    <div class="bc-agreement" id="bc-agreement">
+      <label>
+        <input type="checkbox" id="bc-agree-checkbox" onchange="updateSubmitState()">
+        <span>I, <strong>${leadName}</strong>, have read, understood, and agree to the Terms & Conditions stated above. I confirm that all information provided is true and correct to the best of my knowledge. I understand that this booking confirmation serves as my official agreement with Discover Group of Travel Services Incorporated.</span>
+      </label>
+    </div>
+
+    <!-- Signature Section -->
+    <div class="bc-signature-section">
+      <div class="bc-section-title">Digital Signature</div>
+      <p class="bc-signature-intro">Please sign below to confirm your agreement. Your digital signature serves as your official acknowledgment of this booking.</p>
+      <div class="bc-signature-grid">
+        <div class="bc-sig-box">
+          <div class="bc-sig-label">Client Signature</div>
+          <div class="bc-sig-canvas-wrap" id="sig-canvas-wrap">
+            <canvas id="sig-canvas"></canvas>
+            <div class="bc-sig-placeholder" id="sig-placeholder">Sign here with your finger or mouse</div>
+          </div>
+          <div class="bc-sig-actions"><button class="bc-sig-clear" onclick="clearSignature()">Clear</button></div>
+          <div class="bc-sig-info"><div class="name">${leadName}</div><div class="date">${dateStr}</div></div>
+        </div>
+        <div class="bc-sig-box">
+          <div class="bc-sig-label">Travel Consultant</div>
+          <div class="bc-sig-consultant"><p>To be signed by assigned consultant</p></div>
+          <div class="bc-sig-info"><div class="name">${bd.travelConsultant || 'Discover Group Representative'}</div><div class="date">${dateStr}</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit Confirmation -->
+    <div class="bc-submit-section">
+      <button class="bc-submit-btn" id="bc-submit-btn" disabled onclick="submitSignedConfirmation()">
+        \u2713 Submit Signed Confirmation
+      </button>
+      <div class="bc-submit-status pending" id="bc-submit-status">Please agree to terms and sign above to submit.</div>
+    </div>
+  </div>
+
+  <div class="bc-footer">
+    <p class="company">Discover Group of Travel Services Incorporated</p>
+    <p>The Upper Class Tower, Quezon Ave & Sct Reyes Corner, Quezon City, Metro Manila</p>
+    <p>DOT Accredited | DTI Registered | SEC Registered</p>
+  </div>
+
+  <div class="bc-actions">
+    <button class="btn-print" id="bcPrintBtn" onclick="window.print();" disabled style="opacity:0.5;cursor:not-allowed;">\ud83d\udda8\ufe0f Print / Save as PDF</button>
+    <button class="btn-new" onclick="resetForm();">\u2190 New Reservation</button>
+  </div>
+</div>`;
+
+  // Route A protocol: replace body content
+  document.body.style.background = '#e8edf5';
+  document.body.style.padding = '2rem 1rem';
+  document.body.innerHTML = '';
+  const confEl = document.createElement('div');
+  confEl.innerHTML = confirmationHtml;
+  document.body.appendChild(confEl.firstElementChild);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  initSignatureCanvas();
+}
+
+// ==================== SIGNATURE CANVAS ====================
+let sigCanvas, sigCtx, isDrawing = false, hasSigned = false;
+
+function initSignatureCanvas() {
+  sigCanvas = document.getElementById('sig-canvas');
+  if (!sigCanvas) return;
+  sigCtx = sigCanvas.getContext('2d');
+  const wrap = document.getElementById('sig-canvas-wrap');
+  sigCanvas.width = wrap.offsetWidth;
+  sigCanvas.height = wrap.offsetHeight;
+  sigCtx.strokeStyle = '#1a1f3a';
+  sigCtx.lineWidth = 2;
+  sigCtx.lineCap = 'round';
+  sigCtx.lineJoin = 'round';
+  sigCanvas.addEventListener('mousedown', startDraw);
+  sigCanvas.addEventListener('mousemove', draw);
+  sigCanvas.addEventListener('mouseup', endDraw);
+  sigCanvas.addEventListener('mouseleave', endDraw);
+  sigCanvas.addEventListener('touchstart', startDrawTouch);
+  sigCanvas.addEventListener('touchmove', drawTouch);
+  sigCanvas.addEventListener('touchend', endDraw);
+}
+
+function startDraw(e) { isDrawing = true; sigCtx.beginPath(); sigCtx.moveTo(e.offsetX, e.offsetY); }
+function draw(e) { if (!isDrawing) return; sigCtx.lineTo(e.offsetX, e.offsetY); sigCtx.stroke(); markSigned(); }
+function startDrawTouch(e) { e.preventDefault(); isDrawing = true; const r = sigCanvas.getBoundingClientRect(); const t = e.touches[0]; sigCtx.beginPath(); sigCtx.moveTo(t.clientX - r.left, t.clientY - r.top); }
+function drawTouch(e) { e.preventDefault(); if (!isDrawing) return; const r = sigCanvas.getBoundingClientRect(); const t = e.touches[0]; sigCtx.lineTo(t.clientX - r.left, t.clientY - r.top); sigCtx.stroke(); markSigned(); }
+function endDraw() { isDrawing = false; }
+function markSigned() { hasSigned = true; document.getElementById('sig-placeholder').style.display = 'none'; document.getElementById('sig-canvas-wrap').classList.add('has-signature'); updateSubmitState(); }
+function clearSignature() { if (!sigCtx) return; sigCtx.clearRect(0, 0, sigCanvas.width, sigCanvas.height); hasSigned = false; document.getElementById('sig-placeholder').style.display = 'block'; document.getElementById('sig-canvas-wrap').classList.remove('has-signature'); updateSubmitState(); }
+
+function updateSubmitState() {
+  const agreed = document.getElementById('bc-agree-checkbox') && document.getElementById('bc-agree-checkbox').checked;
+  const btn = document.getElementById('bc-submit-btn');
+  const status = document.getElementById('bc-submit-status');
+  const printBtn = document.getElementById('bcPrintBtn');
+  if (agreed && hasSigned) {
+    btn.disabled = false;
+    status.className = 'bc-submit-status ready';
+    status.textContent = '\u2713 Ready to submit!';
+    if (printBtn) { printBtn.disabled = false; printBtn.style.opacity = '1'; printBtn.style.cursor = 'pointer'; }
+  } else {
+    btn.disabled = true;
+    status.className = 'bc-submit-status pending';
+    let msg = [];
+    if (!agreed) msg.push('agree to terms');
+    if (!hasSigned) msg.push('sign above');
+    status.textContent = `Please ${msg.join(' and ')} to submit.`;
+    if (printBtn) { printBtn.disabled = true; printBtn.style.opacity = '0.5'; printBtn.style.cursor = 'not-allowed'; }
+  }
+  // Update agreement styling
+  const agreeEl = document.getElementById('bc-agreement');
+  if (agreeEl) agreeEl.classList.toggle('checked', !!agreed);
+}
+
+// ==================== SUBMIT SIGNED CONFIRMATION (Route A Protocol - FormData) ====================
+function submitSignedConfirmation() {
+  const btn = document.getElementById('bc-submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+
+  const bd = lastBookingData;
+  const leadName = `${bd.allTravelers[0].firstName} ${bd.allTravelers[0].lastName}`;
+  const sigDataUrl = sigCanvas ? sigCanvas.toDataURL('image/png') : '';
+
+  const formData = new FormData();
+  formData.append('access_key', '7332ba6f-c90e-4d55-ac88-cf63c72e4e48');
+  formData.append('subject', `[CONFIRMED] Route G Deluxe - ${leadName} - ${bd.travelDateLabel}`);
+  formData.append('from_name', leadName);
+  formData.append('client_name', leadName);
+  formData.append('travel_date', bd.travelDateLabel);
+  formData.append('package_type', bd.packageType === 'full' ? 'Full Package' : 'Land Arrangement');
+  formData.append('payment_scheme', bd.paymentScheme === 'installment' ? 'Monthly Installment' : bd.paymentScheme === 'downpayment' ? 'P50K Down Payment' : 'Full Cash');
+  formData.append('total_amount', formatPHP(bd.grandTotal));
+  formData.append('travelers_count', String(bd.count));
+  formData.append('signature_data', sigDataUrl);
+  formData.append('message', `SIGNED BOOKING CONFIRMATION\n\nClient: ${leadName}\nTravel Date: ${bd.travelDateLabel}\nPackage: ${bd.packageType === 'full' ? 'Full Package' : 'Land Arrangement'}\nPayment: ${bd.paymentScheme}\nTotal: ${formatPHP(bd.grandTotal)}\nTravelers: ${bd.count}\n\nClient has agreed to terms & conditions and signed digitally.`);
+
+  fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData })
+    .then(() => {
+      btn.textContent = '\u2713 Confirmation Submitted!';
+      btn.style.background = '#16a34a';
+      showToast('Booking confirmation submitted successfully!');
+    }).catch(() => {
+      btn.textContent = '\u2713 Confirmation Submitted!';
+      btn.style.background = '#16a34a';
+      showToast('Booking confirmation submitted successfully!');
+    });
+}
+
+// ==================== RESET FORM ====================
+function resetForm() {
+  document.body.style.background = '';
+  document.body.style.padding = '';
+  location.reload();
+}
+
+// ==================== MODALS ====================
+function openModal(id) { document.getElementById(id).classList.add('active'); }
+function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+function closeModalOutside(e) { if (e.target.classList.contains('modal-overlay')) e.target.classList.remove('active'); }
+
+// ==================== DETAIL POPUP (with makeDraggable - Route A Protocol) ====================
+function openDetailPopup(type) {
+  let title = '', headerClass = '', items = [];
+  if (type === 'inclusions') {
+    title = 'Package Inclusions'; headerClass = 'green';
+    items = [
+      { icon: '\u2713', cls: 'green', text: 'Oneway airfare (Manila \u2013 Rome)' },
+      { icon: '\u2713', cls: 'green', text: 'Oneway airfare (Amsterdam \u2013 Manila)' },
+      { icon: '\u2713', cls: 'green', text: 'Round trip airport transfers' },
+      { icon: '\u2713', cls: 'green', text: 'Airport terminal fee' },
+      { icon: '\u2713', cls: 'green', text: '1pc 20kg check-in luggage + 1pc personal bag' },
+      { icon: '\u2713', cls: 'green', text: '8 nights hotel accommodation' },
+      { icon: '\u2713', cls: 'green', text: 'Daily complimentary breakfasts' },
+      { icon: '\u2713', cls: 'green', text: 'Visit Vatican, Italy, Switzerland, France, Belgium & Netherlands' },
+      { icon: '\u2713', cls: 'green', text: 'Coach transfers all throughout the tour' }
+    ];
+  } else if (type === 'exclusions') {
+    title = 'Package Exclusions'; headerClass = 'red';
+    items = [
+      { icon: '\u2717', cls: 'red', text: 'Lunch and Dinner (for more diversity and freedom of food choices)' },
+      { icon: '\u2717', cls: 'red', text: 'Mandatory Permits, City Tax & compulsory tipping: EUR 385/head' },
+      { icon: '\u2717', cls: 'red', text: 'Philippine Travel Tax: PHP 1,620/head' }
+    ];
+  } else if (type === 'optionals') {
+    title = 'Optional Services'; headerClass = 'blue';
+    items = [
+      { icon: '\u25ce', cls: 'blue', text: 'Visa assistance fee & appointment fee: PHP 20,000/pax' },
+      { icon: '\u25ce', cls: 'blue', text: 'Visa Fee Schengen: EUR 90 (subject to change without prior notice)' },
+      { icon: '\u25ce', cls: 'blue', text: 'Travel Insurance: PHP 6,000/pax' },
+      { icon: '\u25ce', cls: 'blue', text: 'Admission fees and Optional tours/activities' }
+    ];
+  }
+
+  const listHtml = items.map(i => `<div class="list-item"><span class="icon ${i.cls}">${i.icon}</span><span>${i.text}</span></div>`).join('');
+  const popup = document.createElement('div');
+  popup.className = 'detail-popup-overlay';
+  popup.id = 'detail-popup-overlay';
+  popup.innerHTML = `<div class="detail-popup" id="detailPopup"><div class="detail-popup-header ${headerClass}" id="detailPopupHeader"><h3>${title}</h3><button class="close-btn" onclick="closeDetailPopup()">&times;</button></div><div class="detail-popup-body">${listHtml}</div></div>`;
+  document.body.appendChild(popup);
+  setTimeout(() => {
+    popup.classList.add('active');
+    makeDraggable(document.getElementById('detailPopup'), document.getElementById('detailPopupHeader'));
+  }, 10);
+  popup.addEventListener('click', (e) => { if (e.target === popup) closeDetailPopup(); });
+}
+
+function closeDetailPopup() {
+  const overlay = document.getElementById('detail-popup-overlay');
+  if (overlay) { overlay.classList.remove('active'); setTimeout(() => overlay.remove(), 200); }
+}
+
+// ==================== MAKE DRAGGABLE (Route A Protocol) ====================
+function makeDraggable(element, handle) {
+  let offsetX = 0, offsetY = 0, isDragging = false;
+  handle.addEventListener('mousedown', function(e) {
+    isDragging = true;
+    offsetX = e.clientX - element.getBoundingClientRect().left;
+    offsetY = e.clientY - element.getBoundingClientRect().top;
+    element.style.transition = 'none';
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+  });
+  function onMouseMove(e) {
+    if (!isDragging) return;
+    element.style.left = (e.clientX - offsetX) + 'px';
+    element.style.top = (e.clientY - offsetY) + 'px';
+    element.style.transform = 'none';
+    element.style.margin = '0';
+  }
+  function onMouseUp() {
+    isDragging = false;
+    element.style.transition = '';
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseup', onMouseUp);
+  }
+  // Touch support
+  handle.addEventListener('touchstart', function(e) {
+    isDragging = true;
+    const touch = e.touches[0];
+    offsetX = touch.clientX - element.getBoundingClientRect().left;
+    offsetY = touch.clientY - element.getBoundingClientRect().top;
+    element.style.transition = 'none';
+  });
+  document.addEventListener('touchmove', function(e) {
+    if (!isDragging) return;
+    const touch = e.touches[0];
+    element.style.left = (touch.clientX - offsetX) + 'px';
+    element.style.top = (touch.clientY - offsetY) + 'px';
+    element.style.transform = 'none';
+    element.style.margin = '0';
+  });
+  document.addEventListener('touchend', function() { isDragging = false; element.style.transition = ''; });
+}
+
+// ==================== INIT ====================
+document.addEventListener('DOMContentLoaded', () => {
+  initItinerary();
+  document.getElementById('travelDate').addEventListener('change', recalculate);
+  document.getElementById('travelersCount').addEventListener('change', recalculate);
+});
+</script>
+</body>
+</html>
