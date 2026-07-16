@@ -267,93 +267,109 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 .toast.error { background: #dc2626; }
 
 /* ==================== BOOKING CONFIRMATION ==================== */
-.booking-confirmation { max-width: 900px; margin: 0 auto; background: white; border-radius: 1rem; box-shadow: 0 20px 60px rgba(0,0,0,0.12); overflow: hidden; --muted: #64748b; --border: #e2e8f0; color: #1e293b; }
-.bc-header { background: linear-gradient(135deg, #0f172a 0%, #1e3a6d 100%); color: white; padding: 1.5rem 2rem; }
-.bc-header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+.booking-confirmation { max-width: 850px; margin: 0 auto; background: #fff; border-radius: 0; box-shadow: 0 8px 40px rgba(0,0,0,0.2); font-family: 'Inter', sans-serif; color: #1a1f3a; }
+.bc-header { background: linear-gradient(135deg, #0a1e5e, #1a3a8b); color: white; padding: 1.5rem 2rem 1.25rem; }
+.bc-header-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
 .bc-header-left { display: flex; align-items: center; gap: 0.75rem; }
-.bc-header-left img { width: 40px; height: 40px; border-radius: 8px; }
-.bc-header-left h2 { font-size: 1rem; font-weight: 800; }
-.bc-header-left .sub { font-size: 0.68rem; opacity: 0.7; }
+.bc-header-left img { height: 48px; width: 48px; border-radius: 8px; object-fit: cover; border: 2px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); }
+.bc-header-left h2 { font-size: 1.1rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin: 0; font-family: 'Inter', sans-serif; }
+.bc-header-left .sub { font-size: 0.7rem; color: rgba(255,255,255,0.7); margin-top: 2px; }
 .bc-header-right { text-align: right; }
-.bc-badge { display: inline-block; background: var(--accent); color: #000; font-size: 0.6rem; font-weight: 900; padding: 0.3rem 0.8rem; border-radius: 0.3rem; letter-spacing: 0.1em; margin-bottom: 0.3rem; }
-.bc-header-right .date { font-size: 0.65rem; opacity: 0.7; }
-.bc-header-contact { display: flex; gap: 1.5rem; font-size: 0.65rem; opacity: 0.7; flex-wrap: wrap; }
+.bc-badge { display: inline-block; background: #D4AF37; color: #0a1e5e; font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; padding: 0.3rem 0.75rem; border-radius: 3px; }
+.bc-header-right .date { font-size: 0.65rem; color: rgba(255,255,255,0.6); margin-top: 0.4rem; }
+.bc-header-contact { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.15); font-size: 0.7rem; color: rgba(255,255,255,0.7); }
 .bc-body { padding: 2rem; }
-.bc-section-title { font-size: 0.85rem; font-weight: 900; color: var(--primary); margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid #e8edf5; text-transform: uppercase; letter-spacing: 0.05em; }
-.bc-details-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
-.bc-detail-item label { font-size: 0.62rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
-.bc-detail-item p { font-size: 0.82rem; font-weight: 600; margin-top: 0.2rem; color: #1e293b; }
-.bc-detail-item p.highlight { color: var(--primary); font-weight: 800; }
-.bc-table { width: 100%; border-collapse: collapse; font-size: 0.72rem; margin-bottom: 1.5rem; }
-.bc-table th { background: #1e3a5f; padding: 0.5rem 0.6rem; text-align: left; font-weight: 700; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.05em; color: #ffffff; }
-.bc-table td { padding: 0.5rem 0.6rem; border-bottom: 1px solid #f1f5f9; color: #1e293b; }
+.bc-section-title { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; color: #0a1e5e; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; font-family: 'Inter', sans-serif; }
+.bc-section-title::before { content: ''; width: 4px; height: 20px; background: #0a1e5e; border-radius: 2px; }
+.bc-details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 2rem; background: #f8fafc; border-radius: 0.75rem; padding: 1.25rem 1.5rem; border: 1px solid #e8edf5; margin-bottom: 2rem; }
+.bc-detail-item label { display: block; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #6b7a94; margin-bottom: 0.2rem; }
+.bc-detail-item p { font-size: 0.85rem; font-weight: 700; color: #1a1f3a; margin: 0; }
+.bc-detail-item p.highlight { color: #0a1e5e; }
+@media(max-width:640px) { .bc-details-grid { grid-template-columns: 1fr; } }
+.bc-table { width: 100%; border-collapse: collapse; font-size: 0.75rem; margin-bottom: 2rem; border: 1px solid #e8edf5; border-radius: 0.5rem; overflow: hidden; }
+.bc-table thead tr { background: rgba(10,30,94,0.05); }
+.bc-table th { padding: 0.6rem 0.75rem; text-align: left; font-weight: 700; color: #0a1e5e; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #e8edf5; }
+.bc-table td { padding: 0.5rem 0.75rem; border-bottom: 1px solid #f1f5f9; color: #374151; }
+.bc-table tbody tr:last-child td { border-bottom: none; }
 .bc-table .font-bold { font-weight: 700; }
-.bc-table .mono { font-family: 'SF Mono', monospace; font-size: 0.68rem; }
+.bc-table .mono { font-family: 'Inter', monospace; color: #6b7a94; }
 .bc-table .text-right { text-align: right; }
 .bc-table .text-center { text-align: center; }
-.bc-table .total-row { background: #0a1e5e; font-weight: 800; color: #ffffff; }
-.bc-pricing-section { margin-bottom: 1.5rem; }
-.bc-pricing-table { width: 100%; border-collapse: collapse; font-size: 0.75rem; }
-.bc-pricing-table th { background: #1e3a5f; padding: 0.6rem; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.05em; color: #ffffff; font-weight: 700; text-align: left; }
-.bc-pricing-table td { padding: 0.6rem; border-bottom: 1px solid #f1f5f9; color: #1e293b; }
-.bc-pricing-table .total-row { background: #0a1e5e; color: #ffffff; font-weight: 800; }
-.bc-vat-note { font-size: 0.68rem; color: #d97706; font-style: italic; margin-top: 0.5rem; font-weight: 600; }
-.bc-payment-schedule { margin-bottom: 1.5rem; }
-.bc-separator { height: 1px; background: #e8edf5; margin: 1.5rem 0; }
-.bc-benefits { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; margin-bottom: 1.5rem; }
-.bc-benefit { display: flex; align-items: flex-start; gap: 0.5rem; padding: 0.6rem; background: #f0fdf4; border-radius: 0.5rem; }
-.bc-benefit .icon { color: #16a34a; font-weight: 900; font-size: 0.8rem; }
-.bc-benefit .title { font-size: 0.72rem; font-weight: 700; color: #1e293b; }
-.bc-benefit .desc { font-size: 0.65rem; color: #475569; }
-.bc-bank-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; margin-bottom: 1.5rem; }
-.bc-bank-card { background: #f8fafc; border: 1px solid var(--border); border-radius: 0.6rem; padding: 0.8rem; text-align: center; }
-.bank-name { font-size: 0.9rem; font-weight: 900; color: #0a1e5e; }
-.bank-full { font-size: 0.62rem; color: #64748b; margin-bottom: 0.3rem; }
-.bank-acct-name { font-size: 0.65rem; font-weight: 600; color: var(--text); }
-.bank-number { font-size: 0.9rem; font-weight: 900; color: #0a1e5e; font-family: 'SF Mono', monospace; margin-top: 0.2rem; letter-spacing: 0.05em; }
-.bc-footer { background: #f8fafc; padding: 1rem 2rem; text-align: center; border-top: 1px solid var(--border); }
-.bc-footer .company { font-weight: 800; font-size: 0.78rem; color: #0a1e5e; }
-.bc-footer p { font-size: 0.65rem; color: #64748b; margin-top: 0.2rem; }
-.bc-actions { display: flex; gap: 0.75rem; padding: 1.5rem 2rem; justify-content: center; flex-wrap: wrap; }
-.btn-print { padding: 0.7rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: 0.5rem; font-weight: 700; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; }
-.btn-print:hover:not(:disabled) { background: var(--primary-light); }
-.btn-new { padding: 0.7rem 1.5rem; background: #f1f5f9; color: var(--text); border: none; border-radius: 0.5rem; font-weight: 700; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; }
-.btn-new:hover { background: #e2e8f0; }
+.bc-table .total-row { background: rgba(10,30,94,0.05); font-weight: 800; color: #0a1e5e; }
+.bc-pricing-section { margin-bottom: 2rem; }
+.bc-pricing-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; border: 1px solid #e8edf5; border-radius: 0.5rem; overflow: hidden; }
+.bc-pricing-table thead tr { background: rgba(10,30,94,0.05); }
+.bc-pricing-table th { padding: 0.6rem 1rem; font-weight: 700; color: #0a1e5e; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #e8edf5; }
+.bc-pricing-table td { padding: 0.6rem 1rem; border-bottom: 1px solid #f1f5f9; }
+.bc-pricing-table .text-right { text-align: right; }
+.bc-pricing-table .text-center { text-align: center; }
+.bc-pricing-table .total-row { background: rgba(10,30,94,0.05); border-top: 1px solid #e8edf5; }
+.bc-pricing-table .total-row td { font-weight: 900; color: #0a1e5e; }
+.bc-pricing-table .discount-row td { color: #16a34a; }
+.bc-vat-note { font-size: 0.7rem; color: #6b7a94; font-style: italic; margin-top: 0.5rem; }
+.bc-payment-schedule { margin-bottom: 2rem; }
+.bc-separator { height: 1px; background: #e8edf5; margin: 2rem 0; }
+.bc-benefits { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 2rem; }
+@media(max-width:640px) { .bc-benefits { grid-template-columns: 1fr; } }
+.bc-benefit { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 0.5rem; padding: 0.75rem; display: flex; align-items: flex-start; gap: 0.5rem; }
+.bc-benefit .icon { color: #16a34a; font-size: 0.9rem; flex-shrink: 0; margin-top: 1px; }
+.bc-benefit .title { font-size: 0.7rem; font-weight: 700; color: #166534; }
+.bc-benefit .desc { font-size: 0.65rem; color: #16a34a; }
+.bc-bank-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
+@media(max-width:640px) { .bc-bank-grid { grid-template-columns: 1fr; } }
+.bc-bank-card { background: #f8fafc; border-radius: 0.75rem; padding: 1rem 1.25rem; border: 1px solid #e2e8f0; }
+.bc-bank-card .bank-name { font-size: 0.8rem; font-weight: 800; color: #1a2744; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.15rem; }
+.bc-bank-card .bank-full { font-size: 0.65rem; color: #6b7a94; margin-bottom: 0.15rem; }
+.bc-bank-card .bank-acct-name { font-size: 0.7rem; color: #374151; margin-bottom: 0.4rem; }
+.bc-bank-card .bank-number { font-size: 1rem; font-weight: 800; color: #1a2744; font-family: 'Inter', monospace; letter-spacing: 0.1em; }
+.bc-footer { text-align: center; padding: 1.5rem 2rem; background: #f8fafc; border-top: 1px solid #e8edf5; }
+.bc-footer p { font-size: 0.75rem; color: #6b7a94; margin: 0.25rem 0; }
+.bc-footer .company { font-weight: 700; color: #0a1e5e; font-size: 0.85rem; }
+.bc-actions { display: flex; gap: 0.75rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap; }
+.bc-actions button { padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-size: 0.85rem; font-weight: 700; cursor: pointer; border: none; transition: all 0.2s; display: flex; align-items: center; gap: 0.5rem; }
+.bc-actions button:active { transform: scale(0.97); }
+.bc-actions .btn-print { background: #0a1e5e; color: white; }
+.bc-actions .btn-print:hover { background: #1a3a8b; }
+.bc-actions .btn-new { background: transparent; color: #0a1e5e; border: 2px solid #0a1e5e; }
+.bc-actions .btn-new:hover { background: rgba(10,30,94,0.05); }
 
 /* ==================== T&C IN CONFIRMATION ==================== */
-.bc-tc-container { margin: 1.5rem 0; }
-.bc-tc-scroll { max-height: 300px; overflow-y: auto; padding: 1rem; background: #f8fafc; border: 1px solid var(--border); border-radius: 0.5rem; font-size: 0.72rem; line-height: 1.7; color: #374151; }
-.bc-tc-scroll h3 { font-size: 0.78rem; font-weight: 800; color: var(--primary); margin: 1rem 0 0.3rem; }
+.bc-tc-container { margin-bottom: 2rem; }
+.bc-tc-scroll { max-height: 400px; overflow-y: auto; border: 1px solid #e2e8f0; border-radius: 0.75rem; padding: 1.5rem; background: #fafbfc; font-size: 0.7rem; line-height: 1.7; color: #374151; }
+.bc-tc-scroll h3 { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #1a1f3a; margin: 1.25rem 0 0.5rem; padding-bottom: 0.3rem; border-bottom: 1px solid #e2e8f0; }
 .bc-tc-scroll h3:first-child { margin-top: 0; }
-.bc-tc-scroll p { margin-bottom: 0.4rem; }
-.bc-tc-scroll p.indent { padding-left: 1rem; }
-.bc-tc-scroll p.bold { font-weight: 700; }
+.bc-tc-scroll p { margin-bottom: 0.5rem; text-align: justify; }
+.bc-tc-scroll .indent { padding-left: 1.25rem; }
+.bc-tc-scroll .bold { font-weight: 700; }
 
 /* ==================== AGREEMENT & SIGNATURE ==================== */
-.bc-agreement { margin: 1.5rem 0; padding: 1rem; background: #fff7ed; border: 1.5px solid #fed7aa; border-radius: 0.6rem; }
-.bc-agreement.checked { background: #ecfdf5; border-color: #86efac; }
-.bc-agreement label { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.72rem; color: #374151; line-height: 1.6; cursor: pointer; }
-.bc-agreement input[type="checkbox"] { margin-top: 0.2rem; width: 16px; height: 16px; flex-shrink: 0; }
-.bc-signature-section { margin: 1.5rem 0; }
-.bc-signature-intro { font-size: 0.72rem; color: #64748b; margin-bottom: 1rem; }
-.bc-signature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-.bc-sig-box { text-align: center; }
-.bc-sig-label { font-size: 0.65rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
-.bc-sig-canvas-wrap { border: 2px dashed #cbd5e1; border-radius: 0.5rem; height: 120px; position: relative; cursor: crosshair; background: #fafbfc; }
-.bc-sig-canvas-wrap.has-signature { border-color: var(--primary); border-style: solid; }
-.bc-sig-canvas-wrap canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-.bc-sig-placeholder { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 0.72rem; color: #94a3b8; pointer-events: none; }
-.bc-sig-actions { margin-top: 0.4rem; }
-.bc-sig-clear { font-size: 0.68rem; color: #dc2626; background: none; border: none; cursor: pointer; font-weight: 600; }
-.bc-sig-info { margin-top: 0.5rem; }
-.bc-sig-info .name { font-size: 0.75rem; font-weight: 700; color: #1e293b; }
-.bc-sig-info .date { font-size: 0.65rem; color: #64748b; }
-.bc-sig-consultant { border: 2px dashed #e2e8f0; border-radius: 0.5rem; height: 120px; display: flex; align-items: center; justify-content: center; }
-.bc-sig-consultant p { font-size: 0.72rem; color: #94a3b8; font-style: italic; }
+.bc-agreement { margin: 1.5rem 0; padding: 1.25rem; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 0.75rem; transition: border-color 0.2s; }
+.bc-agreement.checked { border-color: #16a34a; background: #f0fdf4; }
+.bc-agreement label { display: flex; align-items: flex-start; gap: 0.75rem; cursor: pointer; font-size: 0.8rem; color: #1a1f3a; line-height: 1.5; }
+.bc-agreement input[type="checkbox"] { margin-top: 3px; width: 18px; height: 18px; accent-color: #0a1e5e; flex-shrink: 0; cursor: pointer; }
+.bc-agreement .tc-link { display: inline-flex; align-items: center; gap: 0.3rem; margin-left: 1.75rem; margin-top: 0.5rem; font-size: 0.7rem; color: #0a1e5e; font-weight: 700; text-decoration: underline; }
+.bc-signature-section { margin-bottom: 2rem; }
+.bc-signature-intro { font-size: 0.75rem; color: #6b7a94; line-height: 1.6; margin-bottom: 1.5rem; }
+.bc-signature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+@media(max-width:640px) { .bc-signature-grid { grid-template-columns: 1fr; } }
+.bc-sig-box { }
+.bc-sig-label { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #6b7a94; margin-bottom: 0.5rem; }
+.bc-sig-canvas-wrap { position: relative; border: 2px solid #e2e8f0; border-radius: 0.75rem; background: #fff; height: 120px; overflow: hidden; transition: border-color 0.2s; }
+.bc-sig-canvas-wrap.has-signature { border-color: #16a34a; }
+.bc-sig-canvas-wrap canvas { width: 100%; height: 100%; display: block; cursor: crosshair; }
+.bc-sig-placeholder { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 0.7rem; color: #94a3b8; pointer-events: none; text-align: center; }
+.bc-sig-actions { display: flex; justify-content: flex-end; margin-top: 0.4rem; }
+.bc-sig-clear { font-size: 0.65rem; color: #ef4444; cursor: pointer; border: none; background: none; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; }
+.bc-sig-clear:hover { background: #fef2f2; }
+.bc-sig-info { margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid #e8edf5; }
+.bc-sig-info .name { font-size: 0.8rem; font-weight: 700; color: #1a1f3a; }
+.bc-sig-info .date { font-size: 0.65rem; color: #6b7a94; margin-top: 0.15rem; }
+.bc-sig-consultant { border: 2px dashed #e2e8f0; border-radius: 0.75rem; background: #fafbfc; height: 120px; display: flex; align-items: center; justify-content: center; }
+.bc-sig-consultant p { font-size: 0.7rem; color: #94a3b8; font-style: italic; }
 
 /* ==================== SUBMIT SECTION ==================== */
 .bc-submit-section { text-align: center; margin: 1.5rem 0; }
-.bc-submit-btn { padding: 0.8rem 2rem; background: var(--primary); color: white; border: none; border-radius: 0.6rem; font-weight: 800; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; }
+.bc-submit-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2rem; background: #0a1e5e; color: white; border: none; border-radius: 0.5rem; font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 12px rgba(10,30,94,0.3); }
 .bc-submit-btn:hover:not(:disabled) { background: #1a3a8b; transform: translateY(-1px); }
 .bc-submit-btn:active { transform: scale(0.97); }
 .bc-submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
