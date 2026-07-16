@@ -1173,7 +1173,8 @@ function handleSubmit(e) {
     payment_scheme: selectedPayment === 'installment' ? 'Monthly Installment' : selectedPayment === 'downpayment' ? '\u20b150K Down Payment' : 'Full Cash',
     travelers_count: data.travelersCount + ' person(s)',
     travel_consultant: data.travelConsultant,
-    total_amount: totalAmount, message: message + `\nTRAVEL CONSULTANT: ${data.travelConsultant}`
+    total_amount: totalAmount, message: message + `\nTRAVEL CONSULTANT: ${data.travelConsultant}`,
+    Review_Approve_Link: generateBookingLink()
   };
 
   fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData) })
