@@ -1245,7 +1245,10 @@ function showSuccessMessage() {
     </div>
   </div>
   <div class="bc-body">
-    <div class="bc-section-title">Booking Confirmation \u2014 Route G Deluxe</div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0;">
+      <div class="bc-section-title" style="margin-bottom:0;">Booking Confirmation \u2014 Route G Deluxe</div>
+      ${isAgentReviewMode ? `<button id="bc-edit-btn" onclick="toggleEditMode()" style="background:#2563eb;color:#fff;border:none;padding:0.5rem 1.25rem;border-radius:6px;font-size:0.85rem;font-weight:600;cursor:pointer;transition:all 0.15s;">\u270f\ufe0f Edit</button>` : ''}
+    </div>
     <div class="bc-details-grid">
       <div class="bc-detail-item"><label>Contact Person</label><p class="highlight">${bd.allTravelers[0].firstName} ${bd.allTravelers[0].middleName || ''} ${bd.allTravelers[0].lastName}${bd.allTravelers[0].suffix && bd.allTravelers[0].suffix !== 'None' ? ' ' + bd.allTravelers[0].suffix : ''}</p></div>
       <div class="bc-detail-item"><label>Contact Number</label><p>${bd.allTravelers[0].contact}</p></div>
@@ -1513,6 +1516,97 @@ function showSuccessMessage() {
   document.body.appendChild(confEl.firstElementChild);
   window.scrollTo({ top: 0, behavior: 'smooth' });
   initSignatureCanvas();
+}
+
+// ==================== EDIT MODE (Agent Only) ====================
+let isEditMode = false;
+function toggleEditMode() {
+  if (isEditMode) { cancelEdit(); return; }
+  isEditMode = true;
+  const bd = lastBookingData;
+  const editBtn = document.getElementById('bc-edit-btn');
+  editBtn.textContent = '\u2716 Cancel Edit';
+  editBtn.style.background = '#dc2626';
+  // Replace the details grid with editable fields
+  const detailsGrid = document.querySelector('.bc-details-grid');
+  const travelDateOptions = [
+    {v:'2026-09-16', l:'Sep 16 \u2013 26, 2026 (Autumn)'},
+    {v:'2026-11-17', l:'Nov 17 \u2013 27, 2026 (Autumn)'},
+    {v:'2027-02-17', l:'Feb 17 \u2013 27, 2027 (Winter)'},
+    {v:'2027-04-14', l:'Apr 14 \u2013 24, 2027 (Spring)'},
+    {v:'2027-09-30', l:'Sep 30 \u2013 Oct 10, 2027 (Autumn)'}
+  ];
+  const consultants = ['Genesis','Aila','Angel','Andrea','Sel'];
+  const t = bd.allTravelers[0];
+  const editStyle = 'width:100%;padding:0.4rem 0.6rem;border:1px solid #cbd5e1;border-radius:5px;font-size:0.9rem;';
+  const selectStyle = editStyle + 'background:#fff;';
+  detailsGrid.innerHTML = `
+    <div class="bc-detail-item"><label>First Name</label><input id="edit-firstName" value="${t.firstName}" style="${editStyle}"/></div>
+    <div class="bc-detail-item"><label>Middle Name</label><input id="edit-middleName" value="${t.middleName || ''}" style="${editStyle}"/></div>
+    <div class="bc-detail-item"><label>Last Name</label><input id="edit-lastName" value="${t.lastName}" style="${editStyle}"/></div>
+    <div class="bc-detail-item"><label>Suffix</label><select id="edit-suffix" style="${selectStyle}"><option value="None" ${t.suffix==='None'||!t.suffix?'selected':''}>None</option><option value="Jr." ${t.suffix==='Jr.'?'selected':''}>Jr.</option><option value="Sr." ${t.suffix==='Sr.'?'selected':''}>Sr.</option><option value="II" ${t.suffix==='II'?'selected':''}>II</option><option value="III" ${t.suffix==='III'?'selected':''}>III</option></select></div>
+    <div class="bc-detail-item"><label>Gender</label><select id="edit-gender" style="${selectStyle}"><option value="Male" ${t.gender==='Male'?'selected':''}>Male</option><option value="Female" ${t.gender==='Female'?'selected':''}>Female</option></select></div>
+    <div class="bc-detail-item"><label>Date of Birth</label><input id="edit-dob" type="date" value="${t.dob || ''}" style="${editStyle}"/></div>
+    <div class="bc-detail-item"><label>Contact Number</label><input id="edit-contact" value="${t.contact || ''}" style="${editStyle}"/></div>
+    <div class="bc-detail-item"><label>Email Address</label><input id="edit-email" type="email" value="${t.email || ''}" style="${editStyle}"/></div>
+    <div class="bc-detail-item"><label>Tour Package</label><select id="edit-package" style="${selectStyle}"><option value="full" ${bd.packageType==='full'?'selected':''}>Full Package (With Airfare)</option><option value="land" ${bd.packageType==='land'?'selected':''}>Land Arrangement Only</option></select></div>
+    <div class="bc-detail-item"><label>Travel Date</label><select id="edit-travelDate" style="${selectStyle}">${travelDateOptions.map(o=>`<option value="${o.v}" ${bd.travelDateId===o.v?'selected':''}>${o.l}</option>`).join('')}</select></div>
+    <div class="bc-detail-item"><label>Payment Scheme</label><select id="edit-payment" style="${selectStyle}"><option value="installment" ${bd.paymentScheme==='installment'?'selected':''}>Monthly Installment</option><option value="downpayment" ${bd.paymentScheme==='downpayment'?'selected':''}>\u20b150K Down Payment</option><option value="cash" ${bd.paymentScheme==='cash'?'selected':''}>Full Cash</option></select></div>
+    <div class="bc-detail-item"><label>Travel Consultant</label><select id="edit-consultant" style="${selectStyle}">${consultants.map(c=>`<option value="${c}" ${bd.travelConsultant===c?'selected':''}>${c}</option>`).join('')}</select></div>
+  `;
+  // Replace notes section with editable textarea
+  const notesSection = document.getElementById('edit-notes-section');
+  if (notesSection) {
+    notesSection.innerHTML = `<div class="bc-section-title">Special Requests / Notes</div><textarea id="edit-notes" style="${editStyle}min-height:80px;resize:vertical;">${bd.notes || ''}</textarea>`;
+  } else {
+    // Insert notes editing area after details grid
+    const notesEl = document.querySelector('.bc-details-grid').nextElementSibling;
+    if (notesEl && notesEl.textContent.includes('Special Requests')) {
+      notesEl.outerHTML = `<div id="edit-notes-section"><div class="bc-section-title">Special Requests / Notes</div><textarea id="edit-notes" style="${editStyle}min-height:80px;resize:vertical;">${bd.notes || ''}</textarea></div>`;
+    } else {
+      // No notes section exists yet, add one
+      const grid = document.querySelector('.bc-details-grid');
+      grid.insertAdjacentHTML('afterend', `<div id="edit-notes-section"><div class="bc-section-title">Special Requests / Notes</div><textarea id="edit-notes" style="${editStyle}min-height:80px;resize:vertical;">${bd.notes || ''}</textarea></div>`);
+    }
+  }
+  // Add Save button below the grid
+  const grid = document.querySelector('.bc-details-grid');
+  grid.insertAdjacentHTML('afterend', `<div id="edit-save-bar" style="display:flex;gap:0.75rem;margin:1rem 0 1.5rem;"><button onclick="saveEdits()" style="background:#16a34a;color:#fff;border:none;padding:0.6rem 1.5rem;border-radius:6px;font-weight:600;cursor:pointer;">\u2713 Save Changes</button><button onclick="cancelEdit()" style="background:#e2e8f0;color:#334155;border:none;padding:0.6rem 1.5rem;border-radius:6px;font-weight:600;cursor:pointer;">Cancel</button></div>`);
+}
+
+function saveEdits() {
+  const bd = lastBookingData;
+  // Update primary traveler
+  bd.allTravelers[0].firstName = document.getElementById('edit-firstName').value;
+  bd.allTravelers[0].middleName = document.getElementById('edit-middleName').value;
+  bd.allTravelers[0].lastName = document.getElementById('edit-lastName').value;
+  bd.allTravelers[0].suffix = document.getElementById('edit-suffix').value;
+  bd.allTravelers[0].gender = document.getElementById('edit-gender').value;
+  bd.allTravelers[0].dob = document.getElementById('edit-dob').value;
+  bd.allTravelers[0].contact = document.getElementById('edit-contact').value;
+  bd.allTravelers[0].email = document.getElementById('edit-email').value;
+  // Update package details
+  bd.packageType = document.getElementById('edit-package').value;
+  const tdSelect = document.getElementById('edit-travelDate');
+  bd.travelDateId = tdSelect.value;
+  bd.travelDateLabel = tdSelect.options[tdSelect.selectedIndex].text;
+  bd.paymentScheme = document.getElementById('edit-payment').value;
+  bd.travelConsultant = document.getElementById('edit-consultant').value;
+  // Update notes
+  const notesEl = document.getElementById('edit-notes');
+  bd.notes = notesEl ? notesEl.value : bd.notes;
+  // Recalculate totals
+  bd.standardRate = bd.packageType === 'full' ? 150000 : 120000;
+  bd.grandTotal = bd.standardRate * bd.count;
+  // Re-render the booking confirmation
+  isEditMode = false;
+  showSuccessMessage();
+  showToast('Booking confirmation updated successfully!');
+}
+
+function cancelEdit() {
+  isEditMode = false;
+  showSuccessMessage();
 }
 
 // ==================== SIGNATURE CANVAS ====================
