@@ -1057,7 +1057,8 @@ function generateBookingLink() {
     tdl: bd.travelDateLabel,
     sr: bd.standardRate,
     tc: bd.travelConsultant,
-    cs: bd.compressedSignature || ''
+    cs: bd.compressedSignature || '',
+    nt: bd.notes || ''
   };
   const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(bookingPayload))));
   return `https://discovergrp.github.io/route-g-deluxe/?booking=${encoded}`;
@@ -1085,7 +1086,8 @@ function checkBookingUrl() {
         travelDateLabel: bp.tdl,
         standardRate: bp.sr,
         travelConsultant: bp.tc,
-        clientSignature: bp.cs || ''
+        clientSignature: bp.cs || '',
+        notes: bp.nt || ''
       };
       isAgentReviewMode = true;
       setTimeout(() => { showSuccessMessage(); }, 300);
@@ -1157,7 +1159,7 @@ function handleSubmit(e) {
   }
   for (let i = 7; i <= count; i++) { allTravelers.push({ firstName: `Traveler ${i}`, middleName: '', lastName: '(Details pending)', suffix: 'None', gender: '\u2014', dob: '', contact: '\u2014', email: '\u2014' }); }
 
-  lastBookingData = { allTravelers, grandTotal, count, packageType: selectedPackage, paymentScheme: selectedPayment, travelDateId: data.travelDate, travelDateLabel, standardRate, travelConsultant: data.travelConsultant };
+  lastBookingData = { allTravelers, grandTotal, count, packageType: selectedPackage, paymentScheme: selectedPayment, travelDateId: data.travelDate, travelDateLabel, standardRate, travelConsultant: data.travelConsultant, notes: data.notes || '' };
 
   const btn = document.getElementById('submit-btn');
   btn.disabled = true; btn.textContent = 'Submitting...';
@@ -1253,8 +1255,9 @@ function showSuccessMessage() {
       <div class="bc-detail-item"><label>Tour Package</label><p class="highlight">${bd.packageType === 'full' ? 'Full Package (With Airfare)' : 'Land Arrangement Only'}</p></div>
       <div class="bc-detail-item"><label>Travel Date</label><p class="highlight">${bd.travelDateLabel}</p></div>
       <div class="bc-detail-item"><label>Payment Scheme</label><p>${bd.paymentScheme === 'installment' ? 'Monthly Installment' : bd.paymentScheme === 'downpayment' ? '\u20b150K Down Payment' : 'Full Cash'}</p></div>
-    </div>
-
+        </div>
+    ${bd.notes ? `<div class="bc-section-title">Special Requests / Notes</div>
+    <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:0.95rem;color:#334155;white-space:pre-wrap;">${bd.notes}</div>` : ''}
     <div class="bc-section-title">Passenger Information</div>
     <div style="overflow-x:auto;margin-bottom:2rem;">
       <table class="bc-table">
