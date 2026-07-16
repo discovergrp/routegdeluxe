@@ -309,6 +309,7 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 .bc-vat-note { font-size: 0.7rem; color: #6b7a94; font-style: italic; margin-top: 0.5rem; }
 .bc-payment-schedule { margin-bottom: 2rem; }
 .bc-separator { height: 1px; background: #e8edf5; margin: 2rem 0; }
+.bc-package-print { display: none; }
 .bc-benefits { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 2rem; }
 @media(max-width:640px) { .bc-benefits { grid-template-columns: 1fr; } }
 .bc-benefit { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 0.5rem; padding: 0.75rem; display: flex; align-items: flex-start; gap: 0.5rem; }
@@ -383,6 +384,8 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
   .booking-confirmation, .booking-confirmation * { visibility: visible; }
   .booking-confirmation { position: absolute; left: 0; top: 0; width: 100%; box-shadow: none; }
   .bc-actions { display: none !important; }
+  .bc-package-buttons { display: none !important; }
+  .bc-package-print { display: block !important; }
   .bc-submit-section { display: none !important; }
   .bc-sig-clear { display: none !important; }
   .bc-sig-placeholder { display: none !important; }
@@ -1163,57 +1166,98 @@ function showSuccessMessage() {
         <div><h2>Discover Group</h2><div class="sub">Travel Services Incorporated</div></div>
       </div>
       <div class="bc-header-right">
-        <div class="bc-badge">ROUTE G DELUXE</div>
-        <div class="date">${dateStr} | Ref: ${refNum}</div>
+        <div class="bc-badge">Official Booking Confirmation</div>
+        <div class="date">Issued: ${dateStr} | Ref: ${refNum}</div>
       </div>
     </div>
     <div class="bc-header-contact">
-      <span>\u2709 inquiry@discovergrp.com</span>
       <span>\ud83d\udcde 0919-394-6919</span>
       <span>\ud83d\udcde 0960-312-3856</span>
+      <span>\u2709\ufe0f inquiry@discovergrp.com</span>
+      <span>\ud83c\udf10 discovergrp.com</span>
     </div>
   </div>
   <div class="bc-body">
-    <div class="bc-section-title">Booking Details</div>
+    <div class="bc-section-title">Booking Confirmation \u2014 Route G Deluxe</div>
     <div class="bc-details-grid">
-      <div class="bc-detail-item"><label>Reference Number</label><p class="highlight">${refNum}</p></div>
-      <div class="bc-detail-item"><label>Booking Date</label><p>${dateStr}</p></div>
+      <div class="bc-detail-item"><label>Contact Person</label><p class="highlight">${bd.allTravelers[0].firstName} ${bd.allTravelers[0].middleName || ''} ${bd.allTravelers[0].lastName}${bd.allTravelers[0].suffix && bd.allTravelers[0].suffix !== 'None' ? ' ' + bd.allTravelers[0].suffix : ''}</p></div>
+      <div class="bc-detail-item"><label>Contact Number</label><p>${bd.allTravelers[0].contact}</p></div>
+      <div class="bc-detail-item"><label>Email Address</label><p>${bd.allTravelers[0].email}</p></div>
+      <div class="bc-detail-item"><label>Date of Birth</label><p>${bd.allTravelers[0].dob ? new Date(bd.allTravelers[0].dob + 'T00:00:00').toLocaleDateString('en-US', {month:'long',day:'numeric',year:'numeric'}) : '\u2014'}</p></div>
+      <div class="bc-detail-item"><label>Gender</label><p>${bd.allTravelers[0].gender}</p></div>
+      <div class="bc-detail-item"><label>Tour Package</label><p class="highlight">${bd.packageType === 'full' ? 'Full Package (With Airfare)' : 'Land Arrangement Only'}</p></div>
       <div class="bc-detail-item"><label>Travel Date</label><p class="highlight">${bd.travelDateLabel}</p></div>
-      <div class="bc-detail-item"><label>Package Type</label><p>${bd.packageType === 'full' ? 'Full Package (with Airfare)' : 'Land Arrangement Only'}</p></div>
       <div class="bc-detail-item"><label>Payment Scheme</label><p>${bd.paymentScheme === 'installment' ? 'Monthly Installment' : bd.paymentScheme === 'downpayment' ? '\u20b150K Down Payment' : 'Full Cash'}</p></div>
-      <div class="bc-detail-item"><label>Total Travelers</label><p>${bd.count} person(s)</p></div>
     </div>
 
-    <div class="bc-section-title">Traveler Information</div>
-    <table class="bc-table">
-      <thead><tr><th>#</th><th>First Name</th><th>Middle</th><th>Last Name</th><th>Suffix</th><th>Gender</th><th>Contact</th><th>Email</th><th>DOB</th></tr></thead>
-      <tbody>${travelerRows}</tbody>
-    </table>
-
-    <div class="bc-section-title">Pricing Breakdown</div>
-    <div class="bc-pricing-section">
-      <table class="bc-pricing-table">
-        <thead><tr><th>Package</th><th style="text-align:right;">Rate/Head</th><th style="text-align:center;">Qty</th><th style="text-align:right;">Subtotal</th></tr></thead>
-        <tbody>${pricingRows}</tbody>
+    <div class="bc-section-title">Passenger Information</div>
+    <div style="overflow-x:auto;margin-bottom:2rem;">
+      <table class="bc-table">
+        <thead><tr><th>#</th><th>First Name</th><th>Middle</th><th>Last Name</th><th>Suffix</th><th>Gender</th><th>Contact</th><th>Email</th><th>DOB</th></tr></thead>
+        <tbody>${travelerRows}</tbody>
       </table>
-      <div class="bc-vat-note">*Prices quoted are exclusive of 12% VAT. A 12% VAT will be applied upon issuance of the Official Receipt (OR).</div>
     </div>
+
+    <div class="bc-section-title">Package Rate & Booking Details</div>
+    <div class="bc-details-grid" style="margin-bottom:1.5rem;">
+      <div class="bc-detail-item"><label>Package</label><p>Route G Deluxe \u2014 11 Days / 8 Nights</p></div>
+      <div class="bc-detail-item"><label>Standard Rate</label><p class="highlight">${bd.packageType === 'full' ? '\u20b1150,000' : '\u20b1120,000'} per head</p></div>
+      <div class="bc-detail-item"><label>Destinations</label><p>Vatican, Italy, Switzerland, France, Belgium & Netherlands</p></div>
+      <div class="bc-detail-item"><label>Total Passengers</label><p>${bd.count} person(s)</p></div>
+    </div>
+    <p style="font-size:0.7rem;color:#6b7a94;font-style:italic;margin-bottom:2rem;">*Prices quoted are exclusive of 12% VAT. A 12% VAT will be applied upon issuance of the Official Receipt (OR).</p>
 
     ${paymentScheduleHtml}
 
     <div class="bc-separator"></div>
 
-    <div class="bc-section-title">Package Benefits</div>
-    <div class="bc-benefits">
-      <div class="bc-benefit"><span class="icon">\u2713</span><div><div class="title">100% Visa Denial Refund</div><div class="desc">Full refund if visa is denied</div></div></div>
-      <div class="bc-benefit"><span class="icon">\u2713</span><div><div class="title">8 Nights Hotel</div><div class="desc">Quality accommodations included</div></div></div>
-      <div class="bc-benefit"><span class="icon">\u2713</span><div><div class="title">Daily Breakfast</div><div class="desc">Complimentary daily breakfasts</div></div></div>
-      <div class="bc-benefit"><span class="icon">\u2713</span><div><div class="title">Coach Transfers</div><div class="desc">All ground transportation included</div></div></div>
+    <div class="bc-section-title">Package Details</div>
+    <div class="bc-package-buttons" style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem;">
+      <a href="#" onclick="openDetailPopup('inclusions');return false;" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.6rem 1.2rem;background:#ecfdf5;border:1px solid #a7f3d0;border-radius:0.5rem;color:#16a34a;font-size:0.8rem;font-weight:700;text-decoration:none;transition:all 0.2s;">\u2713 Package Inclusions</a>
+      <a href="#" onclick="openDetailPopup('exclusions');return false;" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.6rem 1.2rem;background:#fef2f2;border:1px solid #fecaca;border-radius:0.5rem;color:#dc2626;font-size:0.8rem;font-weight:700;text-decoration:none;transition:all 0.2s;">\u2715 Package Exclusions</a>
+      <a href="#" onclick="openDetailPopup('optionals');return false;" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.6rem 1.2rem;background:#eff6ff;border:1px solid #bfdbfe;border-radius:0.5rem;color:#2563eb;font-size:0.8rem;font-weight:700;text-decoration:none;transition:all 0.2s;">\u25ce Optional Services</a>
+    </div>
+    <!-- Full Package Details (print only) -->
+    <div class="bc-package-print">
+      <div style="margin-bottom:1.5rem;">
+        <h4 style="font-size:0.85rem;font-weight:800;color:#16a34a;margin-bottom:0.5rem;border-bottom:2px solid #a7f3d0;padding-bottom:0.3rem;">\u2713 Package Inclusions</h4>
+        <ul style="font-size:0.75rem;color:#374151;padding-left:1.2rem;margin:0;line-height:1.8;">
+          <li>Round-trip airfare (Manila\u2013Europe, Europe\u2013Manila)</li>
+          <li>Round-trip airport transfers</li>
+          <li>Airport terminal fee</li>
+          <li>1pc 20kg check-in luggage + 1pc personal bag</li>
+          <li>8 nights hotel accommodation (3-star)</li>
+          <li>Visit Vatican, Italy, Switzerland, France, Belgium & Netherlands</li>
+          <li>Coach transfers all throughout the tour</li>
+          <li>Daily breakfast at the hotel</li>
+          <li>English-speaking tour guide</li>
+          <li>All city tours as per itinerary</li>
+        </ul>
+      </div>
+      <div style="margin-bottom:1.5rem;">
+        <h4 style="font-size:0.85rem;font-weight:800;color:#dc2626;margin-bottom:0.5rem;border-bottom:2px solid #fecaca;padding-bottom:0.3rem;">\u2715 Package Exclusions</h4>
+        <ul style="font-size:0.75rem;color:#374151;padding-left:1.2rem;margin:0;line-height:1.8;">
+          <li>Lunch and Dinner (for more diversity and freedom of food choices)</li>
+          <li>Mandatory permits, city tax & compulsory tipping: EUR 525/head</li>
+          <li>Philippine Travel Tax: PHP 1,620/head</li>
+        </ul>
+      </div>
+      <div style="margin-bottom:1.5rem;">
+        <h4 style="font-size:0.85rem;font-weight:800;color:#2563eb;margin-bottom:0.5rem;border-bottom:2px solid #bfdbfe;padding-bottom:0.3rem;">\u25ce Optional Services</h4>
+        <ul style="font-size:0.75rem;color:#374151;padding-left:1.2rem;margin:0;line-height:1.8;">
+          <li>Visa assistance fee & appointment fee: PHP 20,000/pax</li>
+          <li>Travel Insurance: PHP 6,000/pax</li>
+          <li>Admission fees and Optional tours/activities</li>
+          <li>Hotel room upgrade (subject to availability)</li>
+          <li>Extra luggage allowance (airline rates apply)</li>
+        </ul>
+      </div>
     </div>
 
     <div class="bc-separator"></div>
 
-    <div class="bc-section-title">Payment Channels</div>
+    <div class="bc-section-title">Official Bank Accounts</div>
+    <p style="font-size:0.75rem;color:#6b7a94;margin-bottom:1rem;">All payments must be made exclusively to the Company\u2019s official bank accounts below. Payments to unauthorized accounts will not be recognized.</p>
     <div class="bc-bank-grid">
       <div class="bc-bank-card"><div class="bank-name">BPI</div><div class="bank-full">Bank of the Philippine Islands</div><div class="bank-acct-name">Discover Group of Travel Services Inc.</div><div class="bank-number">1491 0000 38</div></div>
       <div class="bc-bank-card"><div class="bank-name">UnionBank</div><div class="bank-full">Union Bank of the Philippines</div><div class="bank-acct-name">Discover Group of Travel Services Inc.</div><div class="bank-number">0017 8000 3393</div></div>
