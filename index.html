@@ -198,14 +198,13 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 .traveler-block { padding: 1rem 0; border-bottom: 1px solid var(--border); }
 .traveler-block:last-child { border-bottom: none; }
 .traveler-label { font-size: 0.75rem; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem; }
-.installment-preview { display: none; background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.2rem; margin: 1rem 0; }
-.installment-preview h4 { font-size: 0.85rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem; }
-.installment-preview .note { font-size: 0.72rem; color: rgba(255,255,255,0.6); margin-bottom: 0.75rem; }
-.installment-row { display: flex; justify-content: space-between; padding: 0.4rem 0; font-size: 0.78rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
-.installment-row:last-child { border-bottom: none; }
-.installment-row .date { color: rgba(255,255,255,0.8); }
-.installment-row .amount { font-weight: 700; color: var(--accent); }
-.installment-row.total { border-top: 2px solid var(--accent); margin-top: 0.5rem; padding-top: 0.6rem; font-weight: 800; }
+.installment-preview { display: none; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 2rem; }
+.installment-preview h4 { font-size: 0.9rem; font-style: italic; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+.installment-preview .note { font-size: 0.8rem; color: var(--muted); margin-bottom: 1rem; }
+.installment-row { display: flex; justify-content: space-between; padding: 0.3rem 0; font-size: 0.8rem; }
+.installment-row .date { color: var(--muted); }
+.installment-row .amount { font-weight: 700; }
+.installment-row.total { border-top: 1px solid var(--border); margin-top: 0.5rem; padding-top: 0.5rem; font-weight: 700; }
 .pricing-summary { background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.3); border-radius: 0.75rem; padding: 1.2rem; margin: 1rem 0; }
 .pricing-summary h4 { font-size: 0.85rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem; }
 .pricing-summary .pricing-row { display: flex; justify-content: space-between; padding: 0.35rem 0; font-size: 0.78rem; }
@@ -684,6 +683,19 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
         <div id="additional-travelers-list"></div>
       </div>
 
+      <!-- Travel Consultant -->
+      <div class="form-group" style="margin-bottom:1.5rem;">
+        <label>Travel Consultant *</label>
+        <select id="travelConsultant" required>
+          <option value="">Select your Travel Consultant...</option>
+          <option value="Genesis">Genesis</option>
+          <option value="Aila">Aila</option>
+          <option value="Angel">Angel</option>
+          <option value="Andrea">Andrea</option>
+          <option value="Sel">Sel</option>
+        </select>
+      </div>
+
       <!-- Package Type -->
       <div class="toggle-section">
         <div class="toggle-label">✈️ Package Type *</div>
@@ -722,19 +734,6 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 
       <!-- Pricing Summary -->
       <div class="pricing-summary" id="pricing-summary" style="display:none;"></div>
-
-      <!-- Travel Consultant -->
-      <div class="form-group" style="margin-bottom:1.5rem;">
-        <label>Travel Consultant *</label>
-        <select id="travelConsultant" required>
-          <option value="">Select your Travel Consultant...</option>
-          <option value="Genesis">Genesis</option>
-          <option value="Aila">Aila</option>
-          <option value="Angel">Angel</option>
-          <option value="Andrea">Andrea</option>
-          <option value="Sel">Sel</option>
-        </select>
-      </div>
 
       <!-- Notes -->
       <div class="form-group" style="margin-bottom:1.5rem;">
@@ -972,9 +971,9 @@ function renderInstallmentPreview(total, travelDateId) {
     const downPayment = 50000;
     const balance = perHead - downPayment;
     let html = `<h4>\ud83d\udcb3 Down Payment Scheme</h4>`;
-    html += `<div class="note">Secure your slot with \u20b150,000 down payment per head. The remaining balance will be due upon visa approval.</div>`;
+    html += `<div class="note">Secure your slot with \u20b150,000 down payment per head. The remaining balance will be due upon release of your visa result.</div>`;
     html += `<div class="installment-row"><span class="date">Down Payment (per head)</span><span class="amount">${formatPHP(downPayment)}</span></div>`;
-    html += `<div class="installment-row"><span class="date">Balance (per head) \u2014 due upon visa approval</span><span class="amount">${formatPHP(balance)}</span></div>`;
+    html += `<div class="installment-row"><span class="date">Balance (per head) — due upon visa approval</span><span class="amount">${formatPHP(balance)}</span></div>`;
     html += `<div class="installment-row total"><span class="date">Total per head</span><span class="amount">${formatPHP(perHead)}</span></div>`;
     previewEl.innerHTML = html;
     return;
