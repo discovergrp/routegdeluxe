@@ -1162,22 +1162,8 @@ function handleSubmit(e) {
   const btn = document.getElementById('submit-btn');
   btn.disabled = true; btn.textContent = 'Submitting...';
 
-  const formData = {
-    access_key: '7332ba6f-c90e-4d55-ac88-cf63c72e4e48',
-    subject: `New Route G Booking: ${data.firstName} ${data.middleName} ${data.lastName}${data.suffix && data.suffix !== 'None' ? ' ' + data.suffix : ''} - ${travelDateLabel}`,
-    from_name: `${data.firstName} ${data.middleName} ${data.lastName}${data.suffix && data.suffix !== 'None' ? ' ' + data.suffix : ''}`,
-    first_name: data.firstName, middle_name: data.middleName, last_name: data.lastName,
-    suffix: data.suffix || 'None', gender: data.gender, date_of_birth: data.dob,
-    email: data.email, contact_number: data.contactNo, travel_date: travelDateLabel,
-    package_type: selectedPackage === 'full' ? 'Full Package (\u20b1150,000)' : 'Land Arrangement Only (\u20b1120,000)',
-    payment_scheme: selectedPayment === 'installment' ? 'Monthly Installment' : selectedPayment === 'downpayment' ? '\u20b150K Down Payment' : 'Full Cash',
-    travelers_count: data.travelersCount + ' person(s)',
-    travel_consultant: data.travelConsultant,
-    total_amount: totalAmount, message: message + `\nTRAVEL CONSULTANT: ${data.travelConsultant}`
-  };
-
-  fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData) })
-    .then(res => res.json()).then(() => { showSuccessMessage(); }).catch(() => { showSuccessMessage(); });
+  // Skip first email - only send after client signs the booking confirmation
+  showSuccessMessage();
   return false;
 }
 
