@@ -205,12 +205,15 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 .installment-row .date { color: var(--muted); }
 .installment-row .amount { font-weight: 700; }
 .installment-row.total { border-top: 1px solid var(--border); margin-top: 0.5rem; padding-top: 0.5rem; font-weight: 700; }
-.pricing-summary { background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.3); border-radius: 0.75rem; padding: 1.2rem; margin: 1rem 0; }
-.pricing-summary h4 { font-size: 0.85rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem; }
-.pricing-summary .pricing-row { display: flex; justify-content: space-between; padding: 0.35rem 0; font-size: 0.78rem; }
-.pricing-summary .pricing-row .label { color: rgba(255,255,255,0.8); }
-.pricing-summary .pricing-row .value { font-weight: 700; color: var(--accent); }
-.pricing-summary .pricing-row.total { border-top: 2px solid var(--accent); margin-top: 0.5rem; padding-top: 0.5rem; font-weight: 900; font-size: 0.9rem; }
+.pricing-summary { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.5rem; margin: 1rem 0; }
+.pricing-summary h4 { font-size: 1rem; font-weight: 700; font-style: italic; color: var(--accent); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+.pricing-summary .pricing-row { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; font-size: 0.9rem; }
+.pricing-summary .pricing-row .label { color: rgba(255,255,255,0.85); text-transform: uppercase; letter-spacing: 0.02em; }
+.pricing-summary .pricing-row .value { font-weight: 700; color: var(--accent); font-size: 1rem; }
+.pricing-summary .pricing-row.total { border-top: 1px solid rgba(255,255,255,0.15); margin-top: 0.75rem; padding-top: 0.75rem; font-weight: 900; font-size: 1.1rem; }
+.pricing-summary .pricing-row.total .label { color: #fff; font-size: 1.1rem; text-transform: none; }
+.pricing-summary .pricing-row.total .value { font-size: 1.3rem; }
+.pricing-summary .discount-note { font-size: 0.78rem; font-style: italic; color: rgba(255,255,255,0.5); margin-top: 1rem; line-height: 1.4; }
 .submit-section { margin-top: 1.5rem; text-align: center; }
 .checkbox-row { display: flex; align-items: flex-start; gap: 0.6rem; margin-bottom: 1rem; text-align: left; }
 .checkbox-row input[type="checkbox"] { margin-top: 0.2rem; width: 16px; height: 16px; }
@@ -955,9 +958,11 @@ function recalculate() {
   const grandTotal = standardRate * count;
   const summaryEl = document.getElementById('pricing-summary');
   summaryEl.style.display = 'block';
+  const perHead = standardRate;
   let html = `<h4>\ud83d\udcb0 Pricing Summary</h4>`;
-  html += `<div class="pricing-row"><span class="label">${selectedPackage === 'full' ? 'Full Package' : 'Land Arrangement'} \u00d7 ${count} traveler${count > 1 ? 's' : ''}</span><span class="value">${formatPHP(grandTotal)}</span></div>`;
-  html += `<div class="pricing-row total"><span class="label">Total Cost</span><span class="value">${formatPHP(grandTotal)}</span></div>`;
+  html += `<div class="pricing-row"><span class="label">${selectedPackage === 'full' ? 'Full Package' : 'Land Arrangement Only'}</span><span class="value">${formatPHP(perHead)}</span></div>`;
+  html += `<div class="pricing-row total"><span class="label">Total Cost (${count} traveler${count > 1 ? 's' : ''})</span><span class="value">${formatPHP(grandTotal)}</span></div>`;
+  html += `<div class="discount-note">Infants (0\u201323 months): Flat \u20b150,000. Children (2\u20135): \u20b15,000 off. Seniors (60+): \u20b15,000 off. Discounts applied automatically to the Full Package.</div>`;
   summaryEl.innerHTML = html;
   renderInstallmentPreview(grandTotal, travelDateId);
 }
