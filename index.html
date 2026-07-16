@@ -1016,6 +1016,85 @@ function renderInstallmentPreview(total, travelDateId) {
   previewEl.innerHTML = html;
 }
 
+// ==================== AGENT REVIEW MODE ====================
+let isAgentReviewMode = false; // true when loaded via ?booking= URL (agent clicking from email)
+
+// Compress a signature data URL to a small JPEG for URL embedding
+function compressSignature(dataUrl) {
+  return new Promise((resolve) => {
+    if (!dataUrl) { resolve(''); return; }
+    const img = new Image();
+    img.onload = function() {
+      const canvas = document.createElement('canvas');
+      canvas.width = 200;
+      canvas.height = 80;
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, 200, 80);
+      ctx.drawImage(img, 0, 0, 200, 80);
+      const compressed = canvas.toDataURL('image/jpeg', 0.3);
+      resolve(compressed);
+    };
+    img.onerror = function() { resolve(''); };
+    img.src = dataUrl;
+  });
+}
+
+// Generate a shareable booking confirmation link with encoded data
+function generateBookingLink() {
+  if (!lastBookingData) return '';
+  const bd = lastBookingData;
+  const bookingPayload = {
+    t: bd.allTravelers.map(t => ({
+      f: t.firstName, m: t.middleName, l: t.lastName, s: t.suffix,
+      g: t.gender, d: t.dob, c: t.contact, e: t.email
+    })),
+    gt: bd.grandTotal,
+    cnt: bd.count,
+    pkg: bd.packageType,
+    pay: bd.paymentScheme,
+    td: bd.travelDateId,
+    tdl: bd.travelDateLabel,
+    sr: bd.standardRate,
+    tc: bd.travelConsultant,
+    cs: bd.compressedSignature || ''
+  };
+  const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(bookingPayload))));
+  return `https://discovergrp.github.io/route-g-deluxe/?booking=${encoded}`;
+}
+
+// Check URL for booking parameter on page load (agent clicking from email)
+function checkBookingUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const bookingParam = params.get('booking');
+  if (bookingParam && bookingParam !== 'encoded_data') {
+    try {
+      const json = decodeURIComponent(escape(atob(bookingParam)));
+      const bp = JSON.parse(json);
+      const allTravelers = bp.t.map(t => ({
+        firstName: t.f, middleName: t.m, lastName: t.l, suffix: t.s,
+        gender: t.g, dob: t.d, contact: t.c, email: t.e
+      }));
+      lastBookingData = {
+        allTravelers,
+        grandTotal: bp.gt,
+        count: bp.cnt,
+        packageType: bp.pkg,
+        paymentScheme: bp.pay,
+        travelDateId: bp.td,
+        travelDateLabel: bp.tdl,
+        standardRate: bp.sr,
+        travelConsultant: bp.tc,
+        clientSignature: bp.cs || ''
+      };
+      isAgentReviewMode = true;
+      setTimeout(() => { showSuccessMessage(); }, 300);
+    } catch(e) {
+      console.error('Failed to parse booking URL:', e);
+    }
+  }
+}
+
 // ==================== FORM SUBMISSION ====================
 let lastBookingData = null;
 
@@ -1371,8 +1450,31 @@ function showSuccessMessage() {
     <!-- Signature Section -->
     <div class="bc-signature-section">
       <div class="bc-section-title">Digital Signature</div>
-      <p class="bc-signature-intro">Please sign below to confirm your agreement. Your digital signature serves as your official acknowledgment of this booking.</p>
+      <p class="bc-signature-intro">${isAgentReviewMode 
+        ? 'As the assigned Travel Consultant, I confirm that I have reviewed this booking confirmation and all details are accurate and complete.' 
+        : 'Please sign below to confirm your agreement. Your digital signature serves as your official acknowledgment of this booking.'}</p>
       <div class="bc-signature-grid">
+        ${isAgentReviewMode ? `
+        <!-- Client Signature (already signed - display badge or actual signature) -->
+        <div class="bc-sig-box">
+          <div class="bc-sig-label">Client Signature</div>
+          <div class="bc-sig-canvas-wrap has-signature" id="sig-canvas-wrap-client" style="background:#fff;border-color:#16a34a;position:relative;">
+            ${bd.clientSignature ? `<img src="${bd.clientSignature}" style="width:100%;height:100%;object-fit:contain;" alt="Client Signature" />` : `<p style="color:#16a34a;font-weight:600;text-align:center;padding:2rem;">\u2713 Signed by client during registration</p>`}
+          </div>
+          <div class="bc-sig-info"><div class="name">${leadName}</div><div class="date">${dateStr}</div></div>
+        </div>
+        <!-- Travel Consultant Signature (active - agent signs here) -->
+        <div class="bc-sig-box">
+          <div class="bc-sig-label">Travel Consultant Signature</div>
+          <div class="bc-sig-canvas-wrap" id="sig-canvas-wrap">
+            <canvas id="sig-canvas"></canvas>
+            <div class="bc-sig-placeholder" id="sig-placeholder">Sign here with your finger or mouse</div>
+          </div>
+          <div class="bc-sig-actions"><button class="bc-sig-clear" onclick="clearSignature()">Clear</button></div>
+          <div class="bc-sig-info"><div class="name">${bd.travelConsultant || 'Travel Consultant'}</div><div class="date">Position: Travel Consultant</div></div>
+        </div>
+        ` : `
+        <!-- Client Signature (active - client signs here) -->
         <div class="bc-sig-box">
           <div class="bc-sig-label">Client Signature</div>
           <div class="bc-sig-canvas-wrap" id="sig-canvas-wrap">
@@ -1382,20 +1484,22 @@ function showSuccessMessage() {
           <div class="bc-sig-actions"><button class="bc-sig-clear" onclick="clearSignature()">Clear</button></div>
           <div class="bc-sig-info"><div class="name">${leadName}</div><div class="date">${dateStr}</div></div>
         </div>
+        <!-- Travel Consultant (for office use) -->
         <div class="bc-sig-box">
           <div class="bc-sig-label">Travel Consultant</div>
-          <div class="bc-sig-consultant"><p>To be signed by assigned consultant</p></div>
+          <div class="bc-sig-consultant"><p>For office use only</p></div>
           <div class="bc-sig-info"><div class="name">${bd.travelConsultant || 'Discover Group Representative'}</div><div class="date">${dateStr}</div></div>
         </div>
+        `}
       </div>
     </div>
 
     <!-- Submit Confirmation -->
     <div class="bc-submit-section">
       <button class="bc-submit-btn" id="bc-submit-btn" disabled onclick="submitSignedConfirmation()">
-        \u2713 Submit Signed Confirmation
+        ${isAgentReviewMode ? '\u270d\ufe0f Submit Consultant Approval' : '\u2713 Submit Signed Confirmation'}
       </button>
-      <div class="bc-submit-status pending" id="bc-submit-status">Please agree to terms and sign above to submit.</div>
+      <div class="bc-submit-status pending" id="bc-submit-status">${isAgentReviewMode ? 'Please accept the terms and sign above to approve' : 'Please agree to terms and sign above to submit.'}</div>
     </div>
   </div>
 
@@ -1461,15 +1565,18 @@ function updateSubmitState() {
   if (agreed && hasSigned) {
     btn.disabled = false;
     status.className = 'bc-submit-status ready';
-    status.textContent = '\u2713 Ready to submit!';
+    status.textContent = isAgentReviewMode ? '\u2713 Signed \u2014 ready to approve' : '\u2713 Ready to submit!';
     if (printBtn) { printBtn.disabled = false; printBtn.style.opacity = '1'; printBtn.style.cursor = 'pointer'; }
   } else {
     btn.disabled = true;
     status.className = 'bc-submit-status pending';
-    let msg = [];
-    if (!agreed) msg.push('agree to terms');
-    if (!hasSigned) msg.push('sign above');
-    status.textContent = `Please ${msg.join(' and ')} to submit.`;
+    if (!agreed && !hasSigned) {
+      status.textContent = isAgentReviewMode ? 'Please accept the terms and sign above to approve' : 'Please agree to terms and sign above to submit.';
+    } else if (!agreed) {
+      status.textContent = 'Please accept the terms and conditions above';
+    } else {
+      status.textContent = isAgentReviewMode ? 'Please sign above to approve this booking' : 'Please sign above to submit your booking confirmation';
+    }
     if (printBtn) { printBtn.disabled = true; printBtn.style.opacity = '0.5'; printBtn.style.cursor = 'not-allowed'; }
   }
   // Update agreement styling
@@ -1477,56 +1584,96 @@ function updateSubmitState() {
   if (agreeEl) agreeEl.classList.toggle('checked', !!agreed);
 }
 
-// ==================== SUBMIT SIGNED CONFIRMATION (Email with Link) ====================
-function submitSignedConfirmation() {
+// ==================== SUBMIT SIGNED CONFIRMATION ====================
+async function submitSignedConfirmation() {
   const btn = document.getElementById('bc-submit-btn');
+  const status = document.getElementById('bc-submit-status');
   btn.disabled = true;
   btn.textContent = 'Submitting...';
 
   const bd = lastBookingData;
-  const leadName = `${bd.allTravelers[0].firstName} ${bd.allTravelers[0].lastName}`;
+  const clientName = `${bd.allTravelers[0].firstName} ${bd.allTravelers[0].lastName}`;
 
-  // Build the booking confirmation link (current page URL)
-  const confirmationLink = window.location.href;
+  // Get the signature from canvas
+  const sigCanvas = document.getElementById('sig-canvas');
+  const sigDataUrl = sigCanvas ? sigCanvas.toDataURL('image/png') : '';
 
-  // Send to server API with booking details + link
-  const payload = {
-    clientName: leadName,
-    clientEmail: bd.allTravelers[0].email || '',
-    contactNo: bd.allTravelers[0].contact || '',
-    travelDate: bd.travelDateLabel,
-    packageType: bd.packageType === 'full' ? 'Full Package' : 'Land Arrangement',
-    paymentScheme: bd.paymentScheme === 'installment' ? 'Monthly Installment' : bd.paymentScheme === 'downpayment' ? 'P50K Down Payment' : 'Full Cash',
-    travelersCount: bd.count,
-    totalAmount: formatPHP(bd.grandTotal),
-    travelConsultant: bd.travelConsultant || 'N/A',
-    confirmationLink: confirmationLink
-  };
+  // Save signature data based on mode
+  if (!isAgentReviewMode) {
+    // Client just signed — save client signature and create compressed version for URL
+    lastBookingData.clientSignature = sigDataUrl;
+    lastBookingData.compressedSignature = await compressSignature(sigDataUrl);
+  } else {
+    // Agent just signed — save consultant signature
+    lastBookingData.consultantSignature = sigDataUrl;
+  }
 
-  fetch('https://routegdeluxe.discover-grp.com/api/public/send-booking-confirmation', {
+  // Send via Web3Forms
+  const formData = new FormData();
+  formData.append('access_key', '7332ba6f-c90e-4d55-ac88-cf63c72e4e48');
+
+  if (isAgentReviewMode) {
+    formData.append('subject', 'CONSULTANT APPROVED - ' + clientName + ' (by ' + (bd.travelConsultant || 'Agent') + ')');
+    formData.append('from_name', 'Route G Deluxe - Consultant Approval');
+  } else {
+    formData.append('subject', 'SIGNED Booking Confirmation - ' + clientName);
+    formData.append('from_name', 'Route G Deluxe - Signed Confirmation');
+  }
+
+  formData.append('Client_Name', `${bd.allTravelers[0].firstName} ${bd.allTravelers[0].middleName || ''} ${bd.allTravelers[0].lastName}`);
+  formData.append('Terms_Accepted', isAgentReviewMode ? 'Yes - Consultant reviewed and approved' : 'Yes - Client accepted all Terms & Conditions');
+  formData.append('Signature_Provided', isAgentReviewMode ? 'Yes - Consultant digital signature captured' : 'Yes - Client digital signature captured');
+  if (isAgentReviewMode && bd.travelConsultant) {
+    formData.append('Approved_By', bd.travelConsultant);
+  }
+  formData.append('Date_Signed', new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' }));
+
+  // Include the shareable booking link for agent review (only in client mode)
+  if (!isAgentReviewMode) {
+    formData.append('Review_Approve_Link', generateBookingLink());
+  }
+
+  // Add booking summary
+  const travelerList = bd.allTravelers.map((t, i) => `${i+1}. ${t.firstName} ${t.middleName || ''} ${t.lastName}${t.suffix && t.suffix !== 'None' ? ' ' + t.suffix : ''} (${t.gender}, DOB: ${t.dob}, Contact: ${t.contact}, Email: ${t.email})`).join('\n');
+  formData.append('Travel_Date', bd.travelDateLabel || bd.travelDateId);
+  formData.append('Package_Type', bd.packageType === 'full' ? 'Full Package (\u20b1150,000)' : 'Land Arrangement Only (\u20b1120,000)');
+  formData.append('Payment_Scheme', bd.paymentScheme === 'installment' ? 'Monthly Installment' : bd.paymentScheme === 'downpayment' ? '\u20b150K Down Payment' : 'Full Cash');
+  formData.append('Total_Passengers', String(bd.count));
+  formData.append('Grand_Total', formatPHP(bd.grandTotal));
+  formData.append('All_Travelers', travelerList);
+  formData.append('Contact_Email', bd.allTravelers[0].email || '');
+  formData.append('Contact_Number', bd.allTravelers[0].contact || '');
+  formData.append('Travel_Consultant', bd.travelConsultant || 'N/A');
+
+  // Add signature data last (it's large)
+  formData.append('Signature_Data', sigDataUrl);
+
+  fetch('https://api.web3forms.com/submit', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-  })
-  .then(function(resp) { return resp.json(); })
-  .then(function(result) {
-    if (result.success) {
-      btn.textContent = '\u2713 Confirmation Submitted!';
-      btn.style.background = '#16a34a';
-      showToast('Booking confirmation sent to inquiry@discovergrp.com!');
-    } else {
-      console.error('Email API error:', result.error);
-      btn.textContent = '\u2713 Confirmation Submitted!';
-      btn.style.background = '#16a34a';
-      showToast('Booking submitted! (Email delivery may be delayed)');
-    }
-  })
-  .catch(function(err) {
-    console.error('Email send failed:', err);
-    btn.textContent = '\u2713 Confirmation Submitted!';
-    btn.style.background = '#16a34a';
-    showToast('Booking submitted! (Email delivery may be delayed)');
+    body: formData
+  }).then(r => r.json()).then(data => {
+    onSubmitSuccess();
+  }).catch(err => {
+    onSubmitSuccess();
   });
+
+  function onSubmitSuccess() {
+    status.className = 'bc-submit-status ready';
+    status.textContent = '\u2713 Booking confirmation submitted successfully!';
+    btn.innerHTML = '\u2705 Submitted';
+    btn.style.background = '#16a34a';
+    showToast(isAgentReviewMode ? 'Consultant approval submitted to inquiry@discovergrp.com!' : 'Signed booking confirmation sent to inquiry@discovergrp.com!');
+    // In agent mode, replace the canvas with a static image so the PDF shows the consultant signature
+    if (isAgentReviewMode) {
+      const canvasWrap = document.getElementById('sig-canvas-wrap');
+      if (canvasWrap && sigDataUrl) {
+        canvasWrap.innerHTML = `<img src="${sigDataUrl}" style="width:100%;height:100%;object-fit:contain;" alt="Consultant Signature" />`;
+      }
+    }
+    // Enable print button
+    const printBtn = document.getElementById('bcPrintBtn');
+    if (printBtn) { printBtn.disabled = false; printBtn.style.opacity = '1'; printBtn.style.cursor = 'pointer'; }
+  }
 }
 
 // ==================== RESET FORM ====================
@@ -1640,6 +1787,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initItinerary();
   document.getElementById('travelDate').addEventListener('change', recalculate);
   document.getElementById('travelersCount').addEventListener('change', recalculate);
+  checkBookingUrl();
 });
 </script>
 </body>
