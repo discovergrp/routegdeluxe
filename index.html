@@ -695,6 +695,7 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
       <div class="form-grid-2">
         <div class="form-group"><label>Number of Travelers</label><select id="travelersCount" onchange="updateTravelers()"><option value="1">1 Person</option><option value="2">2 Persons</option><option value="3">3 Persons</option><option value="4">4 Persons</option><option value="5">5 Persons</option><option value="6">6 Persons</option><option value="7">7 Persons</option><option value="8">8 Persons</option><option value="9">9 Persons</option><option value="10">10 Persons</option><option value="11">11 Persons</option><option value="12">12 Persons</option><option value="13">13 Persons</option><option value="14">14 Persons</option><option value="15">15 Persons</option><option value="16">16 Persons</option><option value="17">17 Persons</option><option value="18">18 Persons</option><option value="19">19 Persons</option><option value="20">20 Persons</option><option value="21">21 Persons</option><option value="22">22 Persons</option><option value="23">23 Persons</option><option value="24">24 Persons</option><option value="25">25 Persons</option><option value="26">26 Persons</option><option value="27">27 Persons</option><option value="28">28 Persons</option><option value="29">29 Persons</option><option value="30">30 Persons</option></select></div>
         <div class="form-group"><label>Preferred Travel Date *</label><select id="travelDate" required><option value="">Select your travel date...</option><option value="2026-09-16">Sep 16 – 26, 2026 (Autumn)</option><option value="2026-11-17">Nov 17 – 27, 2026 (Autumn)</option><option value="2027-02-17">Feb 17 – 27, 2027 (Winter)</option><option value="2027-04-14">Apr 14 – 24, 2027 (Spring)</option><option value="2027-09-30">Sep 30 – Oct 10, 2027 (Autumn)</option></select></div>
+        <div class="form-group"><label>Travel Consultant *</label><select id="travelConsultant" required><option value="">Select your Travel Consultant</option><option value="Genesis">Genesis</option><option value="Aila">Aila</option><option value="Angel">Angel</option><option value="Andrea">Andrea</option><option value="Sel">Sel</option></select></div>
       </div>
 
       <!-- Additional Travelers -->
@@ -702,19 +703,6 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
         <h4>👥 Additional Traveler Details</h4>
         <div class="sub">Please provide details for each additional traveler as they appear on their passport.</div>
         <div id="additional-travelers-list"></div>
-      </div>
-
-      <!-- Travel Consultant -->
-      <div class="form-group" style="margin-bottom:1.5rem;">
-        <label>Travel Consultant *</label>
-        <select id="travelConsultant" required>
-          <option value="">Select your Travel Consultant...</option>
-          <option value="Genesis">Genesis</option>
-          <option value="Aila">Aila</option>
-          <option value="Angel">Angel</option>
-          <option value="Andrea">Andrea</option>
-          <option value="Sel">Sel</option>
-        </select>
       </div>
 
       <!-- Package Type -->
