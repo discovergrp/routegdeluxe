@@ -433,7 +433,6 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
   .bc-details-grid { grid-template-columns: 1fr 1fr; }
 }
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 
@@ -1478,96 +1477,55 @@ function updateSubmitState() {
   if (agreeEl) agreeEl.classList.toggle('checked', !!agreed);
 }
 
-// ==================== SUBMIT SIGNED CONFIRMATION (PDF + Email via Server API) ====================
+// ==================== SUBMIT SIGNED CONFIRMATION (Email with Link) ====================
 function submitSignedConfirmation() {
   const btn = document.getElementById('bc-submit-btn');
   btn.disabled = true;
-  btn.textContent = 'Generating PDF...';
+  btn.textContent = 'Submitting...';
 
   const bd = lastBookingData;
   const leadName = `${bd.allTravelers[0].firstName} ${bd.allTravelers[0].lastName}`;
 
-  // Get the booking confirmation element for PDF generation
-  const bcEl = document.querySelector('.booking-confirmation');
-  if (!bcEl) {
-    btn.textContent = 'Error: No confirmation found';
-    btn.style.background = '#dc2626';
-    return;
-  }
+  // Build the booking confirmation link (current page URL)
+  const confirmationLink = window.location.href;
 
-  // Hide action buttons and submit section before generating PDF
-  const actionsEl = bcEl.querySelector('.bc-actions');
-  const submitSection = bcEl.querySelector('.bc-submit-section');
-  if (actionsEl) actionsEl.style.display = 'none';
-  if (submitSection) submitSection.style.display = 'none';
-
-  // Configure html2pdf options
-  const opt = {
-    margin: [10, 10, 10, 10],
-    filename: `Booking_Confirmation_${leadName.replace(/\s+/g, '_')}.pdf`,
-    image: { type: 'jpeg', quality: 0.95 },
-    html2canvas: { scale: 2, useCORS: true, logging: false },
-    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-    pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+  // Send to server API with booking details + link
+  const payload = {
+    clientName: leadName,
+    clientEmail: bd.allTravelers[0].email || '',
+    contactNo: bd.allTravelers[0].contact || '',
+    travelDate: bd.travelDateLabel,
+    packageType: bd.packageType === 'full' ? 'Full Package' : 'Land Arrangement',
+    paymentScheme: bd.paymentScheme === 'installment' ? 'Monthly Installment' : bd.paymentScheme === 'downpayment' ? 'P50K Down Payment' : 'Full Cash',
+    travelersCount: bd.count,
+    totalAmount: formatPHP(bd.grandTotal),
+    travelConsultant: bd.travelConsultant || 'N/A',
+    confirmationLink: confirmationLink
   };
 
-  // Generate PDF as base64
-  html2pdf().set(opt).from(bcEl).outputPdf('datauristring').then(function(pdfDataUri) {
-    // Restore hidden elements
-    if (actionsEl) actionsEl.style.display = '';
-    if (submitSection) submitSection.style.display = '';
-
-    btn.textContent = 'Sending email...';
-
-    // Extract base64 from data URI
-    const pdfBase64 = pdfDataUri.split(',')[1];
-
-    // Send to server API
-    const payload = {
-      clientName: leadName,
-      clientEmail: bd.allTravelers[0].email || '',
-      contactNo: bd.allTravelers[0].contact || '',
-      travelDate: bd.travelDateLabel,
-      packageType: bd.packageType === 'full' ? 'Full Package' : 'Land Arrangement',
-      paymentScheme: bd.paymentScheme === 'installment' ? 'Monthly Installment' : bd.paymentScheme === 'downpayment' ? 'P50K Down Payment' : 'Full Cash',
-      travelersCount: bd.count,
-      totalAmount: formatPHP(bd.grandTotal),
-      travelConsultant: bd.travelConsultant || 'N/A',
-      pdfBase64: pdfBase64
-    };
-
-    fetch('https://routegdeluxe.discover-grp.com/api/public/send-booking-confirmation', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    })
-    .then(function(resp) { return resp.json(); })
-    .then(function(result) {
-      if (result.success) {
-        btn.textContent = '\u2713 Confirmation Submitted!';
-        btn.style.background = '#16a34a';
-        showToast('Booking confirmation sent to inquiry@discovergrp.com with PDF attached!');
-      } else {
-        console.error('Email API error:', result.error);
-        btn.textContent = '\u2713 Confirmation Submitted!';
-        btn.style.background = '#16a34a';
-        showToast('Booking submitted! (Email delivery may be delayed)');
-      }
-    })
-    .catch(function(err) {
-      console.error('Email send failed:', err);
+  fetch('https://routegdeluxe.discover-grp.com/api/public/send-booking-confirmation', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+  .then(function(resp) { return resp.json(); })
+  .then(function(result) {
+    if (result.success) {
+      btn.textContent = '\u2713 Confirmation Submitted!';
+      btn.style.background = '#16a34a';
+      showToast('Booking confirmation sent to inquiry@discovergrp.com!');
+    } else {
+      console.error('Email API error:', result.error);
       btn.textContent = '\u2713 Confirmation Submitted!';
       btn.style.background = '#16a34a';
       showToast('Booking submitted! (Email delivery may be delayed)');
-    });
-  }).catch(function(err) {
-    // Restore hidden elements on error
-    if (actionsEl) actionsEl.style.display = '';
-    if (submitSection) submitSection.style.display = '';
-    console.error('PDF generation failed:', err);
+    }
+  })
+  .catch(function(err) {
+    console.error('Email send failed:', err);
     btn.textContent = '\u2713 Confirmation Submitted!';
     btn.style.background = '#16a34a';
-    showToast('Booking submitted! (PDF generation failed, email sent without attachment)');
+    showToast('Booking submitted! (Email delivery may be delayed)');
   });
 }
 
