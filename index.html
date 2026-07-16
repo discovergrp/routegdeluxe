@@ -1728,16 +1728,29 @@ async function submitSignedConfirmation() {
   formData.append('Contact_Number', bd.allTravelers[0].contact || '');
   formData.append('Travel_Consultant', bd.travelConsultant || 'N/A');
 
-  // Add signature data last (it's large)
-  formData.append('Signature_Data', sigDataUrl);
+  // Signature is included in the Review_Approve_Link (compressed)
+  // Raw signature data removed to prevent exceeding Web3Forms payload limit
 
   fetch('https://api.web3forms.com/submit', {
     method: 'POST',
     body: formData
   }).then(r => r.json()).then(data => {
-    onSubmitSuccess();
+    console.log('Web3Forms response:', data);
+    if (data.success) {
+      onSubmitSuccess();
+    } else {
+      console.error('Web3Forms error:', data.message);
+      status.className = 'bc-submit-status ready';
+      status.textContent = '⚠️ Email delivery issue. Your booking is confirmed. Please contact inquiry@discovergrp.com.';
+      btn.innerHTML = '⚠️ Submitted (email issue)';
+      btn.style.background = '#f59e0b';
+    }
   }).catch(err => {
-    onSubmitSuccess();
+    console.error('Fetch error:', err);
+    status.className = 'bc-submit-status ready';
+    status.textContent = '⚠️ Network issue. Your booking is confirmed. Please contact inquiry@discovergrp.com.';
+    btn.innerHTML = '⚠️ Submitted (network issue)';
+    btn.style.background = '#f59e0b';
   });
 
   function onSubmitSuccess() {
