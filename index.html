@@ -1259,8 +1259,8 @@ function showSuccessMessage() {
       <div class="bc-detail-item"><label>Travel Date</label><p class="highlight">${bd.travelDateLabel}</p></div>
       <div class="bc-detail-item"><label>Payment Scheme</label><p>${bd.paymentScheme === 'installment' ? 'Monthly Installment' : bd.paymentScheme === 'downpayment' ? '\u20b150K Down Payment' : 'Full Cash'}</p></div>
         </div>
-    ${bd.notes ? `<div class="bc-section-title">Special Requests / Notes</div>
-    <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:0.95rem;color:#334155;white-space:pre-wrap;">${bd.notes}</div>` : ''}
+    ${bd.notes ? `<div id="edit-notes-section"><div class="bc-section-title">Special Requests / Notes</div>
+    <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:0.95rem;color:#334155;white-space:pre-wrap;">${bd.notes}</div></div>` : ''}
     <div class="bc-section-title">Passenger Information</div>
     <div style="overflow-x:auto;margin-bottom:2rem;">
       <table class="bc-table">
