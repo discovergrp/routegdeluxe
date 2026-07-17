@@ -1198,6 +1198,7 @@ function generateBookingLink(includeSignature = true) {
     tdl: bd.travelDateLabel,
     sr: bd.standardRate,
     tc: bd.travelConsultant,
+    cl: bd.classified ? bd.classified.map(c => ({ cat: c.category, rate: c.rate, disc: c.discount, free: c.isFree, fr: c.finalRate })) : [],
     cs: includeSignature ? (bd.compressedSignature || '') : '',
     sg: (!includeSignature && bd.compressedSignature) ? '1' : '',
     nt: bd.notes || ''
@@ -1218,6 +1219,22 @@ function checkBookingUrl() {
         firstName: t.f, middleName: t.m, lastName: t.l, suffix: t.s,
         gender: t.g, dob: t.d, contact: t.c, email: t.e
       }));
+      // Reconstruct classified data for pricing breakdown
+      let classified;
+      if (bp.cl && bp.cl.length > 0) {
+        classified = bp.cl.map((c, idx) => ({
+          name: `${allTravelers[idx].firstName} ${allTravelers[idx].lastName}`.trim(),
+          index: idx, category: c.cat, rate: c.rate, discount: c.disc, isFree: c.free, finalRate: c.fr
+        }));
+      } else {
+        const travelDates = TRAVEL_DATES[bp.td];
+        classified = allTravelers.map((t, idx) => {
+          const category = classifyAge(t.dob, travelDates ? travelDates.start : '', travelDates ? travelDates.end : '');
+          const { rate, discount } = getCategoryRate(category, bp.sr);
+          return { name: `${t.firstName} ${t.lastName}`.trim(), index: idx, category, rate, discount, isFree: false, finalRate: rate };
+        });
+      }
+      const totalDiscount = classified.reduce((sum, p) => sum + p.discount, 0);
       lastBookingData = {
         allTravelers,
         grandTotal: bp.gt,
@@ -1230,7 +1247,9 @@ function checkBookingUrl() {
         travelConsultant: bp.tc,
         clientSignature: bp.cs || '',
         clientSignedFlag: bp.sg === '1',
-        notes: bp.nt || ''
+        notes: bp.nt || '',
+        classified,
+        totalDiscount
       };
       isAgentReviewMode = true;
       setTimeout(() => { showSuccessMessage(); }, 300);
@@ -1284,8 +1303,8 @@ function handleSubmit(e) {
   }
   if (data.notes) message += `\nNOTES: ${data.notes}`;
   const standardRate = selectedPackage === 'full' ? 150000 : 120000;
-  const grandTotal = standardRate * count;
-  const totalAmount = formatPHP(grandTotal);
+  // Compute age-based pricing (same as recalculate)
+  const travelDates = TRAVEL_DATES[data.travelDate];
 
   // Build all travelers array
   const allTravelers = [{ firstName: data.firstName, middleName: data.middleName, lastName: data.lastName, suffix: data.suffix, gender: data.gender, dob: data.dob, contact: data.contactNo, email: data.email }];
@@ -1302,7 +1321,16 @@ function handleSubmit(e) {
   }
   for (let i = 7; i <= count; i++) { allTravelers.push({ firstName: `Traveler ${i}`, middleName: '', lastName: '(Details pending)', suffix: 'None', gender: '\u2014', dob: '', contact: '\u2014', email: '\u2014' }); }
 
-  lastBookingData = { allTravelers, grandTotal, count, packageType: selectedPackage, paymentScheme: selectedPayment, travelDateId: data.travelDate, travelDateLabel, standardRate, travelConsultant: data.travelConsultant, notes: data.notes || '' };
+  // Classify travelers by age for pricing
+  const classified = allTravelers.map((t, idx) => {
+    const category = classifyAge(t.dob, travelDates.start, travelDates.end);
+    const { rate, discount } = getCategoryRate(category, standardRate);
+    return { name: `${t.firstName} ${t.lastName}`.trim(), index: idx, category, rate, discount, isFree: false, finalRate: rate };
+  });
+  const grandTotal = classified.reduce((sum, p) => sum + p.finalRate, 0);
+  const totalDiscount = classified.reduce((sum, p) => sum + p.discount, 0);
+
+  lastBookingData = { allTravelers, grandTotal, count, packageType: selectedPackage, paymentScheme: selectedPayment, travelDateId: data.travelDate, travelDateLabel, standardRate, travelConsultant: data.travelConsultant, notes: data.notes || '', classified, totalDiscount };
 
   const btn = document.getElementById('submit-btn');
   btn.disabled = true; btn.textContent = 'Submitting...';
@@ -1336,7 +1364,22 @@ function showSuccessMessage() {
     travelerRows += `<tr><td style="font-weight:700;">${idx + 1}</td><td class="font-bold">${t.firstName}</td><td>${t.middleName || '\u2014'}</td><td class="font-bold">${t.lastName}</td><td>${t.suffix && t.suffix !== 'None' ? t.suffix : '\u2014'}</td><td>${t.gender}</td><td class="mono">${t.contact || '\u2014'}</td><td class="mono">${t.email || '\u2014'}</td><td class="mono">${t.dob ? new Date(t.dob + 'T00:00:00').toLocaleDateString('en-US', {month:'short',day:'numeric',year:'numeric'}) : '\u2014'}</td></tr>`;
   });
 
-  let pricingRows = `<tr><td>${bd.packageType === 'full' ? 'Full Package' : 'Land Arrangement'}</td><td class="text-right">${formatPHP(bd.standardRate)}</td><td class="text-center">${bd.count}</td><td class="text-right font-bold">${formatPHP(bd.grandTotal)}</td></tr>`;
+  let pricingRows = '';
+  let totalDiscount = 0;
+  if (bd.classified && bd.classified.length > 0) {
+    bd.classified.forEach((p, idx) => {
+      const catLabel = p.category !== 'adult' ? ` (${getCategoryLabel(p.category)})` : '';
+      pricingRows += `<tr>
+        <td>${bd.allTravelers[idx].firstName} ${bd.allTravelers[idx].lastName}${catLabel}</td>
+        <td class="text-right">${formatPHP(p.rate)}</td>
+        <td class="text-center">1</td>
+        <td class="text-right font-bold">${formatPHP(p.finalRate)}</td>
+      </tr>`;
+      totalDiscount += p.discount;
+    });
+  } else {
+    pricingRows = `<tr><td>${bd.packageType === 'full' ? 'Full Package' : 'Land Arrangement'}</td><td class="text-right">${formatPHP(bd.standardRate)}</td><td class="text-center">${bd.count}</td><td class="text-right font-bold">${formatPHP(bd.grandTotal)}</td></tr>`;
+  }
   pricingRows += `<tr class="total-row"><td style="font-weight:900;">GRAND TOTAL</td><td></td><td class="text-center font-bold">${bd.count} pax</td><td class="text-right" style="font-size:1rem;">${formatPHP(bd.grandTotal)}</td></tr>`;
 
   // Payment schedule
@@ -1419,7 +1462,18 @@ function showSuccessMessage() {
       <div class="bc-detail-item"><label>Destinations</label><p>Vatican, Italy, Switzerland, France, Belgium & Netherlands</p></div>
       <div class="bc-detail-item"><label>Total Passengers</label><p>${bd.count} person(s)</p></div>
     </div>
-    <p style="font-size:0.7rem;color:#6b7a94;font-style:italic;margin-bottom:2rem;">*Prices quoted are exclusive of 12% VAT. A 12% VAT will be applied upon issuance of the Official Receipt (OR).</p>
+
+    <div class="bc-section-title">Pricing Breakdown</div>
+    <div class="bc-pricing-section">
+      <div style="overflow-x:auto;">
+        <table class="bc-pricing-table">
+          <thead><tr><th>Description</th><th style="text-align:right;">Rate/Head</th><th style="text-align:center;">Pax</th><th style="text-align:right;">Total</th></tr></thead>
+          <tbody>${pricingRows}</tbody>
+        </table>
+      </div>
+      ${totalDiscount > 0 ? '<p style="margin-top:0.75rem;font-size:0.85rem;font-weight:700;color:#16a34a;">Total Savings: ' + formatPHP(totalDiscount) + '</p>' : ''}
+      <p style="margin-top:0.75rem;font-size:0.7rem;font-style:italic;color:#6b7a94;">Prices quoted are exclusive of 12% VAT. A 12% VAT will be applied upon issuance of the Official Receipt (OR).</p>
+    </div>
 
     ${paymentScheduleHtml}
 
