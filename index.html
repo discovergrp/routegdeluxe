@@ -6,7 +6,8 @@
 <title>Route G Deluxe — Europe Travel Sales Funnel | Discover Group</title>
 <meta name="description" content="Route G Deluxe: 6 Countries, 11 Days European Tour. Vatican, Italy, Switzerland, France, Belgium & Netherlands. Starting at ₱150,000/head.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 /* ==================== CSS RESET & VARIABLES ==================== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -17,13 +18,14 @@
   --accent: #D4AF37;
   --accent-dark: #b8962e;
   --accent-light: #e8c84a;
+  --accent-gradient: linear-gradient(135deg, #fde68a, #fcd34d, #f59e0b);
   --bg: #0a1e5e;
   --surface: #ffffff;
   --text: #1a1a2e;
   --text-light: #ffffff;
   --muted: rgba(255,255,255,0.7);
   --border: rgba(255,255,255,0.15);
-  --radius: 0.75rem;
+  --radius: 0.65rem;
   --shadow: 0 4px 20px rgba(0,0,0,0.15);
   --shadow-lg: 0 12px 40px rgba(0,0,0,0.2);
   --gold: #D4AF37;
@@ -31,7 +33,7 @@
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 }
 html { scroll-behavior: smooth; }
-body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text-light); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background: var(--bg); color: var(--text-light); line-height: 1.6; -webkit-font-smoothing: antialiased; }
 img { max-width: 100%; height: auto; display: block; }
 a { text-decoration: none; color: inherit; }
 button, input, select, textarea { font-family: inherit; font-size: inherit; }
@@ -52,16 +54,16 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 /* ==================== HERO ==================== */
 .hero { text-align: center; padding: 5rem 1.5rem 3rem; background: var(--primary); color: white; position: relative; overflow: hidden; }
 .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 30% 50%, rgba(212,175,55,0.08) 0%, transparent 50%); }
-.hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 300; line-height: 1.1; position: relative; font-family: 'Playfair Display', serif; }
-.gold { color: var(--accent); font-style: italic; font-family: 'Playfair Display', serif; }
+.hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 300; line-height: 1.1; position: relative; font-family: 'Cormorant Garamond', serif; }
+.gold { color: var(--accent); font-style: italic; font-family: 'Cormorant Garamond', serif; }
 .divider { width: 60px; height: 3px; background: var(--accent); margin: 1.5rem auto; border-radius: 2px; }
 .subtitle { font-size: 0.95rem; color: rgba(255,255,255,0.7); font-weight: 500; letter-spacing: 0.1em; position: relative; text-transform: uppercase; }
 
 /* ==================== INTRO ==================== */
 .intro { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
 .intro-card { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; margin-bottom: 2rem; }
-.intro-card h2 { font-size: 1.6rem; font-weight: 900; margin-bottom: 1rem; color: white; font-family: 'Playfair Display', serif; }
-.text-gradient-gold { color: var(--accent); font-style: italic; font-family: 'Playfair Display', serif; }
+.intro-card h2 { font-size: 1.6rem; font-weight: 900; margin-bottom: 1rem; color: white; font-family: 'Cormorant Garamond', serif; }
+.text-gradient-gold { background: linear-gradient(135deg, #fde68a, #fcd34d, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-style: italic; font-family: 'Cormorant Garamond', serif; }
 .intro-card p { color: rgba(255,255,255,0.8); font-size: 0.9rem; line-height: 1.7; }
 .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
 .stat-card { background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; text-align: center; }
@@ -80,7 +82,7 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 .promo-banner .countdown-label span { background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .countdown-boxes { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-bottom: 1.5rem; }
 .countdown-box { display: flex; flex-direction: column; align-items: center; }
-.countdown-box .cd-value { width: 60px; height: 60px; border-radius: 0.5rem; border: 1.5px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 900; font-family: 'Inter', monospace; color: white; }
+.countdown-box .cd-value { width: 60px; height: 60px; border-radius: 0.5rem; border: 1.5px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 900; font-family: 'Plus Jakarta Sans', monospace; color: white; }
 .countdown-box.highlight .cd-value { background: rgba(255,255,255,0.1); color: #fbbf24; }
 .countdown-box .cd-label { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); margin-top: 0.3rem; }
 .promo-banner .lock-text { font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-bottom: 1rem; }
@@ -89,12 +91,12 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 .features-wrapper { background: #f8faff; }
 .features { max-width: 1000px; margin: 0 auto; padding: 5rem 1.5rem; color: var(--text); }
 .section-badge { display: inline-block; background: var(--gold-light); color: var(--accent-dark); font-size: 0.65rem; font-weight: 800; padding: 0.4rem 1rem; border-radius: 2rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
-.features h2 { font-size: 1.8rem; font-weight: 900; margin-bottom: 0.5rem; color: var(--text); font-family: 'Playfair Display', serif; }
+.features h2 { font-size: 1.8rem; font-weight: 900; margin-bottom: 0.5rem; color: var(--text); font-family: 'Playfair Display', Georgia, serif; }
 .features-sub { color: #6b7a94; font-size: 0.9rem; max-width: 600px; margin: 0 auto 2rem; }
 .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
 .feature-card { background: white; border-radius: 1rem; padding: 2rem 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 1px solid #e8edf5; text-align: center; }
 .icon-circle { width: 50px; height: 50px; border-radius: 50%; background: var(--gold-light); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin: 0 auto 1rem; }
-.feature-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text); font-family: 'Playfair Display', serif; }
+.feature-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text); font-family: 'Playfair Display', Georgia, serif; }
 .feature-card p { font-size: 0.8rem; color: #6b7a94; line-height: 1.6; }
 .highlight-box { background: linear-gradient(135deg, #eff6ff, #f0f9ff); border: 1px solid #bfdbfe; border-radius: 0.75rem; padding: 1rem; margin-top: 1rem; }
 .highlight-box .note { font-size: 0.65rem; color: #6b7a94; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
@@ -103,7 +105,7 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 
 /* ==================== ITINERARY ==================== */
 .itinerary { max-width: 1400px; margin: 0 auto; padding: 5rem 1.5rem; background: var(--primary); }
-.itinerary h2 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; color: white; font-family: 'Playfair Display', serif; font-style: italic; }
+.itinerary h2 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; color: white; font-family: 'Playfair Display', Georgia, serif; font-style: italic; }
 .section-sub { font-size: 0.85rem; max-width: 600px; margin: 0 auto 2rem; color: rgba(255,255,255,0.7); }
 .pricing .section-sub { color: #6b7a94; }
 .itinerary-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; margin-bottom: 2rem; }
@@ -120,7 +122,7 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 .day-tab { font-size: 0.7rem; font-weight: 700; padding: 0.4rem 0.85rem; border-radius: 2rem; background: #f1f5f9; color: #6b7a94; cursor: pointer; transition: all 0.2s; border: 1px solid #e2e8f0; }
 .day-tab.active { background: var(--primary); color: white; border-color: var(--primary); }
 .day-label { font-size: 0.6rem; font-weight: 800; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.3rem; }
-.day-content h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--primary); font-family: 'Playfair Display', serif; font-style: italic; }
+.day-content h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--primary); font-family: 'Playfair Display', Georgia, serif; font-style: italic; }
 .day-content .description { font-size: 0.82rem; color: #374151; line-height: 1.7; margin-bottom: 1rem; }
 
 .collage-img { width: 100%; height: auto; border-radius: 0.75rem; margin-bottom: 1rem; object-fit: contain; }
@@ -142,12 +144,12 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 /* ==================== PRICING ==================== */
 .pricing-wrapper { background: #f8faff; }
 .pricing { max-width: 1000px; margin: 0 auto; padding: 5rem 1.5rem; color: var(--text); }
-.pricing h2 { font-size: 1.8rem; font-weight: 900; margin-bottom: 0.5rem; color: var(--text); font-family: 'Playfair Display', serif; }
+.pricing h2 { font-size: 1.8rem; font-weight: 900; margin-bottom: 0.5rem; color: var(--text); font-family: 'Playfair Display', Georgia, serif; }
 .pricing .section-badge { background: var(--gold-light); color: var(--accent-dark); }
 .pricing-card { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow-lg); overflow: hidden; }
 .pricing-header { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; border-bottom: 2px solid #e2e8f0; }
 .pricing-header-intro { padding: 1.5rem; display: flex; flex-direction: column; justify-content: center; }
-.pricing-header-intro h3 { font-size: 1rem; font-weight: 800; font-family: 'Playfair Display', serif; }
+.pricing-header-intro h3 { font-size: 1rem; font-weight: 800; font-family: 'Playfair Display', Georgia, serif; }
 .pricing-header-intro p { font-size: 0.72rem; color: #6b7a94; }
 .pricing-header-col { padding: 1.5rem 1rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.3rem; }
 .col-badge { font-size: 0.55rem; font-weight: 800; letter-spacing: 0.1em; background: var(--primary); color: white; padding: 0.25rem 0.6rem; border-radius: 1rem; }
@@ -170,7 +172,7 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 /* ==================== INCLUSIONS ==================== */
 .inclusions-section { max-width: 1000px; margin: 0 auto; padding: 5rem 1.5rem; text-align: center; }
 .inclusions-header { margin-bottom: 2rem; }
-.inclusions-header h2 { font-size: 1.5rem; font-weight: 900; margin-bottom: 0.5rem; color: white; font-family: 'Playfair Display', serif; }
+.inclusions-header h2 { font-size: 1.5rem; font-weight: 900; margin-bottom: 0.5rem; color: white; font-family: 'Playfair Display', Georgia, serif; }
 .inclusions-header p { font-size: 0.85rem; color: rgba(255,255,255,0.7); }
 .detail-link-btn { display: flex; align-items: center; gap: 1rem; padding: 1.2rem 1.5rem; border-radius: 0.75rem; text-align: left; transition: all 0.2s var(--ease-out); }
 .detail-link-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
@@ -188,13 +190,13 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 
 /* ==================== RESERVATION FORM ==================== */
 .reservation { max-width: 1000px; margin: 0 auto; padding: 5rem 1.5rem; background: var(--primary); }
-.reservation h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); font-style: italic; font-weight: 900; margin-bottom: 0.75rem; color: white; font-family: 'Playfair Display', serif; }
+.reservation h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); font-style: italic; font-weight: 900; margin-bottom: 0.75rem; color: white; font-family: 'Playfair Display', Georgia, serif; }
 .reservation .section-sub { color: rgba(255,255,255,0.7); font-size: 0.9rem; max-width: 600px; margin: 0 auto 2rem; }
 .form-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 1rem; padding: 2.5rem 2rem; max-width: 800px; margin: 1.5rem auto 0; }
 .form-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1rem; }
 .form-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1rem; }
 .form-group label { display: block; font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.7); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
-.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.7rem 0.9rem; border: 1px solid var(--border); border-radius: 0.5rem; font-size: 0.9rem; transition: border-color 0.2s; background: rgba(255,255,255,0.05); color: white; font-family: 'Inter', sans-serif; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.7rem 0.9rem; border: 1px solid var(--border); border-radius: 0.5rem; font-size: 0.9rem; transition: border-color 0.2s; background: rgba(255,255,255,0.05); color: white; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(212,175,55,0.15); }
 .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.4); }
 .form-group select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ffffff' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.75rem center; }
@@ -208,7 +210,7 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 .toggle-option.active { border-color: var(--accent); background: rgba(212,175,55,0.08); }
 .toggle-title { font-size: 0.85rem; font-weight: 700; color: white; margin-bottom: 0.2rem; }
 .toggle-sub { font-size: 0.68rem; color: rgba(255,255,255,0.6); }
-.toggle-price { font-size: 1.1rem; font-weight: 900; color: var(--accent); margin-top: 0.3rem; font-family: 'Inter', sans-serif; }
+.toggle-price { font-size: 1.1rem; font-weight: 900; color: var(--accent); margin-top: 0.3rem; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 .additional-travelers { margin: 1.5rem 0; padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 0.75rem; border: 1px solid var(--border); }
 .additional-travelers h4 { font-size: 0.9rem; font-weight: 800; margin-bottom: 0.3rem; color: white; }
 .additional-travelers .sub { font-size: 0.72rem; color: rgba(255,255,255,0.6); margin-bottom: 1rem; }
@@ -296,19 +298,19 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 .toast.error { background: #dc2626; }
 
 /* ==================== BOOKING CONFIRMATION ==================== */
-.booking-confirmation { max-width: 850px; margin: 0 auto; background: #fff; border-radius: 0; box-shadow: 0 8px 40px rgba(0,0,0,0.2); font-family: 'Inter', sans-serif; color: #1a1f3a; }
+.booking-confirmation { max-width: 850px; margin: 0 auto; background: #fff; border-radius: 0; box-shadow: 0 8px 40px rgba(0,0,0,0.2); font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #1a1f3a; }
 .bc-header { background: linear-gradient(135deg, #0a1e5e, #1a3a8b); color: white; padding: 1.5rem 2rem 1.25rem; }
 .bc-header-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
 .bc-header-left { display: flex; align-items: center; gap: 0.75rem; }
 .bc-header-left img { height: 48px; width: 48px; border-radius: 8px; object-fit: cover; border: 2px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); }
-.bc-header-left h2 { font-size: 1.1rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin: 0; font-family: 'Inter', sans-serif; }
+.bc-header-left h2 { font-size: 1.1rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 .bc-header-left .sub { font-size: 0.7rem; color: rgba(255,255,255,0.7); margin-top: 2px; }
 .bc-header-right { text-align: right; }
 .bc-badge { display: inline-block; background: #D4AF37; color: #0a1e5e; font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; padding: 0.3rem 0.75rem; border-radius: 3px; }
 .bc-header-right .date { font-size: 0.65rem; color: rgba(255,255,255,0.6); margin-top: 0.4rem; }
 .bc-header-contact { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.15); font-size: 0.7rem; color: rgba(255,255,255,0.7); }
 .bc-body { padding: 2rem; }
-.bc-section-title { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; color: #0a1e5e; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; font-family: 'Inter', sans-serif; }
+.bc-section-title { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; color: #0a1e5e; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 .bc-section-title::before { content: ''; width: 4px; height: 20px; background: #0a1e5e; border-radius: 2px; }
 .bc-details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 2rem; background: #f8fafc; border-radius: 0.75rem; padding: 1.25rem 1.5rem; border: 1px solid #e8edf5; margin-bottom: 2rem; }
 .bc-detail-item label { display: block; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #6b7a94; margin-bottom: 0.2rem; }
@@ -321,7 +323,7 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 .bc-table td { padding: 0.5rem 0.75rem; border-bottom: 1px solid #f1f5f9; color: #374151; }
 .bc-table tbody tr:last-child td { border-bottom: none; }
 .bc-table .font-bold { font-weight: 700; }
-.bc-table .mono { font-family: 'Inter', monospace; color: #6b7a94; }
+.bc-table .mono { font-family: 'Plus Jakarta Sans', monospace; color: #6b7a94; }
 .bc-table .text-right { text-align: right; }
 .bc-table .text-center { text-align: center; }
 .bc-table .total-row { background: rgba(10,30,94,0.05); font-weight: 800; color: #0a1e5e; }
@@ -351,7 +353,7 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 .bc-bank-card .bank-name { font-size: 0.8rem; font-weight: 800; color: #1a2744; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.15rem; }
 .bc-bank-card .bank-full { font-size: 0.65rem; color: #6b7a94; margin-bottom: 0.15rem; }
 .bc-bank-card .bank-acct-name { font-size: 0.7rem; color: #374151; margin-bottom: 0.4rem; }
-.bc-bank-card .bank-number { font-size: 1rem; font-weight: 800; color: #1a2744; font-family: 'Inter', monospace; letter-spacing: 0.1em; }
+.bc-bank-card .bank-number { font-size: 1rem; font-weight: 800; color: #1a2744; font-family: 'Plus Jakarta Sans', monospace; letter-spacing: 0.1em; }
 .bc-footer { text-align: center; padding: 1.5rem 2rem; background: #f8fafc; border-top: 1px solid #e8edf5; }
 .bc-footer p { font-size: 0.75rem; color: #6b7a94; margin: 0.25rem 0; }
 .bc-footer .company { font-weight: 700; color: #0a1e5e; font-size: 0.85rem; }
@@ -432,7 +434,7 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 .detail-popup-overlay.active .detail-popup { transform: scale(1); }
 .detail-popup-header { padding: 1.2rem 1.5rem; display: flex; align-items: center; justify-content: space-between; cursor: grab; user-select: none; border-bottom: 2px solid #e5e7eb; }
 .detail-popup-header:active { cursor: grabbing; }
-.detail-popup-header h3 { font-size: 1.3rem; font-weight: 900; margin: 0; font-family: 'Inter', sans-serif; letter-spacing: 0.01em; color: #111827; }
+.detail-popup-header h3 { font-size: 1.3rem; font-weight: 900; margin: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; letter-spacing: 0.01em; color: #111827; }
 .detail-popup-header .close-btn { width: 34px; height: 34px; border-radius: 50%; border: none; background: #f3f4f6; font-size: 1.3rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
 .detail-popup-header .close-btn:hover { background: #e5e7eb; }
 .detail-popup-body { padding: 1.5rem; overflow-y: auto; max-height: calc(80vh - 60px); }
